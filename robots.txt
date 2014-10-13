@@ -1,3 +1,3 @@
 User-agent: *
 Disallow: 
-Sitemap: http://docs.countersoft.com/sitemap.xml
+Sitemap: http://countersoft-docs.github.io/sitemap.xml
