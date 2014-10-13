@@ -1,7 +1,7 @@
 name: Gemini Documentation
 description: Complete documentation for Gemini Project and Issue Tracker
 
-safe: false
+safe: true
 permalink: /:title
 
 port: 5000
