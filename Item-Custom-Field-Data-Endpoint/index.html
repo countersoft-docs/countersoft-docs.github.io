@@ -1,0 +1,95 @@
+---
+layout: default
+title: Item Custom Field Data Endpoint
+---
+<h1>Item Custom Field Data Endpoint</h1>
+
+<h2>Create</h2>
+<p>This method creates a new Custom Field Data entry.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/items/{itemid}/customfield/data</strong></p>
+
+<p>The request body must contain the CustomFieldData entity. The return value is a new CustomFieldData entity where the CustomFieldData Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+CustomFieldData customData = new CustomFieldData();
+
+customData.ProjectId = 17;
+customData.IssueId = 36;
+customData.UserId = 1;           
+customData.CustomFieldId = 46;
+customData.Data = "value1";
+
+serviceManager.Item.CustomFieldDataCreate(customData);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/customfield/data";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    ProjectId: "17",
+    IssueId: "36",
+    UserId: "1",
+    CustomFieldId:"46",
+    Data: "value1"  
+}
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Custom Field Data.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/items/{itemid}}/customfield/data</strong></p>
+
+<p>The request body must contain the CustomFieldData entity including the Id. The return value is the updated CustomFieldData entity.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+CustomFieldData customData = new CustomFieldData();
+
+customData.Id = 219;
+customData.ProjectId = 17;
+customData.IssueId = 36;
+customData.UserId = 1;
+customData.CustomFieldId = 46;
+customData.Data = "value1";
+
+serviceManager.Item.CustomFieldDataUpdate(customData);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/customfield/data";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "219",
+    ProjectId: "17",
+    IssueId: "36",
+    UserId: "1",
+    Data: "value2",
+    CustomFieldId: "46"
+}
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

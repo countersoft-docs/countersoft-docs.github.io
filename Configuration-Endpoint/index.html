@@ -1,0 +1,32 @@
+---
+layout: default
+title: Configuration Endpoint
+---
+<h1>Configuration Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a GeminiConfiguration object.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/admin/configuration</strong></p>
+
+<p>It returns a GeminiConfiguration object.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+Countersoft.Gemini.Commons.GeminiConfiguration config = serviceManager.Admin.GetConfiguration();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/admin/configuration;
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

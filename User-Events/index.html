@@ -1,0 +1,27 @@
+---
+layout: default
+title: User Events            
+---
+<h1>User Events</h1>
+
+<p>The following events are available before and after User creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeUserListener</span></p>
+<pre>
+User BeforeUserCreated(UserEventArgs args);
+User BeforeUserUpdated(UserEventArgs args);
+User BeforeUserDeleted(UserEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterUserListener</span></p>
+<pre>
+void AfterUserCreated(UserEventArgs args);
+void AfterUserUpdated(UserEventArgs args);
+void AfterUserDeleted(UserEventArgs args);
+</pre>

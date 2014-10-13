@@ -1,0 +1,33 @@
+---
+layout: default
+title: Project Changelog Endpoint
+---
+<h1>Project Changelog Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a list of items for a Version.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{versionid}/changelog</strong></p>
+
+<p>The URL must have a Version Id. The return type is a list of items.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+ItemService itemManager = new ItemService();
+var items = itemManager.GetChangelog(18);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/18/changelog";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+});
+</pre>

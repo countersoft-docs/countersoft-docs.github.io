@@ -1,0 +1,25 @@
+---
+layout: default
+title: Custom Field Events            
+---
+<h1>Custom Field Events</h1>
+
+<p>The following events are available before and after Custom Field creation, update and deletion.</p>
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeCustomFieldListener</span></p>
+<pre>
+CustomField BeforeCustomFieldCreated(CustomFieldEventArgs args);
+CustomField BeforeCustomFieldUpdated(CustomFieldEventArgs args);
+CustomField BeforeCustomFieldDeleted(CustomFieldEventArgs args);
+</pre>
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterCustomFieldListener</span></p>
+<pre>
+void AfterCustomFieldCreated(CustomFieldEventArgs args);
+void AfterCustomFieldUpdated(CustomFieldEventArgs args);
+void AfterCustomFieldDeleted(CustomFieldEventArgs args);
+</pre>

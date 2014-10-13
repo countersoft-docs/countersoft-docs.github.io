@@ -1,0 +1,44 @@
+---
+layout: default
+title: Git
+---
+<h1>Git</h1> 
+
+<p><a href="http://www.countersoft.com/gemini.zip">Download</a> the Git connector.</p>
+
+<h2>Installation</h2>
+
+<p>Ensure that you have <a href="http://www.python.org/getit/">Python 2.x</a> installed.</p>
+
+<p>Edit the "GeminiGitHook.py" script and change the following variables as required: username, apikey, geminiurl, gitpath, gitrepository</p>
+<p><img src="Githook.png" /></p>
+
+<p>Locate the "hooks" directory for your GIT repository (for example C:\GIT\.git\hooks)</p>
+
+<p>Put the "GeminiGitHook.py" file into the "hooks" directory.</p>
+
+<p>If missing, create the "post-commit" file and insert a line that represents the full path to the "GeminiGitHook.py" script (e.g. C:/MyRepository/.git/hooks/GeminiGitHook.py).</p>
+<p><img src="post-commit.png" /></p>
+
+<h2>Usage</h2>
+
+<p>When you commit files to Git, simply start your commit message with "gem:XXX" ("XXX" represents a Gemini Item Id. In this example we will be using 217 as the Id.</p>
+
+<p>Open up Command Prompt and run the following command replacing “217” with the issue Id you wish to update.</p>
+<p><img src="gitcmd.png" /></p>
+
+<p>All commited files and comments appear under Code Review as follows</p>
+<p><img src="codereview.png" /></p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+        <li><a href="/Team-Foundation-Server-2010">Team Foundation Server 2010</a></li>
+        <li><a href="/Team-Foundation-Server-2012">Team Foundation Server 2012</a></li>
+        <li><a href="/Subversion-Server">Subversion Server</a></li>
+        <li><a href="/Tortoise-Subversion-Client">Tortoise Subversion Client</a></li>
+        <li><a href="/Mercurial">Mercurial</a></li>
+        <li><a href="/GitHub">GitHub</a></li>
+        <li><a href="/Saucery-Faq">Saucery FAQ</a></li>
+	</ul>
+</div>

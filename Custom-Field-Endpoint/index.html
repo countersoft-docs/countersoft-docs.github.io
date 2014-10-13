@@ -1,0 +1,181 @@
+---
+layout: default
+title: Custom Field Endpoint
+---
+<h1>Custom Field Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Custom Field.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/customfields/{customfieldid}</strong></p>
+
+<p>The URL must have the Custom Field Id. It returns the CustomFieldDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+CustomFieldDto customField = serviceManager.CustomFields.Get(22);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/customfields/22";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Custom Fields.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/customfields</strong></p>
+
+<p>It returns a list of CustomFieldDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;CustomFieldDto&gt; customFields = serviceManager.CustomFields.Get();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/customfields";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Custom Field.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/customfields</strong></p>
+
+<p>The request body must contain the CustomField entity. The return value is the new CustomFieldDto where the Custom Field Id is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var field = new CustomField();
+
+field.Name = "Freetext";
+field.ScreenDescription = "Enter any comments";
+field.ScreenLabel = "Freetext";
+field.ScreenTooltip = "Freetext";
+field.Type = "T";
+field.TemplateId = 10;
+
+serviceManager.CustomFields.Create(field);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/customfields";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+                  Name: "Freetext",
+                  ScreenDescription: "Enter any comments",
+                  ScreenLabel: "Freetext",
+                  ScreenTooltip: "Freetext",
+                  Type: "T",
+                  TemplateId: "10"
+                 };
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Custom Field.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/customfields</strong></p>
+
+<p>The request body must contain the CustomField entity including the Id. The return value is the updated CustomFieldDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+CustomFieldDto field = new CustomFieldDto();
+
+field.Entity.Id = 77;
+field.Entity.Name = "Restricted Textfield";
+field.Entity.ScreenDescription = "Enter any comments";
+field.Entity.ScreenLabel = "Freetext";
+field.Entity.ScreenTooltip = "Freetext";
+field.Entity.Type = "T";
+field.Entity.TemplateId = 10;
+
+serviceManager.CustomFields.Update(field.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/customfields";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "77",
+    Name: "Restricted Textfield",
+    ScreenDescription: "Enter any comments",
+    ScreenLabel: "Freetext",
+    ScreenTooltip: "Freetext",
+    Type: "T",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Custom Field</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/customfields/{customfieldid}</strong></p>
+
+<p>The URL must contain the CustomField Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+CustomFieldManager customfieldManager = new CustomFieldManager();
+customfieldManager.Delete(77);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/customfields/77";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>

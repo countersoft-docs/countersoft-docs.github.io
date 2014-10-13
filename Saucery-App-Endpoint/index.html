@@ -1,0 +1,66 @@
+---
+layout: default
+title: Saucery App Endpoint
+---
+<h1>Saucery App Endpoint</h1>
+
+<h2>Create</h2>
+<p>This method creates a new Code Commit Entry.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/items/{itemid}/codecommits</strong></p>
+
+<p>The request body must contain the CodeCommit entity. The comment needs to have the issue id's with a prefix of gem:xx. The return value is a new CodeCommit entity where the CodeCommit Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+Countersoft.Gemini.Commons.Entity.CodeCommit commit = new Countersoft.Gemini.Commons.Entity.CodeCommit();
+
+commit.Provider = Countersoft.Gemini.Commons.SourceControlProvider.SVN;
+commit.IssueId = 36;
+commit.Fullname = "John Smith";
+commit.Comment = "The issue was solved gem:36";
+commit.Data = "{" +
+                   "\"RevisionId\": \"3\"," +
+                   "\"RepositoryUrl\":\"http://localhost:3343/svn/john\"," +
+                   "\"Files\":" +                    
+                       "[{" +
+                          "\"Filename\":\"/trunk/dashboard.cs\"," +
+                          "\"PreviousFileRevisionId\":\"5\"" +
+                       "}]" +               
+              "}"
+
+serviceManager.Item.CreateCodeCommit(commit);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/items/{issueid}/codecommits";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    ProjectId: "17",
+    IssueId: "36",
+    Fullname: "John Smith",
+    Comment: "The issue was solved gem:36",
+    Provider: "1",
+    Data: "{" +
+              "\"RevisionId\": \"3\"," +
+              "\"RepositoryUrl\":\"http://localhost:3343/svn/john\"," +
+              "\"Files\":" +                    
+                   "[{" +
+                      "\"Filename\":\"/trunk/dashboard.cs\"," +
+                      "\"PreviousFileRevisionId\":\"5\"" +
+                   "}]" +               
+          "}",
+	}
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

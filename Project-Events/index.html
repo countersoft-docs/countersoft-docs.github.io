@@ -1,0 +1,27 @@
+---
+layout: default
+title: Project Events            
+---
+<h1>Project Events</h1>
+
+<p>The following events are available before and after Project creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeProjectListener</span></p>
+<pre>
+Project BeforeProjectCreated(ProjectEventArgs args);
+Project BeforeProjectUpdated(ProjectEventArgs args);
+Project BeforeProjectDeleted(ProjectEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterProjectListener</span></p>
+<pre>
+void AfterProjectCreated(ProjectEventArgs args);
+void AfterProjectUpdated(ProjectEventArgs args);
+void AfterProjectDeleted(ProjectEventArgs args);
+</pre>

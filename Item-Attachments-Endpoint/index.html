@@ -1,0 +1,174 @@
+---
+layout: default
+title: Item Attachment Endpoint
+---
+<h1>Item Attachment Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns an attachment of a specific Item.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/attachments/{attachmentid}</strong></p>
+
+<p>The URL must have the Item Id and Attachment Id. It returns an IssueAttachmentDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueAttachmentDto itemAttachment = serviceManager.Item.IssueAttachmentGet(36, 103);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/attachments/103";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Attachments of a specific Item.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/attachments</strong></p>
+
+<p>It returns a list of IssueAttachmentDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueAttachmentDto&gt; itemAttachments = serviceManager.Item.IssueAttachmentsGet(36);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/attachments";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Attachment.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/items/{itemid}/attachments</strong></p>
+
+<p>The request body must contain the IssueAttachment entity. The return value is a new IssueAttachmentDto where the IssueAttachment Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var attachments = new IssueAttachment();
+
+attachments.Name = ""MyItems.txt"";
+attachments.IssueId = 36;
+attachments.ProjectId = 17;
+attachments.Content = byteArray;
+attachments.ContentType = "text/plain";
+
+serviceManager.Item.IssueAttachmentCreate(attachments);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/attachments";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+    ProjectId: "17",
+    IssueId: "36",
+    Name: "MyItems.txt",
+    Content: byteArray,
+    ContentType: "text/plain"
+}
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Attachment.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/items/{itemid}/attachments</strong></p>
+
+<p>The request body must contain the IssueAttachment entity including the Id. The return value is the updated IssueAttachmentDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueAttachmentDto data = new IssueAttachmentDto();
+
+data.Entity.Id = 58;
+data.Entity.ProjectId = 17;
+data.Entity.IssueId = 36;
+data.Entity.Name = "MyItems.txt";
+data.Entity.Content = byteArray;
+data.Entity.ContentType = "text/plain";
+
+serviceManager.Item.IssueAttachmentCreate(data.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/attachments";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+    Id: "58",
+    ProjectId: "17",
+    IssueId: "36",
+    Name: "MyItems.txt",
+    Content: byteArray,
+    ContentType: "text/plain"
+}
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes an Attachment</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/items/{itemid}/attachments/{attachmentid}</strong></p>
+
+<p>The URL must contain the Item Id and Attachment Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Item.IssueAttachmentDelete(36, 58);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/attachments/58;
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>

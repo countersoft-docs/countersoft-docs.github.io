@@ -1,0 +1,27 @@
+---
+layout: default
+title: Project Label Events            
+---
+<h1>Project Label Events</h1>
+
+<p>The following events are available before and after Project Label creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeProjectLabelListener</span></p>
+<pre>
+ProjectLabel BeforeProjectLabelCreated(ProjectLabelEventArgs args);
+ProjectLabel BeforeProjectLabelUpdated(ProjectLabelEventArgs args);
+ProjectLabel BeforeProjectLabelDeleted(ProjectLabelEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterProjectLabelListener</span></p>
+<pre>
+void AfterProjectLabelCreated(ProjectLabelEventArgs args);
+void AfterProjectLabelUpdated(ProjectLabelEventArgs args);
+void AfterProjectLabelDeleted(ProjectLabelEventArgs args);
+</pre>

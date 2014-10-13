@@ -1,0 +1,27 @@
+---
+layout: default
+title: Version Events            
+---
+<h1>Version Events</h1>
+
+<p>The following events are available before and after Version creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeVersionListener</span></p>
+<pre>
+Version BeforeVersionCreated(VersionEventArgs args);
+Version BeforeVersionUpdated(VersionEventArgs args);
+Version BeforeVersionDeleted(VersionEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterVersionListener</span></p>
+<pre>
+void AfterVersionCreated(VersionEventArgs args);
+void AfterVersionUpdated(VersionEventArgs args);
+void AfterVersionDeleted(VersionEventArgs args);
+</pre>

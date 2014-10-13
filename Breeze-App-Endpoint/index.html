@@ -1,0 +1,86 @@
+---
+layout: default
+title: Breeze App Endpoint
+---
+<h1>Breeze App Endpoint</h1>
+
+<h2>Get Enquiries</h2>
+<p>This method returns an Enquiry.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/breeze/enquiry/{id}</strong></p>
+
+<p>The URL must have the Enquiry Id. It returns an Enquiry entity.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var enquiry = serviceManager.Breeze.Get(1);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/breeze/enquiry/1";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All Enquiries</h2>
+<p>This method returns all Enquiries.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/breeze/enquiry</strong></p>
+
+<p>It returns a list of Enquiry entities.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;Enquiry&gt; enquiries = serviceManager.Breeze.GetAll();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/breeze/enquiry";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All Messages</h2>
+<p>This method returns all Messages.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/breeze/mailbox/{mailboxid}/messages/{limit}/{skip}</strong></p>
+
+<p>The URL must contain the Mailbox Id, limit (number), skip (number of messages it should skip). It returns a list of MailboxMessage entities.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;MailboxMessage&gt; messages = serviceManager.Breeze.MailboxGetMessages(1, 10, 0);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/breeze/mailbox/1/messages/5/0";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

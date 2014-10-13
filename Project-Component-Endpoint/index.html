@@ -1,0 +1,170 @@
+---
+layout: default
+title: Project Component Endpoint
+---
+<h1>Project Component Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Component.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/projects/{projectid}/components/{componentid}</strong></p>
+
+<p>The URL must have the Project Id and Component Id. It returns the ComponentDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+ComponentDto component = serviceManager.Projects.GetComponent(10, 34);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/10/components/34";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Components for a specific Project.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/projects/{projectid}/components</strong></p>
+
+<p>It returns a list of ComponentsDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;ComponentDto&gt; components = serviceManager.Projects.GetComponents(10);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/10/components";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Component.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/projects/{projectid}/components</strong></p>
+
+<p>The request body must contain the Project Component entity. The return value is the new ComponentDto where the Component Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var component = new Component();
+
+component.Name = "Billing";
+component.Description = "Raising quotations and generating invoices";
+component.ProjectId = 10;
+component.Lead = 2;
+
+serviceManager.Projects.CreateComponent(component);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/17/components";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+    Name: "Billing",
+    Description: "Raising quotations and generating invoices",
+    ProjectId: "17",
+    Lead: "1"
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+        });
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing component.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/projects/{projectid}/components</strong></p>
+
+<p>The request body must contain the Project Component entity including the Id. The return value is the updated ComponentDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+ComponentDto component = new ComponentDto();
+
+component.Entity.Name = "Billing";
+component.Entity.Description = "Raising quotations only";
+component.Entity.Lead = 1;
+component.Entity.ProjectId = 17;
+component.Entity.Id = 10;
+
+serviceManager.Projects.UpdateComponent(component.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/17/components";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+    Id: "76",
+    Name: "Billing",
+    Description: "Raising quotations and generating invoices",
+    ProjectId: "17",
+    Lead: "1"            
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Component</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/projects/{projectid}/components/{componentid}</strong></p>
+
+<p>The URL must contain the Project Id and the Component Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Projects.DeleteComponent(17, 76);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/17/components/76";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>

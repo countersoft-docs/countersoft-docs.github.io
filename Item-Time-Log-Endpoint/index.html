@@ -1,0 +1,184 @@
+---
+layout: default
+title: Item Time Log Endpoint
+---
+<h1>Item Time Log Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Time Log of a specific Item.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/times/{timeid}</strong></p>
+
+<p>The URL must have the Item Id and Time Id. It returns an IssueTimeTrackingDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueTimeTrackingDto itemTime = serviceManager.Item.GetTime(36, 103);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/times/103";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Time Logs of a specific Item.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/times</strong></p>
+
+<p>It returns a list of IssueTimeTrackingDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueTimeTracking&gt; itemTimes = serviceManager.Item.GetTimes(36);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/times";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Time Log.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/items/{itemid}/times</strong></p>
+
+<p>The request body must contain the IssueTimeTracking Entity. The return value is a new IssueTimeTrackingDto where the IssueTimeTracking Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var time = new IssueTimeTracking();
+
+time.ProjectId = 17;
+time.IssueId = 36;
+time.UserId = 1;
+time.Comment = "Worked through lunch";
+time.Hours = 3;
+time.Minutes = 25;
+time.EntryDate = System.DateTime.Now;
+
+serviceManager.Item.LogTime(time);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/times";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    ProjectId: "17",
+    IssueId: "36",
+    UserId: "1",
+    Comment: "Worked through lunch",
+    Hours: "3",
+    Minutes: "25",
+    EntryDate: "11/01/2013"
+}
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Time Log.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/items/{itemid}/times</strong></p>
+
+<p>The request body must contain the IssueTimeTracking entity including the Id. The return value is the updated IssueTimeTrackingDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueTimeTrackingDto data = new IssueTimeTrackingDto();
+
+data.Entity.Id = 64;
+data.Entity.ProjectId = 17;
+data.Entity.IssueId = 36;
+data.Entity.UserId = 1;
+data.Entity.Comment = "Worked through lunch and 15 minutes break";
+data.Entity.Hours = 3;
+data.Entity.Minutes = 25;
+data.Entity.EntryDate = System.DateTime.Now;
+
+serviceManager.Item.LogTime(data.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/times";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "64",
+    ProjectId: "17",
+    IssueId: "36",
+    UserId: "1",
+    Comment: "Worked through lunch and 15 minutes break",
+    Hours: "3",
+    Minutes: "25",
+    EntryDate: "11/01/2013"
+}
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Time Log</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/items/{itemid}/times/{timeid}</strong></p>
+
+<p>The URL must contain the Item Id and Time Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Item.IssueTimeDelete(36, 64);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/times/64;
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>

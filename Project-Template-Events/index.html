@@ -1,0 +1,27 @@
+---
+layout: default
+title: Project Template Events            
+---
+<h1>Project Template Events</h1>
+
+<p>The following events are available before and after Project Template creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeProjectTemplateListener</span></p>
+<pre>
+InstalledProjectTemplate BeforeProjectTemplateCreated(ProjectTemplateEventArgs args);
+InstalledProjectTemplate BeforeProjectTemplateUpdated(ProjectTemplateEventArgs args);
+InstalledProjectTemplate BeforeProjectTemplateDeleted(ProjectTemplateEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterProjectTemplateListener</span></p>
+<pre>
+void AfterProjectTemplateCreated(ProjectTemplateEventArgs args);
+void AfterProjectTemplateUpdated(ProjectTemplateEventArgs args);
+void AfterProjectTemplateDeleted(ProjectTemplateEventArgs args);
+</pre>

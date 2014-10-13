@@ -1,0 +1,32 @@
+---
+layout: default
+title: Permission Endpoint
+---
+<h1>Permission Endpoint</h1>
+
+<h2>Get All</h2>
+<p>This method returns a list of Permissions.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/admin/permissionsets</strong></p>
+
+<p>It returns a list of PermissionSetDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;PermissionSetDto&gt; permissions = serviceManager.Admin.GetPermissionSets();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/admin/permissionsets";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

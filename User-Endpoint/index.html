@@ -1,0 +1,253 @@
+---
+layout: default
+title: User Endpoint
+---
+<h1>User Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a specific User.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/users/username/{username}</strong></p>
+
+<p>The URL must have the username. It returns the UserDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+UserDto user = serviceManager.User.GetUsername("manager");
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/users/username/manager";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get by User ID</h2>
+<p>This method returns a specific User.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/users/{userid}</strong></p>
+
+<p>The URL must have the User Id. It returns an UserDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+UserDto user = serviceManager.User.GetUser(1);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/users/1";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Users.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/users</strong></p>
+
+<p>It returns a list of UserDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;UserDto&gt; users = serviceManager.User.GetUsers();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/users";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get Active Users</h2>
+<p>This method returns a list of all active users.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/users/active</strong></p>
+
+<p>It returns a list of UserDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;UserDto&gt; users = serviceManager.User.GetActive();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/users/active";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get Active Users Count</h2>
+<p>This method returns the number of active users.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/users/active/count</strong></p>
+
+<p>It returns a number.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+int amountOfUsers = serviceManager.User.GetActiveUserCount();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/users/active/count";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new user.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/users</strong></p>
+
+<p>The request body must contain the User Entity. The return value is the new UserDto where the user Id is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var user = new User();
+
+user.Username = "manager";
+user.Firstname = "Manager";
+user.Surname = "Person";
+user.Email = "admin@mycompany.com";
+
+serviceManager.User.Create(user);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/users";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+                Username: "manager",        
+                Firstname: "Manager",
+                Surname: "Person",
+                Email: "admin@mycompany.com",
+                };
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiProject,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing User.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/users</strong></p>
+
+<p>The request body must contain the User entity. The return value is the updated UserDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+UserDto data = new UserDto();
+
+data.Entity.Id = 1;
+data.Entity.Username = "manager";
+data.Entity.Firstname = "Manager";
+data.Entity.Surname = "Person";
+data.Entity.Email = "admin@mycompany.com";
+
+serviceManager.User.Update(data.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/users";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "1",
+    Username: "manager",        
+    Firstname: "Manager",
+    Surname: "Person",
+    Email: "admin@mycompany.com",
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiProject,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes an User.</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/users/{userid}</strong></p>
+
+<p>The URL must contain the User Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.User.Delete(1);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/1";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>

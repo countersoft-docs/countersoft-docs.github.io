@@ -1,0 +1,64 @@
+---
+layout: default
+title: Tortoise Subversion Client
+---
+<h1>Tortoise Subversion Client</h1> 
+
+<p><a href='http://www.countersoft.com/gemini.zip'>Download</a> the connector.</p>
+
+<h2>SVN Installation</h2>
+
+<p>If required, create a 'hooks' folder within the TortoiseSVN installation folder (typically C:\Program Files\TortoiseSVN\hooks).</p>
+<p><img src='hooks-folder.png' /></p>
+
+<p>Place the following files into the TortoiseSVN 'hooks' folder</p>
+
+<ul>
+	<li>Countersoft.Gemini.SourceControl.TSVN.exe</li>
+	<li>Countersoft.Gemini.SourceControl.TSVN.exe.config</li>
+	<li>Countersoft.Gemini.Commons.dll</li>
+	<li>Countersoft.Gemini.Api.dll</li>
+	<li>Countersoft.Foundation.Commons.dll</li>
+	<li>Newtonsoft.Json.dll</li>
+	<li>Restsharp.dll</li>
+	<li>'post-commit.cmd', 'pre-commit.cmd', 'revisionLogTemplate.txt' from 'Hook Files' folder.</li>
+	<li>The relevant svn.exe file (see below)</li>
+</ul>
+
+You can find the <code>svn.exe</code> file within the TortoiseSVN installation folder (typically C:\Program Files\TortoiseSVN\bin). Or <a href='http://www.visualsvn.com/server/download'>download</a> the latest VisualSVN Subversion Command-Line Client from.
+
+<p>The end result should look like this.</p>
+<p><img src='hooks-files.png' /></p>
+
+<h2>Configure Gemini URL</h2>
+<p>Configure your Gemini url, username and password in the Countersoft.Gemini.SourceControl.TSVN.exe.config file.</p>
+<p><img src='gemini-credentials.png' /></p>
+
+<h2>SVN Project Properties</h2>
+<p>Set SVN Project Properties for every project you want to associate with Gemini and click on import button.</p>
+<p><img src='project-properties.png' /></p>
+<p>Import the 'gemini_svn.svnprops' file which will be located in the 'SVN Properties' folder. Once imported, change the 'bugtraq:url' to point towards your Gemini installation by double clicking on the URL.</p>
+<p><img src='bugtrack-URL.png' /></p>
+
+<p>Click to TortoiseSVN -> Settings -> Hook Scripts and set the pre and post commit script for every project (working copy path) needed. Passing 'pre-commit.cmd' or 'post-commit.cmd' as the command to run (e.g. 'C:\Program Files\TortoiseSVN\hooks\pre-commit.cmd').</p>
+<p><img src='commit.png' /></p>
+<p><img src='ConfigurePreHookScripts.png'/> <img src='ConfigurePostHookScripts.png'/></p>
+
+<h2>Usage</h2>
+<p>When you want to tie a subversion commit to an issue, simply place the issue number in the Subversion commit comment box.</p>
+<p><img src='subversion-commit.png' /></p>
+<p>All commited files and comments appear under Code Review as follows.</p>
+<p><img src='codereview.png' /></p>
+
+<div class='well well-small related-box'>
+    <span class='title'>Related</span>
+	<ul>
+		<li><a href='/Team-Foundation-Server-2010'>Team Foundation Server 2010</a></li>
+		<li><a href='/Subversion-Server'>Subversion Server</a></li>
+		<li><a href='/Tortoise-Subversion-Client'>Tortoise Subversion Client</a></li>
+		<li><a href='/Git'>Git</a></li>
+		<li><a href='/Mercurial'>Mercurial</a></li>
+		<li><a href='/GitHub'>GitHub</a></li>
+		<li><a href="/Saucery-Faq">Saucery FAQ</a></li>
+	</ul>
+</div>

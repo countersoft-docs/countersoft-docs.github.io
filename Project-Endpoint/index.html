@@ -1,0 +1,188 @@
+---
+layout: default
+title: Project Endpoint
+---
+<h1>Project Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Project.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/projects/{projectid}</strong></p>
+
+<p>The URL must have the Project Id. It returns the ProjectDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+ProjectDto project = serviceManager.Projects.GetProject(10);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/10";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Projects.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/projects</strong></p>
+
+<p>It returns a list of Project Dto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;ProjectDto&gt; projects = serviceManager.Projects.GetProjects();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new project.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/projects</strong></p>
+
+<p>The request body must contain the Project entity. The return value is a new ProjectDto where the Project Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var project = new Project();
+
+project.Code = "HELP;
+project.Name = "Help Desk";
+project.Description = "Supporting function for Client Projects";
+project.TemplateId = 10;
+project.LeadId = 1;
+project.WorkflowId = 0;
+
+serviceManager.Projects.CreateProject(project);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = { Code: "HELP",
+                      Name: "Help Desk",
+                      Description: "Supporting function for Client Projects",
+                      Color: "#ffffff",
+                      ReadOnly: "false",
+                      DescriptionRequired: "true",
+                      TemplateId: "10",
+                      PermissionId: "2",
+                      WorkflowId: "0",
+                      LabelId: "8",
+                      LeadId: "1"
+                    };
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing project.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/projects</strong></p>
+
+<p>The request body must contain the Project entity including the id. The return value is the new ProjectDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+ProjectDto project = new ProjectDto();
+
+project.Entity.Code = "HELP;
+project.Entity.Name = "Help Desk";
+project.Entity.Description = "Supporting function for Client Projects";
+project.Entity.TemplateId = 10;
+project.Entity.LeadId = 1;
+project.Entity.WorkflowId = 0;
+project.Entity.Id = 10;
+
+serviceManager.Projects.UpdateProject(project.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = { Code: "HELP",
+                      Name: "Help Desk and Support",
+                      Description: "Supporting function for Client Projects",
+                      Color: "#ffffff",
+                      ReadOnly: "false",
+                      DescriptionRequired: "true",
+                      TemplateId: "10",
+                      PermissionId: "2",
+                      WorkflowId: "0",
+                      LabelId: "8",
+                      LeadId: "1",
+                      Id: "10"
+                    };
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Project</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/projects/{projectid}</strong></p>
+
+<p>The URL must contain the Project Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Projects.DeleteProject(10);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/10";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>

@@ -1,0 +1,27 @@
+---
+layout: default
+title: Resolution Events            
+---
+<h1>Resolution Events</h1>
+
+<p>The following events are available before and after Resolution creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeIssueResolutionListener</span></p>
+<pre>
+IssueResolution BeforeIssueResolutionCreated(IssueResolutionEventArgs args);
+IssueResolution BeforeIssueResolutionUpdated(IssueResolutionEventArgs args);
+IssueResolution BeforeIssueResolutionDeleted(IssueResolutionEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterIssueResolutionListener</span></p>
+<pre>
+void AfterIssueResolutionCreated(IssueResolutionEventArgs args);
+void AfterIssueResolutionUpdated(IssueResolutionEventArgs args);
+void AfterIssueResolutionDeleted(IssueResolutionEventArgs args);
+</pre>

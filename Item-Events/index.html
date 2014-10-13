@@ -1,0 +1,47 @@
+---
+layout: default
+title: Item Events            
+---
+<h1>Item Events</h1>
+
+<p>The following events are available before and after Item creation, update and deletion.</p>
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IIssueBeforeListener</span></p>
+<pre>
+Issue BeforeCreate(IssueEventArgs args);
+Issue BeforeUpdate(IssueEventArgs args);
+Issue BeforeDelete(IssueEventArgs args);
+Issue BeforeComment(IssueEventArgs args);
+
+Issue BeforeStatusChange(IssueEventArgs args);
+Issue BeforeResolutionChange(IssueEventArgs args);
+
+Issue BeforeAssign(IssueEventArgs args);
+Issue BeforeClose(IssueEventArgs args);
+
+Issue BeforeWatcherAdd(IssueEventArgs args);
+
+IssueDto BeforeIssueCopy(IssueDtoEventArgs args);
+IssueDto CopyIssueComplete(IssueDtoEventArgs args);
+</pre>
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IIssueAfterListener</span></p>
+<pre>
+void AfterCreate(IssueEventArgs args);
+void AfterUpdate(IssueEventArgs args);
+void AfterDelete(IssueEventArgs args);
+void AfterComment(IssueEventArgs args);
+
+void AfterStatusChange(IssueEventArgs args);
+void AfterResolutionChange(IssueEventArgs args);
+
+void AfterAssign(IssueEventArgs args);
+void AfterClose(IssueEventArgs args);
+void AfterWatcherAdd(IssueEventArgs args);
+
+void AfterIssueCopy(IssueDtoEventArgs args);
+</pre>
