@@ -1,0 +1,32 @@
+---
+layout: default
+title: Alert Template Endpoint
+---
+<h1>Alert Template Endpoint</h1>
+
+<h2>Get All</h2>
+<p>This method returns a list with all the Alert Templates.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/admin/alerts/templates</strong></p>
+
+<p>It returns a list of AlertTemplate Entities.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;AlertTemplate&gt; alertTemplates = serviceManager.Admin.GetAlertTemplates();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/admin/alerts/templates";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

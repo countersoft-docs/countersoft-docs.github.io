@@ -1,0 +1,25 @@
+---
+layout: default
+title: Component Events            
+---
+<h1>Component Events</h1>
+
+<p>The following events are available before and after Component creation, update and deletion.</p>
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeComponentListener</span></p>
+<pre>
+Component BeforeComponentCreated(ComponentEventArgs args);
+Component BeforeComponentUpdated(ComponentEventArgs args);
+Component BeforeComponentDeleted(ComponentEventArgs args);
+</pre>
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterComponentListener</span></p>
+<pre>
+void AfterComponentCreated(ComponentEventArgs args);
+void AfterComponentUpdated(ComponentEventArgs args);
+void AfterComponentDeleted(ComponentEventArgs args);
+</pre>

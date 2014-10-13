@@ -1,0 +1,25 @@
+---
+layout: default
+title: Process Type Events            
+---
+<h1>Process Type Events</h1>
+
+<p>The following events are available before and after Process Type creation, update and deletion.</p>
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeIssueTypeListener</span></p>
+<pre>
+IssueType BeforeIssueTypeCreated(IssueTypeEventArgs args);
+IssueType BeforeIssueTypeUpdated(IssueTypeEventArgs args);
+IssueType BeforeIssueTypeDeleted(IssueTypeEventArgs args);
+</pre>
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterIssueTypeListener</span></p>
+<pre>
+void AfterIssueTypeCreated(IssueTypeEventArgs args);
+void AfterIssueTypeUpdated(IssueTypeEventArgs args);
+void AfterIssueTypeDeleted(IssueTypeEventArgs args);
+</pre>

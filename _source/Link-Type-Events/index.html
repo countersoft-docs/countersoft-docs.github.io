@@ -1,0 +1,25 @@
+---
+layout: default
+title: Link Type Events            
+---
+<h1>Link Type Events</h1>
+
+<p>The following events are available before and after Link Type creation, update and deletion.</p>
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeLinkTypeListener</span></p>
+<pre>
+IssueLinkType BeforeLinkTypeCreated(LinkTypeEventArgs args);
+IssueLinkType BeforeLinkTypeUpdated(LinkTypeEventArgs args);
+IssueLinkType BeforeLinkTypeDeleted(LinkTypeEventArgs args);
+</pre>
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterLinkTypeListener</span></p>
+<pre>
+void AfterLinkTypeCreated(LinkTypeEventArgs args);
+void AfterLinkTypeUpdated(LinkTypeEventArgs args);
+void AfterLinkTypeDeleted(LinkTypeEventArgs args);
+</pre>

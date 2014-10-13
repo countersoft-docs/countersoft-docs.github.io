@@ -1,0 +1,27 @@
+---
+layout: default
+title: Screen Events            
+---
+<h1>Screen Events</h1>
+
+<p>The following events are available before and after Screen creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeScreenListener</span></p>
+<pre>
+Screen BeforeScreenCreated(ScreenEventArgs args);
+Screen BeforeScreenUpdated(ScreenEventArgs args);
+Screen BeforeScreenDeleted(ScreenEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterScreenListener</span></p>
+<pre>
+void AfterScreenCreated(ScreenEventArgs args);
+void AfterScreenUpdated(ScreenEventArgs args);
+void AfterScreenDeleted(ScreenEventArgs args);
+</pre>

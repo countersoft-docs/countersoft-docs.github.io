@@ -1,0 +1,27 @@
+---
+layout: default
+title: Project Group Events            
+---
+<h1>Project Group Events</h1>
+
+<p>The following events are available before and after Project Group creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeProjectGroupListener</span></p>
+<pre>
+ProjectGroup BeforeProjectGroupCreated(ProjectGroupEventArgs args);
+ProjectGroup BeforeProjectGroupUpdated(ProjectGroupEventArgs args);
+ProjectGroup BeforeProjectGroupDeleted(ProjectGroupEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterProjectGroupListener</span></p>
+<pre>
+void AfterProjectGroupCreated(ProjectGroupEventArgs args);
+void AfterProjectGroupUpdated(ProjectGroupEventArgs args);
+void AfterProjectGroupDeleted(ProjectGroupEventArgs args);
+</pre>

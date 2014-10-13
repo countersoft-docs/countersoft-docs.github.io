@@ -1,0 +1,332 @@
+---
+layout: default
+title: Alert Templates
+---
+<h1>Alert Templates</h1> 
+
+<p>Create different outbound email templates for different projects.</p>
+<p>You can add, edit, delete and find existing email templates.</p>
+<p><img src="templates.png" /></p>
+
+<h2>Template Types</h2>
+<p>Email templates are used upon one of the following actions:</p>
+
+<ul>
+	<li>When new items are created (When Created)</li>
+	<li>When someone is resourced (When Resourced)</li>
+	<li>When an item is changed (When Updated)</li>
+	<li>When watched items change (Watcher Notification)</li>
+	<li>When something in the scope of an AppNav card changes (AppNav Card Alerts)</li>
+	<li>To automatically acknowledge an email-to-ticket (Acknowledge Email - Breeze only)</li>
+	<li>To reply from Gemini to an email-to-ticket initiator(Email Reply - Breeze only)</li>
+	<li>Generic - not used by the Gemini alerts engine</li>
+</ul>
+
+<p><span class="label label-important">Note</span>The last two of these are only available to users of Breeze (email ticketing)</p>
+
+<h2>Defining Templates</h2>
+<p>Creating or editing templates will enable you to select the type of template and to provide a meaningful name.</p>
+<p><img src="alert-types.png" /></p>
+
+<ul>
+	<li><b>Name:</b> meaniingful descriptor for the template
+	<li><b>Alert Type:</b> type email template
+	<li><b>Subject:</b> the email subject line
+	<li><b>Associated Project(s):</b> leave blank for all projects or select the projects your template
+	<li><b>Content:</b> the HTML for the template
+</ul>
+
+<p>Pay special attention to the associated projects for the template. Leave this field blank to use the template across all projects.</p>
+<p><img src="project-selection.png" /></p>
+
+<h2>Template HTML Editor</h2>
+<p>When you add a Template the appropriate default HTML based on the event type is selected for you. </p>
+<p><img src="template-HTML.png" /></p>
+
+<h3>Injecting Data</h3>
+<p>Note the use of <code>@(Model.TheItem.Type)</code> for injecting item data into the email template. You can inject any of the below item fields - including custom fields.</p>
+
+<p>The syntax for including the fields is <code>@(Model.TheItem.<b>FieldName</b>)</code> where the <code>FieldName</code> represents one of the below fields.</p>
+
+<h3>Available Fields</h3>
+<p>The following table lists all fields available from <code>@(Model.TheItem)</code> object.</p>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>AffectedVersionNumbers</td>
+			<td>Any associated affected versions (comma separated)</td>
+		</tr>
+		<tr>
+			<td>Age</td>
+			<td>Number of days since item created</td>
+		</tr>
+		<tr>
+			<td>ClosedDate</td>
+			<td>The date and time this item was closed</td>
+		</tr>
+		<tr>
+			<td>ComponentNames</td>
+			<td>Components associated with item (comma separated)</td>
+		</tr>
+		<tr>
+			<td>Comments[n].Entity.Comment</td>
+			<td>Collection of all comments where "n" represents index of comment</td>
+		</tr>
+		<tr>
+			<td>Created</td>
+			<td>The date and time when the item was created</td>
+		</tr>
+		<tr>
+			<td>CustomFields["your custom field name"].Entity.Data</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>The full description of the item</td>
+		</tr>
+		<tr>
+			<td>DueDate</td>
+			<td>When work should complete for the item</td>
+		</tr>
+		<tr>
+			<td>Elapsed</td>
+			<td>Number of minutes since item opened till closure</td>
+		</tr>
+		<tr>
+			<td>EstimatedEffort</td>
+			<td>The number of hours and minutes to complete item (0h 0m format)</td>
+		</tr>
+		<tr>
+			<td>ExcessTime</td>
+			<td>The number of hours and minutes exceeding original estimate (0h 0m format)</td>
+		</tr>
+		<tr>
+			<td>FixedInVersion</td>
+			<td>Any associated version</td>
+		</tr>
+		<tr>
+			<td>Id</td>
+			<td>The id of the item (e.g. 23456)</td>
+		</tr>
+		<tr>
+			<td>IssueKey</td>
+			<td>The key of the item (e.g. GEM-23456)</td>
+		</tr>
+		<tr>
+			<td>LastComment</td>
+			<td>Latest comment for the item</td>
+		</tr>
+		<tr>
+			<td>LoggedHours</td>
+			<td>Total number of hours logged against this item</td>
+		</tr>
+		<tr>
+			<td>LoggedMinutes</td>
+			<td>Total number of minutes logged against this item</td>
+		</tr>
+		<tr>
+			<td>OriginatorData</td>
+			<td>Any associated source data for item (e.g. email address)</td>
+		</tr>
+		<tr>
+			<td>PercentComplete</td>
+			<td>How much work has been completed (e.g. 25%)</td>
+		</tr>
+		<tr>
+			<td>Points</td>
+			<td>Allocated points for item</td>
+		</tr>
+		<tr>
+			<td>Priority</td>
+			<td>The current priority of the item (e.g. High)</td>
+		</tr>
+		<tr>
+			<td>ProjectCode</td>
+			<td>The project code that the item belongs to (e.g. ACME)</td>
+		</tr>
+		<tr>
+			<td>ProjectName</td>
+			<td>The project name that the item belongs to (e.g. My Project)</td>
+		</tr>
+		<tr>
+			<td>RemainingTime</td>
+			<td>The number of hours and minutes to remaining for item (0h 0m format)</td>
+		</tr>
+		<tr>
+			<td>Reporter</td>
+			<td>The fullname of the user who reported the item (e.g. Joe Bloggs)</td>
+		</tr>
+		<tr>
+			<td>Resolution</td>
+			<td>The current resolution of the item (e.g. Complete)</td>
+		</tr>
+		<tr>
+			<td>ResolvedDate</td>
+			<td>The date and time this item was marked as resolved</td>
+		</tr>
+		<tr>
+			<td>ResourceNames</td>
+			<td>The resources assigned to the item (comma separated)</td>
+		</tr>
+		<tr>
+			<td>Revised</td>
+			<td>The date and time when the item was last revised</td>
+		</tr>
+        <tr>
+            <td>Reviser</td>
+            <td>The name of the user who last revised the item</td>
+        </tr>
+		<tr>
+			<td>Severity</td>
+			<td>The current severity of the item (e.g. Showstopper)</td>
+		</tr>
+		<tr>
+			<td>IsInSLA</td>
+			<td>Check if the item part of SLA</td>
+		</tr>
+		<tr>
+			<td>SLATimeLeftFull</td>
+			<td>The SLA time left in days hours minutes format (1d 2h 3m)</td>
+		</tr>
+		<tr>
+			<td>SLATimeLeftMinutes</td>
+			<td>How many minutes left for SLA</td>
+		</tr>
+		<tr>
+			<td>SLATimePassedMinutes</td>
+			<td>How many minutes have passed for SLA</td>
+		</tr>
+		<tr>
+			<td>StartDate</td>
+			<td>When work should commence on the item</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>The current status of the item (e.g. Unassigned)</td>
+		</tr>
+		<tr>
+			<td>TimeLogged</td>
+			<td>The number of hours and minutes to logged against item (0h 0m format)</td>
+		</tr>
+		<tr>
+			<td>Title</td>
+			<td>The title of the item (e.g. Fix Cross-browser issues)</td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>The type of the item (e.g. Bug)</td>
+		</tr>
+		<tr>
+			<td>Visibility</td>
+			<td>The visibility of the item (e.g. Everyone)</td>
+		</tr>
+		<tr>
+			<td>Votes</td>
+			<td>The number of votes for this item</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The following table lists all fields available from <code>@(Model)</code> object (that's the associated workspace).</p>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>CardKey</td>
+			<td>The key of the card - usually the project code</td>
+		</tr>
+		<tr>
+			<td>CardDescription</td>
+			<td>The user-specified title of the card</td>
+		</tr>
+		<tr>
+			<td>CardComment</td>
+			<td>Optional comment associated with the card</td>
+		</tr>
+		<tr>
+			<td>CardUrl</td>
+			<td>The URL to the page that the card points to</td>
+		</tr>
+		<tr>
+			<td>ChangeCount</td>
+			<td>The number of changes that took place for items within the card's sceop</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The following table lists all fields available from <code>@(Model)</code> object (this is only associated to "<b>Email Reply (Breeze)</b>" alert template).</p>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Model.Sender.Fullname</td>
+			<td>The fullname of the user who send the email reply from Gemini</td>
+		</tr>
+		<tr>
+			<td>Model.Sender.Entity.Email</td>
+			<td>The email address of the user who send the email reply from Gemini</td>
+		</tr>
+		<tr>
+			<td>Model.Sender.Entity.Firstname</td>
+			<td>The firstname of the user who send the email reply from Gemini</td>
+		</tr>
+		<tr>
+			<td>Model.Sender.Entity.Surname</td>
+			<td>The surname of the user who send the email reply from Gemini </td>
+		</tr>
+	</tbody>
+</table>
+
+<p>The following table lists all fields available from <code>@(Model)</code> object (this is only associated to "<b>Acknowledge Email (Breeze)</b>" alert template).</p>
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Field</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Model.NewUserAdded</td>
+			<td>Check if the user just been created by Breeze, the property is a boolean (true/false)</td>
+		</tr>
+		<tr>
+			<td>Model.NewUserName</td>
+			<td>The username of the new user</td>
+		</tr>
+		<tr>
+			<td>Model.NewUserPassword</td>
+			<td>The password of the new user</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>You can also change the system default tempate HTML located in the <code>App Data\Notifications</code> folder.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/global-options">Global Options</a></li>
+		<li><a href="/email-alerts">Email & Alerts</a>
+		<li><a href="/system-log">System Log</a></li>
+		<li><a href="/licensing">Licensing</a></li>
+		<li><a href="/active-directory-setup">Active Directory Setup</a></li>
+		<li><a href="/windows-authentication">Windows Authentication</a></li>
+	</ul>
+</div>

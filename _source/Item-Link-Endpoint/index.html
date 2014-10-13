@@ -1,0 +1,32 @@
+---
+layout: default
+title: Item Link Endpoint
+---
+<h1>Item Link Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a list of related Items.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/links</strong></p>
+
+<p>The URL must have an Item Id. It returns a list of IssueLinkDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueLinkDto&gt; items = serviceManager.Item.GetLinks(36);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/links";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

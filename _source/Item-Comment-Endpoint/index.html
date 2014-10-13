@@ -1,0 +1,172 @@
+---
+layout: default
+title: Item Comment Endpoint
+---
+<h1>Item Comment Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a comment of a specific Item.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/comments/{commentid}</strong></p>
+
+<p>The URL must have the Item Id and Comment Id. It returns a IssueCommentDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueCommentDto itemComment = serviceManager.Item.IssueCommentGet(36, 103);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/comments/103";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Comments of a specific Item.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/comments</strong></p>
+
+<p>It returns a list of IssueCommentDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueCommentDto&gt; itemComments = serviceManager.Item.IssueCommentsGet(36);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/comments";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Comment.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/items/{itemid}/comments</strong></p>
+
+<p>The request body must contain the IssueComment entity. The return value is a new IssueCommentDto where the IssueComment Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var comment = new IssueComment();
+
+comment.Comment = "This item was already done";
+comment.ProjectId = 17;
+comment.IssueId = 36;
+comment.UserId = 1;
+
+serviceManager.Item.IssueCommentCreate(comment);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/comments";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    ProjectId: "17",
+    IssueId: "36",
+    UserId: "1",
+    Comment: "This item was already done"
+}
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Comment.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/items/{itemid}/comments</strong></p>
+
+<p>The request body must contain the IssueComment entity including the Id. The return value is the updated IssueCommentDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueCommentDto data = new IssueCommentDto();
+
+data.Entity.Id = 113;
+data.Entity.Comment = "This item is still open";
+data.Entity.ProjectId = 17;
+data.Entity.IssueId = 36;
+data.Entity.UserId = 1;
+
+serviceManager.Item.IssueCommentCreate(data);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/comments";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "113"
+    ProjectId: "17",
+    IssueId: "36",
+    UserId: "1",
+    Comment: "This item is still open"
+}
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Comment</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/items/{itemid}/comments/{commentid}</strong></p>
+
+<p>The URL must contain the Item Id and Comment Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Item.IssueCommentDelete(36, 113);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/comments/113;
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>

@@ -1,0 +1,944 @@
+---
+layout: default
+title: Meta Data Endpoint
+---
+<h1>Type Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Type.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/type/{typeid}</strong></p>
+
+<p>The URL must have the Type Id. It returns an IssueTypeDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueTypeDto type = serviceManager.Meta.GetIssueType(55);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/type/55";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Types.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/type</strong></p>
+
+<p>It returns a list of IssueTypeDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueTypeDto&gt; types = serviceManager.Meta.GetIssueTypes();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/type";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All Types By Template</h2>
+<p>This method returns all Types for a specific template.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/type/template/{templateid}</strong></p>
+
+<p>It returns a list of IssueTypeDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueTypeDto&gt; types = serviceManager.Meta.GetIssueTypesForTemplate(10);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/type/template/10";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Type.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/type</strong></p>
+
+<p>The request body must contain the Type Entity. The return value is the new IssueTypeDto where the Type Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var type = new IssueType();
+
+type.Label = "Bug";
+type.TemplateId = 10;
+
+serviceManager.Meta.CreateIssueType(type);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/type";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Label: "Bug",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Type.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/type</strong></p>
+
+<p>The request body must contain the Type entity including the Id. The return value is the updated IssueTypeDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueTypeDto data = new IssueTypeDto();
+
+data.Entity.Id = 87;
+data.Entity.Label = "Bugs";
+data.Entity.TemplateId = 10;
+
+serviceManager.Meta.UpdateIssueType(data.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/type";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "87",
+    Label: "Bugs",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiProject,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Type</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/type/{typeid}</strong></p>
+
+<p>The URL must contain the Type Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Meta.DeleteIssueType(87);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/type/87";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>
+
+
+<h1>Status Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Status.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/status/{statusid}</strong></p>
+
+<p>The URL must have the Status Id. It returns an IssueStatusDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueStatusDto status = serviceManager.Meta.GetIssueStatus(55);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/status/55";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    status: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Status values.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/status</strong></p>
+
+<p>It returns a list of IssueStatusDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueStatusDto&gt; statuses = serviceManager.Meta.GetIssueStatuses();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/status";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    status: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All Status Values By Template</h2>
+<p>This method returns all status values for a specific template.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/status/template/{templateid}</strong></p>
+
+<p>It returns a list of IssueStatusDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueStatusDto&gt; statuses = serviceManager.Meta.GetStatusesForTemplate(10);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/status/template/10";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    status: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Status.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/status</strong></p>
+
+<p>The request body must contain the Status Entity. The return value is the new IssueStatusDto where the Status Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var status = new IssueStatus();
+
+status.Label = "Completed";
+status.TemplateId = 10;
+
+serviceManager.Meta.CreateIssueStatus(status);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/status";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Label: "Completed",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    status: "POST",
+    data: geminiProject,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Status.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/status</strong></p>
+
+<p>The request body must contain the Status entity including the Id. The return value is the updated IssueStatusDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueStatusDto data = new IssueStatusDto();
+
+data.Entity.Id = 87;
+data.Entity.Label = "Open";
+data.Entity.TemplateId = 10;
+
+serviceManager.Meta.UpdateIssueStatus(data.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/status";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "87",
+    Label: "Open",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    status: "PUT",
+    data: geminiProject,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Status</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/status/{statusid}</strong></p>
+
+<p>The URL must contain the Status Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Meta.DeleteIssueStatus(87);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/status/87";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    status: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h1>Severity Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Severity.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/severity/{id}</strong></p>
+
+<p>The URL must have the Severity Id. It returns a IssueSeverityDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueSeverityDto severity = serviceManager.Meta.GetIssueSeverity(55);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/severity/55";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    severity: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Severities.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/severity</strong></p>
+
+<p>It returns a list of IssueSeverityDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueSeverityDto&gt; severities = serviceManager.Meta.GetIssueSeverities();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/severity";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    severity: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All Severities By Template</h2>
+<p>This method returns all Severities for a specific template.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/severity/template/{templateid}</strong></p>
+
+<p>It returns a list of IssueSeverityDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueSeverityDto&gt; severities = serviceManager.Meta.GetSeveritiesForTemplate(10);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/severity/template/10";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    severity: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Severity.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/severity</strong></p>
+
+<p>The request body must contain the Severity Entity. The return value is the new IssueSeverityDto where the Severity Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var severity = new IssueSeverity();
+
+severity.Label = "Major";
+severity.TemplateId = 10;
+
+serviceManager.Meta.CreateIssueSeverity(severity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/severity";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Label: "Major",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    severity: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Severity.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/severity</strong></p>
+
+<p>The request body must contain the Severity entity including the Id. The return value is the updated IssueSeverityDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueSeverityDto data = new IssueSeverityDto();
+
+data.Entity.Id = 87;
+data.Entity.Label = "Minor";
+data.Entity.TemplateId = 10;
+
+serviceManager.Meta.UpdateIssueSeverity(data.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/severity";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "87",
+    Label: "Minor",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    severity: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Severity</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/severity/{severityid}</strong></p>
+
+<p>The URL must contain the Severity Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Meta.DeleteIssueSeverity(87);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/severity/87";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    severity: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h1>Resolution Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Resolution.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/resolution/{id}</strong></p>
+
+<p>The URL must have the Resolution Id. It returns the Resolution Entity.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueResolution resolution = serviceManager.Meta.GetIssueResolution(55);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/resolution/55";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    resolution: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Resolutions.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/resolution</strong></p>
+
+<p>It returns a list of Resolution Entities.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueResolution&gt; resolutions = serviceManager.Meta.GetIssueResolutions();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/resolution";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    resolution: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All Resolutions By Template</h2>
+<p>This method returns all Resolutions for a specific template.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/resolution/template/{templateid}</strong></p>
+
+<p>It returns a list of Resolution Entities.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueResolution&gt; resolutions = serviceManager.Meta.GetByTemplateResolution(10);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/resolution/template/10";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    resolution: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Resolution.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/resolution</strong></p>
+
+<p>The request body must contain the Resolution Entity. The return value is the new Resolution Entity where the Resolution Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var resolution = new IssueResolution();
+
+resolution.Label = "Completed";
+resolution.TemplateId = 10;
+
+serviceManager.Meta.CreateIssueResolution(resolution);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/resolution";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Label: "Completed",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    resolution: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Resolution.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/resolution</strong></p>
+
+<p>The request body must contain the Resolution entity including the Id. The return value is the new Resolution entity.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssueResolution data = new IssueResolution();
+
+data.Entity.Id = 87;
+data.Entity.Label = "Open";
+data.Entity.TemplateId = 10;
+
+serviceManager.Meta.UpdateIssueResolution(data.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/resolution";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "87",
+    Label: "Open",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    resolution: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Resolution</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/resolution/{resolutionid}</strong></p>
+
+<p>The URL must contain the Resolution Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Meta.DeleteIssueResolution(87);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/resolution/87";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    resolution: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h1>Priority Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Priority.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/priority/{id}</strong></p>
+
+<p>The URL must have the Priority Id. It returns the IssuePriorityDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssuePriorityDto priority = serviceManager.Meta.GetIssuePriority(55);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/priority/55";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    priority: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Priorities.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/priority</strong></p>
+
+<p>It returns a list of IssuePriorityDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssuePriorityDto&gt; priorities = serviceManager.Meta.GetIssuePriorities();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/priority";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    priority: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All Priorities By Template</h2>
+<p>This method returns all Priorities for a specific template.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/priority/template/{templateid}</strong></p>
+
+<p>It returns a list of IssuePriorityDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssuePriorityDto&gt; priorities = serviceManager.Meta.GetPrioritiesForTemplate(10);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/priority/template/10";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    priority: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Priority.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/priority</strong></p>
+
+<p>The request body must contain the Priority entity. The return value is the new IssuePriorityDto where the Priority Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var priority = new IssuePriority();
+
+priority.Label = "High";
+priority.TemplateId = 10;
+
+serviceManager.Meta.CreateIssuePriority(priority);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/priority";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Label: "High",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    priority: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing Priority.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/priority</strong></p>
+
+<p>The request body must contain the Priority entity including the Id. The return value is the updated IssuePriorityDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssuePriorityDto data = new IssuePriorityDto();
+
+data.Entity.Id = 87;
+data.Entity.Label = "Medium";
+data.Entity.TemplateId = 10;
+
+serviceManager.Meta.UpdateIssuePriority(data.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/priority";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+var geminiData = {
+    Id: "87",
+    Label: "Bugs",
+    TemplateId: "10"
+};
+
+$.ajax({
+    url: geminiUrl,
+    priority: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Priority</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/priority/{priorityid}</strong></p>
+
+<p>The URL must contain the Priority Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Meta.DeleteIssuePriority(87);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/priority/87";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    priority: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>

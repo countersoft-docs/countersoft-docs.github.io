@@ -1,0 +1,95 @@
+---
+layout: default
+title: Permission Roles
+---
+<h1>Permission Roles</h1> 
+
+<h2>Linking Projects</h2>
+<p>When editing a permision set you can also select the projects that receive the permissions.</p>
+<p><img src="associated-permissions.png" /></p>
+
+<p><span class="label label-important">Note</span>You can also select a Permission set from the <a href="/Creating-Projects">Projects</a> screen.</p>
+
+<h2>Roles</h2>
+<p>Select which user groups receive which permissions.</p>
+<p><img src="roles.png" /></p>
+
+<p>The following table details all available roles.</p>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Permission</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Can View Project</td>
+			<td>The most basic permission, without this a user cannot see the project at all</td>
+		</tr>
+		<tr>
+			<td>Can Be Assigned Work (Resource)</td>
+			<td>User can be assigned as a 'Resource' to an item. If a user does not have this permission they will not appear in a drop-down list of Resources though they can still be selected through a Custom field of type 'User Picker'.</td>
+		</tr>
+		<tr>
+			<td>Can Delete Item</td>
+			<td>User can delete any item provided the action does not break data integrity rules</td>
+		</tr>
+		<tr>
+			<td>Can Move/Copy Item</td>
+			<td>User can move items between projects and can create new items</td>
+		</tr>
+		<tr>
+			<td>Can Perform Bulk Operations</td>
+			<td>User have access to the Bulk Update tool which can change field values on multiple items simultaneously. This also allows for use of the Import Wizard.</td>
+		</tr>
+		<tr>
+			<td>Can Delete Comment</td>
+			<td>User can delete any comment</td>
+		</tr>
+		<tr>
+			<td>Can Only Delete Own Comment</td>
+			<td>User can only delete their own comments (User can always edit their own comments)</td>
+		</tr>
+		<tr>
+			<td>Can Only View Own Items</td>
+			<td>User can only see items they created or which are assigned to them (usually given to external User)</td>
+		</tr>
+		<tr>
+			<td>Can Only Amend Own Items</td>
+			<td>User can only amend items they have created</td>
+		</tr>
+		<tr>
+			<td>Can Only Delete Own Items</td>
+			<td>User can only delete items they have created provided the action does not break data integrity rules</td>
+		</tr>
+		<tr>
+			<td>Can Sequence Items</td>
+			<td>User are allowed access to the Sequencing grab handles that allow project-wide ordering of items on <a href='/Sequencing-Items'>the Grid</a></td>
+		</tr>
+		<tr>
+			<td>Can Manage Components</td>
+			<td>User can create and amend Project Components in the Project Settings menu</td>
+		</tr>
+		<tr>
+			<td>Can Manage Versions</td>
+			<td>User can create and amend Project Versions in the Project Settings menu</td>
+		</tr>
+		<tr>
+			<td>Can Set Project Default Values</td>
+			<td>User can define default values for the fields that the project uses on the Project Settings, which will be applied when items are created.</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2 class="video-header">Watch How To Do It: Permissions</h2>
+<p class="video-description">The following video will help provide an overview of permisions within Gemini. For a quick reference to permisions, please start the video from the 4:00 minute mark.</p>
+<iframe class="video" src="http://player.vimeo.com/video/87879617?title=0&amp;byline=0&amp;portrait=0&amp;&amp;autoplay=0" width="900" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/Group-Membership">Group Membership</a></li>
+	</ul>
+</div>

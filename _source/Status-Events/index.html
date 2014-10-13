@@ -1,0 +1,27 @@
+---
+layout: default
+title: Status Events            
+---
+<h1>Status Events</h1>
+
+<p>The following events are available before and after Status creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeIssueStatusListener</span></p>
+<pre>
+IssueStatus BeforeIssueStatusCreated(IssueStatusEventArgs args);
+IssueStatus BeforeIssueStatusUpdated(IssueStatusEventArgs args);
+IssueStatus BeforeIssueStatusDeleted(IssueStatusEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterIssueStatusListener</span></p>
+<pre>
+void AfterIssueStatusCreated(IssueStatusEventArgs args);
+void AfterIssueStatusUpdated(IssueStatusEventArgs args);
+void AfterIssueStatusDeleted(IssueStatusEventArgs args);
+</pre>

@@ -1,0 +1,44 @@
+---
+layout: default
+title: Item Search Endpoint
+---
+<h1>Item Search Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a filtered list of Items.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/filtered</strong></p>
+
+<p>The request body must contain an IssueFilter entity. It returns a list of IssueDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+IssuesFilter filter = new IssuesFilter();
+
+filter.IncludeClosed = false;
+filter.SearchKeywords = "user";
+filter.Projects = "All";
+
+serviceManager.Item.GetFilteredItems(filter);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/filtered";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+                   SearchKeywords: "user",
+                   IncludeClosed: "false",
+                   Projects: "ALL"
+                 }
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

@@ -1,0 +1,32 @@
+---
+layout: default
+title: Item History Endpoint
+---
+<h1>Item History Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns the history of a specific Item.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/history</strong></p>
+
+<p>The URL must have the Item Id. It returns a list of IssueAuditDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueAuditDto&gt; history = serviceManager.Item.GetHistory(36);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/history";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

@@ -1,0 +1,32 @@
+---
+layout: default
+title: Item Repeat Endpoint
+---
+<h1>Item Repeat Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a list of Items which are repeated.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/repeated</strong></p>
+
+<p>It returns a list of IssueDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueDto&gt; items = serviceManager.Item.GetRepeated();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/repeated";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

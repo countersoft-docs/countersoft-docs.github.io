@@ -1,0 +1,271 @@
+---
+layout: default
+title: Creating Your Own Reports                 
+---
+<h1>Creating Your Own Reports</h1>
+
+<p>You can create and use your own Excel based reports that are available on every Items Grid.</p>
+<p><img src="menu.png" /></p>
+
+<h2>Starting a New Report</h2>
+<p>Use an existing report as the basis for your own report.</p>
+<p>Show the two hidden Excel Worksheets entitled "Data" and "Definitions"</p>
+<p><img src="unhide.png" /></p>
+<p><img src="worksheets.png" /></p>
+
+<p>Each report consists of two Excel Worksheets:</p>
+<ul>
+	<li><b>Data:</b>&nbsp;age of open/closed items, breakdown by resource and status</li>
+	<li><b>Definitions:</b>&nbsp;occurence breakdown with pivot table and charts</li>
+</ul>
+
+<h2>Data Worksheet</h2>
+<p>This worksheet is populated with the data for the report.</p>
+<p><img src="data.png" /></p>
+<p>You should specify the columns in the report in the first row. Available columns are specified below.</p>
+<p>During testing you can specify your own mock data - this will be replaced every time report is generated.</p>
+
+<h2>Definitions Worksheet</h2>
+<p>This worksheet is populated with the data for the report.</p>
+<p><img src="definitions.png" /></p>
+<p>Do not remove or otherwise change the system fields as highlighted above.</p>
+<p>You should specify the columns in the report in the first row. Available columns are specified below.</p>
+
+<p><span class="label label-important">Note</span>The Data and Definitions tab should both list the columns for your report.</p>
+
+<h2>Column Reference</h2>
+
+<h3>Custom Fields</h3>
+<p>Any custom field can also be included in your reports by simply prefixing your custom field with "CF_".</p>
+<ul>
+	<li>CF_Segment</li>
+	<li>CF_Number of Employees</li>
+</ul>
+
+<h3>Core Fields</h3>
+<p>The following columns can be used in your custom report.</p>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Column</th>
+			<th>Output</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>IssueKey</td>
+			<td>The id of the item (e.g. 23456)</td>
+		</tr>
+		<tr>
+			<td>ProjectName</td>
+			<td>The project name that the item belongs to (e.g. My Project)</td>
+		</tr>
+		<tr>
+			<td>ProjectCode</td>
+			<td>The project code that the item belongs to (e.g. ACME)</td>
+		</tr>
+		<tr>
+			<td>Title</td>
+			<td>The title of the item (e.g. Fix Cross-browser issues)</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>The full description of the item (HTML stripped)</td>
+		</tr>
+		<tr>
+			<td>Reporter</td>
+			<td>The fullname of the user who reported the item (e.g. Joe Bloggs)</td>
+		</tr>
+		<tr>
+			<td>ResourceNames</td>
+			<td>The resources assigned to the item (comma separated)</td>
+		</tr>
+		<tr>
+			<td>Status</td>
+			<td>The current status of the item (e.g. Unassigned)</td>
+		</tr>
+		<tr>
+			<td>Priority</td>
+			<td>The current priority of the item (e.g. High)</td>
+		</tr>
+		<tr>
+			<td>Severity</td>
+			<td>The current severity of the item (e.g. Showstopper)</td>
+		</tr>
+		<tr>
+			<td>Resolution</td>
+			<td>The current resolution of the item (e.g. Complete)</td>
+		</tr>
+		<tr>
+			<td>Type</td>
+			<td>The type of the item (e.g. Bug)</td>
+		</tr>
+		<tr>
+			<td>Created</td>
+			<td>The date and time when the item was created</td>
+		</tr>
+		<tr>
+			<td>Revised</td>
+			<td>The date and time when the item was last revised</td>
+		</tr>
+		<tr>
+			<td>ClosedDate</td>
+			<td>The date and time this item was closed</td>
+		</tr>
+		<tr>
+			<td>ResolvedDate</td>
+			<td>The date and time this item was marked as resolved</td>
+		</tr>
+		<tr>
+			<td>StartDate</td>
+			<td>When work should commence on the item</td>
+		</tr>
+		<tr>
+			<td>DueDate</td>
+			<td>When work should complete for the item</td>
+		</tr>
+		<tr>
+			<td>PercentComplete</td>
+			<td>How much work has been completed (e.g. 25%)</td>
+		</tr>
+		<tr>
+			<td>LastComment</td>
+			<td>Latest comment for the item</td>
+		</tr>
+		<tr>
+			<td>Comments</td>
+			<td>All comments for the item (comma separated)</td>
+		</tr>
+		<tr>
+			<td>Points</td>
+			<td>Allocated points for item</td>
+		</tr>
+		<tr>
+			<td>OriginatorData</td>
+			<td>Any associated source data for item (e.g. email address)</td>
+		</tr>		
+		<tr>
+			<td>ComponentNames</td>
+			<td>Components associated with item (comma separated)</td>
+		</tr>
+		<tr>
+			<td>FixedInVersion</td>
+			<td>Any associated version</td>
+		</tr>		
+		<tr>
+			<td>AffectedVersionNumbers</td>
+			<td>Any associated affected versions (comma separated)</td>
+		</tr>		
+		<tr>
+			<td>Age</td>
+			<td>Number of days since item created</td>
+		</tr>		
+		<tr>
+			<td>Repeated</td>
+			<td>Repeat interval for item if any</td>
+		</tr>		
+		<tr>
+			<td>EstimatedEffort</td>
+			<td>The number of hours and minutes to complete item (0h 0m format)</td>
+		</tr>
+		<tr>
+			<td>{EstimateEffortMinutes}</td>
+			<td>Total minutes logged of estimate effort from the item</td>
+		</tr>
+		<tr>
+			<td>TimeLogged</td>
+			<td>The number of hours and minutes to logged against item (0h 0m format)</td>
+		</tr>		
+		<tr>
+			<td>RemainingTime</td>
+			<td>The number of hours and minutes to remaining for item (0h 0m format)</td>
+		</tr>		
+		<tr>
+			<td>ExcessTime</td>
+			<td>The number of hours and minutes exceeding original estimate (0h 0m format)</td>
+		</tr>
+		<tr>
+			<td>Votes</td>
+			<td>The number of votes for this item</td>
+		</tr>		
+		<tr>
+			<td>Visibility</td>
+			<td>The visibility of the item (e.g. Everyone)</td>
+		</tr>		
+		<tr>
+			<td>Elapsed</td>
+			<td>Number of minutes since item opened till closure</td>
+		</tr>	
+		<tr>
+			<td>Count()</td>
+			<td>Output is always 1 - useful when you need to count individual items</td>
+		</tr>					
+	</tbody>
+</table>
+
+<h3>Advanced Fields</h3>
+<p>The advanced fields will cause the item row to repeat for each entry associated with the item.</p>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Column</th>
+			<th>Output</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{Time}</td>
+			<td>Total minutes logged for this time entry</td>
+		</tr>
+		<tr>
+			<td>{TimeLogger}</td>
+			<td>The fullname of the user who create the time entry (e.g. Joe Bloggs)</td>
+		</tr>
+		<tr>
+			<td>{TimeType}</td>
+			<td>The type of the time entry (e.g. Billable)</td>
+		</tr>
+		<tr>
+			<td>{TimeEntryDate}</td>
+			<td>The date and time of the time entry</td>
+		</tr>
+		<tr>
+			<td>{TimeComment}</td>
+			<td>The comment of the time entry</td>
+		</tr>
+		<tr>
+			<td>{HistoryField}</td>
+			<td>To see name of the field which have been created or amended</td>
+		</tr>
+		<tr>
+			<td>{HistoryUser}</td>
+			<td>The fullname of the user who create or amend the data</td>
+		</tr>
+		<tr>
+			<td>{HistoryDate}</td>
+			<td>The date and time when the history field was created or amended</td>
+		</tr>
+		<tr>
+			<td>{HistoryBeforeValue}</td>
+			<td>The value of data before the changes</td>
+		</tr>
+		<tr>
+			<td>{HistoryAfterValue}</td>
+			<td>The value of data after the changes</td>
+		</tr>
+	</tbody>
+</table>
+		
+
+<h2>Formula Columns</h2>
+<p>In addition to the above columns list you can also place formulae to the right of the last column (but not in between columns) and these will be applied to all items.</p>
+<p><img src="formula-data.png" /></p>
+<p><img src="formula-definitions.png" /></p>
+
+<h2>Report Deployment</h2>
+<p>Custom Excel based reports should be placed in the <code>App_data/Reports</code> folder.</p>
+<p><img src="deploy.png" /></p>
+
+<p><span class="label label-warning">Note</span>Your Gemini Administrator should deploy custom reports</p>

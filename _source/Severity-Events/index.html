@@ -1,0 +1,27 @@
+---
+layout: default
+title: Severity Events            
+---
+<h1>Severity Events</h1>
+
+<p>The following events are available before and after Severity creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeIssueSeverityListener</span></p>
+<pre>
+IssueSeverity BeforeIssueSeverityCreated(IssueSeverityEventArgs args);
+IssueSeverity BeforeIssueSeverityUpdated(IssueSeverityEventArgs args);
+IssueSeverity BeforeIssueSeverityDeleted(IssueSeverityEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterIssueSeverityListener</span></p>
+<pre>
+void AfterIssueSeverityCreated(IssueSeverityEventArgs args);
+void AfterIssueSeverityUpdated(IssueSeverityEventArgs args);
+void AfterIssueSeverityDeleted(IssueSeverityEventArgs args);
+</pre>

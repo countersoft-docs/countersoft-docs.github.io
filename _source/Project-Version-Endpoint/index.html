@@ -1,0 +1,166 @@
+---
+layout: default
+title: Project Version Endpoint
+---
+<h1>Project Version Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a Version.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/projects/{projectid}/versions/{versionid}</strong></p>
+
+<p>The URL must have the Project Id and Version Id. It returns a VersionDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+VersionDto version = serviceManager.Projects.GetVersion(17, 34);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/17/versions/34";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all Versions for a specific Project.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/projects/{projectid}/versions</strong></p>
+
+<p>It returns a list of VersionDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;VersionDto&gt; versions = serviceManager.Projects.GetVersions(17);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/17/versions";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Version.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/projects/{projectid}/versions</strong></p>
+
+<p>The request body must contain the Version entity. The return value is the new VersionDto where the Version Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var version = new Version();
+
+version.Name = "5.5";
+version.label = "Newest Version";
+version.ProjectId = 17;
+
+serviceManager.Projects.CreateVersion(version);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/17/versions";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+    Name: "5.5",
+    label: "Newest Version",
+    ProjectId: "17"
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing version.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/projects/{projectid}/versions</strong></p>
+
+<p>The request body must contain the Version entity including the Id. The return value is the updated VersionDto.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+VersionDto version = new VersionDto();
+
+version.Entity.Id = 39;
+version.Entity.Name = "5.5";
+version.Entity.label = "Closed Version";
+version.Entity.ProjectId = 17;
+
+serviceManager.Projects.UpdateVersion(version.Entity);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/17/versions";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+    Id: "39",
+    Name: "5.5",
+    label: "Closed Version",
+    ProjectId: "17",
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Version</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/projects/{projectid}/versions/{versionid}</strong></p>
+
+<p>The URL must contain the Project Id and the Version Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Projects.DeleteVersion(17, 39);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/projects/17/versions/39";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>

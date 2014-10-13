@@ -1,0 +1,27 @@
+---
+layout: default
+title: Project Document Events            
+---
+<h1>Project Document Events</h1>
+
+<p>The following events are available before and after Project Document creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeProjectDocumentListener</span></p>
+<pre>
+ProjectDocument BeforeProjectDocumentCreated(ProjectDocumentEventArgs args);
+ProjectDocument BeforeProjectDocumentUpdated(ProjectDocumentEventArgs args);
+ProjectDocument BeforeProjectDocumentDeleted(ProjectDocumentEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterProjectDocumentListener</span></p>
+<pre>
+void AfterProjectDocumentCreated(ProjectDocumentEventArgs args);
+void AfterProjectDocumentUpdated(ProjectDocumentEventArgs args);
+void AfterProjectDocumentDeleted(ProjectDocumentEventArgs args);
+</pre>
