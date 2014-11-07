@@ -1,0 +1,61 @@
+---
+layout: default
+title: Screens
+---
+<h1>Screens</h1> 
+
+<p>Once you have created a Process definition, you need to decide which data fields will be needed for the process's items. You may also configure who is allowed to see, and interact, with specific fields. To do this, click on the 'Screens' hyperlink to the right of the process you wish to edit (<i>on the Process Page</i>). Make sure that you have selected the correct Project Template that you wish to maintain Screens for from the drop-down list.</p> 
+<p><img src="find-screens.png" /></p>
+
+<p> Data elements of each Process are defined as either 'Attributes' or 'Content', either of which will include any Custom Fields defined in your Template. Attributes are at the top of the Screens popup, Content is at the bottom. One way to consider Attributes and Content is that when you view an item you will see its Attributes down the left hand side, and its Content in the middle of the page. The Attributes of an item are the general overview of an item, whereas Content fields are located within the body of an item.</p>
+
+<p><img src="screens.png" /></p>
+
+<h3>The 3 states of data</h3>
+There are 3 independent states when a field should be visible/accessible
+<li>When an item is being created</li> 
+<li>When an item is being edited</li>
+<li>When an item is being viewed</li>
+
+<p><img src="screen-modes.png" /></p>
+
+<p>The separation of states allows you to define the precise conditions for which a field should be visible. For example, you might define the Status field as not being visible when an item is being created, but instead default its value to 'Unassigned' or 'New'. However, you would want to allow at least some users to then change this value as the item moves through the workflow so you have in this example different requirements for <b>Creating</b> and <b>Editing</b>.</p>
+
+<h3>Enabling and disabling fields</h3>
+<p>Whether you are dealing with Attributes or Content, you simply enable or disable the element for your Process by clicking the checkbox next to it. This needs to be determined for each of the 3 states described above.</p>
+
+<p><img src="enable-field.png" /></p>
+
+<h3>Controlling access to fields</h3>
+<p>By default, when you enable a field Gemini grants access to the in-built Security Group 'Everyone'. You can override this on any field and limit access to users within specific Security Groups. To do this, click on the person icon that sits between the field name and the enable/disable checkbox and you will be presented with a multi-select Security Group picker. Users who are not in a role that has access to a field will not see the field.</p>
+
+<p><img src="restrict-access.png" /></p>
+
+<h3>Positioning Fields</h3>
+<p>On the extreme left of each field is a grab handle. You can click and hold the grab handle then drag the field, whether it represents Attributes or Content, to order the information that will be displayed on the screen when you are Creating, Editing or Viewing data for your Process.</p>
+
+<p><img src="drag-handles.png" /></p>
+
+<h2 class="video-header">Watch How To Do It: Screens</h2>
+<p class="video-description">The following is an overview of the setup, overview, and capabilities of Screens within Gemini.</p>
+<iframe class="video" src="http://player.vimeo.com/video/87860190?title=0&amp;byline=0&amp;portrait=0&amp;&amp;autoplay=0" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/process">Process</a>
+		<li><a href="/workflows">Workflows</a></li>
+		<li><a href="/menu">Menu</a></li>
+		<li><a href="/managing-custom-fields">Managing Custom Fields</a>
+		<li><a href="/basic-custom-fields">Basic Custom Fields</a></li>
+		<li><a href="/static-custom-field-lookup">Static Custom Field Lookup</a></li>
+		<li><a href="/dynamic-custom-field-lookup">Dynamic Custom Field Lookup</a></li>
+		<li><a href="/cascading-custom-field-lookups">Cascading Custom Field Lookups</a></li>
+		<li><a href="/priority">Priority</a></li>
+		<li><a href="/severity">Severity</a></li>
+		<li><a href="/status">Status</a></li>
+		<li><a href="/resolution">Resolution</a></li>
+		<li><a href="/link-types">Link Types</a></li>
+		<li><a href="/time-types">Time Types</a></li>	
+	</ul>
+</div>

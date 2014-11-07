@@ -1,0 +1,26 @@
+---
+layout: default
+title: Navigation Card Events            
+---
+<h1>Navigation Card Events</h1>
+
+<p>Navigation Card is the internal name for workspaces in Gemini.</p>
+<p>The following events are available before and after Navigation Card creation, update and deletion.</p>
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeNavigationCardListener</span></p>
+<pre>
+NavigationCard BeforeNavigationCardCreated(NavigationCardEventArgs args);
+NavigationCard BeforeNavigationCardUpdated(NavigationCardEventArgs args);
+NavigationCard BeforeNavigationCardDeleted(NavigationCardEventArgs args);	
+</pre>
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterNavigationCardListener</span></p>
+<pre>
+void AfterNavigationCardCreated(NavigationCardEventArgs args);
+void AfterNavigationCardUpdated(NavigationCardEventArgs args);
+void AfterNavigationCardDeleted(NavigationCardEventArgs args);
+</pre>

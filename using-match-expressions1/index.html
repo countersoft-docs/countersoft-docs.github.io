@@ -1,0 +1,37 @@
+---
+layout: default
+title: Using Match Expressions
+---
+<h1>Using Match Expressions</h1> 
+
+<p>Match expressions are <a href="http://en.wikipedia.org/wiki/Regular_expression">regular expressions</a> that can be used to identify specific strings of characters. You can use match expressions to find things in email subject lines email body.</p>
+
+<p>You can provide a match expression and replacement value.</p>
+<p><img src="match-expression.png" /></p>
+
+<p>As an example you could have an expression of "out of office".</p>
+
+<p>You then use match expressions different mailboxes.</p>
+<p><img src="things-to-match.png" /></p>
+
+<h3>Subject "Like" Match Expressions</h3>
+<p>Only emails matching these subject line expressions will be processed. This is a great way to only process emails with a particualr subject line (e.g. "Sales Order")</p>
+
+<h3>Subject "Not Like" Match Expressions</h3>
+<p>Only emails that do not match these subject line expressions will be processed. This is a great way to ignore emails with a particular subject line (e.g. Out Of Office).</p>
+
+<h3>Content "Replacement" Match Expressions</h3>
+<p>The email body will be searched for matching expressions and any matched content will be replaced by the value specified.</p>
+
+<h3>Content "Truncation" Match Expressions</h3>
+<p>The email body will be searched for matching expressions and any matched content will be removed from that point onwards. This is a great way to strip out email signatures.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/establishing-inbound-queues">Establishing Inbound Queues</a></li>
+		<li><a href="/using-outbound-smtp">Using Outbound SMTP</a></li>
+		<li><a href="/listening-to-mailboxes">Listening To Mailboxes</a></li>
+		<li><a href="/setting-up-reply-from-addresses">Setting up Reply From Addresses</a></li>
+	</ul>
+</div>

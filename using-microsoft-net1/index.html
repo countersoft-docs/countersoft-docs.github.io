@@ -1,0 +1,89 @@
+---
+layout: default
+title: Using Microsoft .NET
+---
+<h1>Using Microsoft .NET</h1>
+<p>Microsoft .NET Developers can leverage the proxy object to consume the REST API.</p>
+<p><a href="http://www.countersoft.com/gemini.zip">Download API Samples</a>
+
+<h2>Assemblies</h2>
+<p>Reference the following assemblies.</p>
+<p><img src="references.png" /></p>
+
+<h2>Authentication</h2>
+<p>All API calls require valid Gemini user credentials.</p>
+<p>The URL represents the location of your Gemini instance.</p>
+
+<h3>Username/Password</h3>
+<p>Authenticate by providing plain text username and password.</p>
+<pre>
+ServiceManager gemini = new ServiceManager("http://server/gemini", "username", "password", string.Empty);
+</pre>
+
+<h3>Username/API KEY</h3>
+<p>Authenticate by providing plain text username and the user's API key (found under <a href="/user-preferences">User Profile</a>).</p>
+<pre>
+ServiceManager gemini = new ServiceManager("http://server/gemini", "username", string.Empty, "apikey");
+</pre>
+
+<h3>Windows</h3>
+<p>Authenticate by using <a href="/windows-authentication">Windows authentication</a>.</p>
+<pre>
+ServiceManager gemini = new ServiceManager("http://server/gemini");
+</pre>
+
+<h2>Identity</h2>
+<p>After authentication you can validate successful login.</p>
+<pre>
+UserDto user = gemini.Admin.WhoAmI();
+
+if (user.Entity.Id == 0)
+{
+	// did not authenticate
+}
+</pre>
+
+<h2>End-points</h2>
+<p>REST API end-points are exposed through the ServiceManager object.</p>
+<p><img src="endpoints.png" /></p>
+<p>For each end-point category (e.g. Items) available methods are exposed (e.g. Create Item).</p>
+<p><img src="method.png" /></p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+		<li><a href="/api-authentication-methods">API Authentication Methods</a></li>
+
+		<li><a href="/project-endpoint">Project Endpoint</a></li>
+		<li><a href="/project-component-endpoint">Project Component Endpoint</a></li>
+		<li><a href="/project-version-endpoint">Project Version Endpoint</a></li>
+		<li><a href="/project-roadmap-endpoint">Project Roadmap Endpoint</a></li>
+		<li><a href="/project-changelog-endpoint">Project Changelog Endpoint</a></li>
+
+		<li><a href="/custom-field-endpoint">Custom Field Endpoint</a></li>
+
+		<li><a href="/user-endpoint">User Endpoint</a></li>
+		<li><a href="/user-group-endpoint">User Group Endpoint</a></li>
+
+		<li><a href="/meta-data-endpoint">Meta-data Endpoint</a></li>
+		
+		<li><a href="/configuration-endpoint">Configuration Endpoint</a></li>
+		<li><a href="/app-nav-endpoint">App-Nav Endpoint</a></li>
+		<li><a href="/permission-endpoint">Permission Endpoint</a></li>
+		<li><a href="/alert-template-endpoint">Alert Template Endpoint</a></li>
+
+		<li><a href="/item-endpoint">Item Endpoint</a></li>
+		<li><a href="/item-search-endpoint">Item Search Endpoint</a></li>
+		<li><a href="/item-repeat-endpoint">Item Repeat Endpoint</a></li>
+		<li><a href="/item-comment-endpoint">Item Comment Endpoint</a></li>
+		<li><a href="/item-custom-field-data-endpoint">Item Custom Field Data Endpoint</a></li>
+		<li><a href="/item-time-log-endpoint">Item Time Log Endpoint</a></li>
+		<li><a href="/item-attachments-endpoint">Item Attachments Endpoint</a></li>
+		<li><a href="/tem-history-endpoint">Item History Endpoint</a></li>
+		<li><a href="/item-dependency-endpoint">Item Dependency Endpoint</a></li>
+		<li><a href="/item-link-endpoint">Item Link Endpoint</a></li>
+		<li><a href="/item-follower-endpoint">Item Follower Endpoint</a></li>
+		<li><a href="/saucery-app-endpoint">Saucery App Endpoint</a></li>
+		<li><a href="/breeze-app-endpoint">Breeze App Endpoint</a></li>
+    </ul>
+</div>

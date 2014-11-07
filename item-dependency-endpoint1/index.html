@@ -1,0 +1,32 @@
+---
+layout: default
+title: Item Dependency Endpoint
+---
+<h1>Item Dependency Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a list of Items.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/dependencies</strong></p>
+
+<p>The URL must have a Item Id. It returns a list of IssueDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueDto&gt; items = serviceManager.Item.GetDependencies(36);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/dependencies";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

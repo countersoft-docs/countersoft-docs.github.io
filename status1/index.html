@@ -1,0 +1,51 @@
+---
+layout: default
+title: Status
+---
+<h1>Status</h1> 
+
+<p>You must create at least one Status code for your Project Template and you cannot define any Workflow until you have defined your Status codes.</p>
+
+<p>Make sure that you have selected the Project Template that you wish to maintain Status values for from the drop-down list.</p>
+
+<p>To Add a new Status value, click on the Add button. You will be prompted to provide:</p>
+
+<ul>
+	<li><b>Label</b>: the descriptive label that will be shown against your Status</li>
+	<li><b>Comment</b>: any comment you might wish to add about the meaning of the status</li>
+	<li><b>Icon</b>: icon to visually represent the Status (Gemini ships with dozens of icons, or you can create your own)</li>
+	<li><b>Color</b>: color that will be associated with items that are in the Status</li>
+	<li><b>Final?</b>: indicator that this Status is the last Status that the item can reach (and it is therefore 'closed')</li>
+</ul>
+
+<p><img src="status.png" /></p>
+
+<p>Click Save to create the Status value. When configuring <a href="/workflows">Workflow</a> you will be asked to specify the transition between the various Statuses that you create and also which Security Groups (users) are allowed to make that transition.</p>
+
+<p>To maintain the Label, Comment, Icon, Color or Final? values of the Status, click in the appropriate field and use Inline editing to easily and instantly change the field value.</p>
+
+<p>To delete a Status click on the delete icon to the right of the screen. You will be required to specify an alternative value that any items in the deleted Status will be recoded to. This is to ensure that there are no orphaned records in your data, with Statuses that do not exist in the Template.</p>
+
+<h3>Ordering Status Codes</h3>
+<p>To the left of the Status icon is a drag handle. Position the mouse over this region and you can drag-drop the Status Codes to reorder them. Status codes will appear in the Visual Planner in the order in which they appear on the Template.<p>
+
+<p><span class="label label-important">Tip</span>In the Visual Planner if you view Status (or any other code) on one of the axes all status values for the Template must be retrieved. Therefore keep your Status values to a set that really matches your business and avoid having statuses like 'Logged' for one <a href="/process">Process</a> and 'Opened' for another Process in the same Template when either status could suffice for both.
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/process">Process</a>
+		<li><a href="/screens">Screens</a></li>
+		<li><a href="/workflows">Workflows</a></li>
+		<li><a href="/managing-custom-fields">Managing Custom Fields</a>
+		<li><a href="/basic-custom-fields">Basic Custom Fields</a></li>
+		<li><a href="/static-custom-field-lookup">Static Custom Field Lookup</a></li>
+		<li><a href="/dynamic-custom-field-lookup">Dynamic Custom Field Lookup</a></li>
+		<li><a href="/cascading-custom-field-lookups">Cascading Custom Field Lookups</a></li>
+		<li><a href="/priority">Priority</a></li>
+		<li><a href="/severity">Severity</a></li>
+		<li><a href="/resolution">Resolution</a></li>
+		<li><a href="/link-types">Link Types</a></li>
+		<li><a href="/time-types">Time Types</a></li>	
+	</ul>
+</div>

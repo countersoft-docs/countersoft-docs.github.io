@@ -1,0 +1,42 @@
+---
+layout: default
+title: Saucery FAQ
+---
+<h1>Saucery FAQ</h1> 
+
+<h3>Cannot see the CodeReview (Saucery) tab?</h3>
+<p>Make sure “Code Review” is enabled from Customize -> Templates (Select template in question) -> Process (select process in question) screen settings.</p>
+<p><img src="codeReview.png" /></p>
+
+<h3>SVN Commits are not showing in Saucery</h3>
+<ol>
+    <li>Make sure your commit message contains an existing Gemini item id in this format i.e. "<b>GEM:234</b> button was fixed".</li>
+    <li>Check if there are any records in the table <b>gemini_codecommits</b>. If the table is empty, then the connector was not setup properly. 
+In this case download <a href= "http://technet.microsoft.com/en-gb/sysinternals/bb896647.aspx">DebugView</a>, run it and do another commit. You should see more logging in DebugView with a possible error.</li>
+</ol>
+
+<h3>When I click on a file in CodeReview the "Previous" tab is empty</h3>
+<p>Bear in mind when you commit a completely new file, the "previous" tab will be empty, because this is the first version of the file. You should get data for both sides on your second commit.</p>
+
+<h3>When I click on a file in CodeReview I get blank results for both sides</h3>
+<p>Go to the table <b>gemini_codecommits</b> and inspect the data value for your commit. Make sure the Filename and RepositoryUrl are correct.</p>
+
+<h3>Do I need an extra license for Saucery?</h3>
+<p>Saucery comes with the default Gemini license. No additional licenses are required.</p>
+
+<h3>Do we offer a SVN Linux connector?</h3>
+<p>Yes, we do. You can download it from <a href="http://www.countersoft.com/gemini.zip">here</a>.</p>
+
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+        <li><a href="/team-foundation-server-2010">Team Foundation Server 2010</a></li>
+        <li><a href="/team-foundation-server-2012">Team Foundation Server 2012</a></li>
+        <li><a href="/subversion-server">Subversion Server</a></li>
+        <li><a href="/tortoise-subversion-client">Tortoise Subversion Client</a></li>
+        <li><a href="/git">Git</a></li>
+        <li><a href="/mercurial">Mercurial</a></li>
+        <li><a href="/github">GitHub</a></li>
+    </ul>
+</div>

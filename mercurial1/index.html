@@ -1,0 +1,45 @@
+---
+layout: default
+title: Mercurial
+---
+<h1>Mercurial</h1> 
+
+<p><a href='http://www.countersoft.com/gemini.zip'>Download<a/> the Mercurial connector.</p>
+
+<h2>Installation</h2>
+
+<p>Ensure that you have <a href='http://www.python.org/getit/'>Python 2.x</a> installed.</p>
+
+<p>Edit the 'Mercurial.py' script and change the following variables as required: username, apikey, geminiurl, Mercurialpath, Mercurialrepository</p>
+<p><img src='mercurialhook.jpg' /></p>
+
+<p>Put the 'Mercurial.py' into the '.hg' directory for your Mercurial repository (e.g. C:\Mercurial\.hg).</p>
+
+<p>If missing, create the 'hgrc' file and ensure that the '[hooks]' section exists.</p>
+
+
+<p>Put the following line into the 'hgrc' file: 'commit = c:/Python27/python.exe C:/MyRepository/.hg/Mercurial.py'. Please replace the Highlighted are a in the image below with your repository name.</p>
+<p><img src='commit.png' /></p>
+
+<p>Copy the map-cmdline.gem file into the 'Templates' folder of your Mercurial installation.</p>
+
+<h2>Usage</h2>
+
+<p>You will need to commit your files using Command Prompt. When you commit files to Mercurial, simply start your commit message with 'gem:XXX' where 'XXX' represents a Gemini Issue Id. In the example below the 'XXX' is replaced with '217'.</p>
+<p><img src='mercurialcmd.png' /></p>
+
+<p>All commited files and comments appear under Code Review as follows.</p>
+<p><img src='codereview.png' /></p>
+
+<div class='well well-small related-box'>
+    <span class='title'>Related</span>
+	<ul>
+		<li><a href="/team-foundation-server-2010">Team Foundation Server 2010</a></li>
+		<li><a href="/team-foundation-server-2012">Team Foundation Server 2012</a></li>
+		<li><a href="/subversion-server">Subversion Server</a></li>
+		<li><a href="/tortoise-subversion-client">Tortoise Subversion Client</a></li>
+		<li><a href="/git">Git</a></li>
+		<li><a href="/github">GitHub</a></li>
+		<li><a href="/saucery-faq">Saucery FAQ</a></li>
+	</ul>
+</div>

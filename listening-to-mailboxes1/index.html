@@ -1,0 +1,49 @@
+---
+layout: default
+title: Listening To Mailboxes
+---
+<h1>Listening To Mailboxes</h1> 
+
+<p>Breeze will take emails from a mailbox and turn them into tickets within Gemini.</p>
+<p><img src="mailbox.png" /></p>
+
+<p>Multiple mailboxes can be added and you will require some level understanding of POP3, IMAP or Exchange.</p>
+<p><img src="add-mailbox.png" /></p>
+
+<ul>
+	<li><b>Queue:</b> queue to which this Mailbox belongs</li>
+	<li><b>Name:</b> name you wish to give the Mailbox</li>
+	<li><b>Email Address:</b> email address that this Mailbox processes</li>
+	<li><b>Authentication Mode:</b> one of: AUTO, APOP, REGULAR or NONE</li>
+	<li><b>Username and Password:</b> username and password associated with the email address to be processed</li>
+	<li><b>Connection Type:</b> POP3, IMAP or Exchange</li>
+	<li><b>Server and Port:</b> Server and Port on which the mailbox for the email address resides</li>
+	<li><b>Use SSL:</b> checkbox to indicate if you use SSL</li>
+	<li><b>Delete Messages:</b> checkbox to indicate if messages should be deleted when processed or left on the email server</li>
+	<li><b>Black List:</b> blacklisted email addresses, not to be processed</li>
+	<li><b>No Reply List:</b> email addresses that should not receive a reply from the Mailbox</li>
+	<li><b>Subject 'Like' Expressions:</b> regular Expressionsthat the subject line must match for the email to be processed</li>
+	<li><b>Subject 'Not Like' Expressions:</b> regular Expressions that the subject line must not match for the email to be processed</li>
+	<li><b>Content Replacement Match Expressions:</b> regular Expressions that will result in content being replaced</li>
+	<li><b>Content Truncation Match Expressions:</b> regular Expressions that will result in the email being truncated</li>
+	<li><b>Strip Signature:</b> use algorithms to strip signatures from the inbound email</li>
+	<li><b>Ignore Attachments:</b> do not add attachments from the email to the work item</li>
+	<li><b>Alert Template:</b> Response Template for auto responding to the email sender</li>
+	<li><b>SMTP Server:</b> previously configured SMTP Server</li>
+	<li><b>Use Sender as Reporter:</b> Breeze will use the sender as the reporter of the ticket if the sender's email address can be found in the user list</li>
+	<li><b>Add New Users:</b> this will add new users if the sender's email address doesn't exist in the user list</li>
+	<li><b>Project:</b> field to let you override the project that was set at the Queue level</li>
+	<li><b>Item Type:</b> choose either Project default or a process type for tickets genarated from Breeze</li>
+</ul>
+
+<p>When the configuration is saved it will be immediately validated and a test message sent to you. If there is a problem with the technical configuration you will be shown an error message.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/establishing-inbound-queues">Establishing Inbound Queues</a></li>
+		<li><a href="/using-outbound-smtp">Using Outbound SMTP</a></li>
+		<li><a href="/using-match-expressions">Using Match Expressions</a></li>
+		<li><a href="/setting-up-reply-from-addresses">Setting up Reply From Addresses</a></li>
+	</ul>
+</div>

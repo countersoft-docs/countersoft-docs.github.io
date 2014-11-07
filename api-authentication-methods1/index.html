@@ -1,0 +1,91 @@
+---
+layout: default
+title: API Authentication Methods
+---
+<h1>API Authentication Methods</h1>
+
+<p>All API calls require valid Gemini user credentials.</p>
+
+<h2>Username/API KEY</h2>
+<p>Authenticate by providing username and the user's API key (found under <a href="/user-preferences">User Profile</a>).</p>
+<p>You need to Base64 encode username and the API KEY as one string.</p>
+<p>This information should be placed in <code>Authorization</code> header of the request.</p>
+<pre>
+username:api
+</pre>
+<p>Example when <code>username</code> is "manager" and <code>API KEY</code> is "xvitjc5bmm".</p>
+<pre>
+Basic bWFuYWdlcjp4dml0amM1Ym1t
+</pre>
+<h3>JavaScript Example</h3>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/type/55";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Username/Password</h2>
+<p>Authenticate by providing username and the user's password.</p>
+<p>You need to MD5 encode the password and then pre-pend the username with a colon. The resultant string is then Base64 encoded.</p>
+<p>This information should be placed in <code>Authorization</code> header of the request.</p>
+<h3>JavaScript Example</h3>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/type/55";
+var geminiUsername = Base64("user:"+ Base64(md5("password"))); // user:password
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+		<li><a href="/using-microsoft-net">Using Microsoft .NET</a></li>
+
+		<li><a href="/project-endpoint">Project Endpoint</a></li>
+		<li><a href="/project-component-endpoint">Project Component Endpoint</a></li>
+		<li><a href="/project-version-endpoint">Project Version Endpoint</a></li>
+		<li><a href="/project-roadmap-endpoint">Project Roadmap Endpoint</a></li>
+		<li><a href="/project-changelog-endpoint">Project Changelog Endpoint</a></li>
+
+		<li><a href="/custom-field-endpoint">Custom Field Endpoint</a></li>
+
+		<li><a href="/user-endpoint">User Endpoint</a></li>
+		<li><a href="/user-group-endpoint">User Group Endpoint</a></li>
+
+		<li><a href="/meta-data-endpoint">Meta-data Endpoint</a></li>
+		
+		<li><a href="/configuration-endpoint">Configuration Endpoint</a></li>
+		<li><a href="/app-nav-endpoint">App-Nav Endpoint</a></li>
+		<li><a href="/permission-endpoint">Permission Endpoint</a></li>
+		<li><a href="/alert-template-endpoint">Alert Template Endpoint</a></li>
+
+		<li><a href="/item-endpoint">Item Endpoint</a></li>
+		<li><a href="/item-search-endpoint">Item Search Endpoint</a></li>
+		<li><a href="/item-repeat-endpoint">Item Repeat Endpoint</a></li>
+		<li><a href="/item-comment-endpoint">Item Comment Endpoint</a></li>
+		<li><a href="/item-custom-field-data-endpoint">Item Custom Field Data Endpoint</a></li>
+		<li><a href="/item-time-log-endpoint">Item Time Log Endpoint</a></li>
+		<li><a href="/item-attachments-endpoint">Item Attachments Endpoint</a></li>
+		<li><a href="/item-history-endpoint">Item History Endpoint</a></li>
+		<li><a href="/item-dependency-endpoint">Item Dependency Endpoint</a></li>
+		<li><a href="/item-link-endpoint">Item Link Endpoint</a></li>
+		<li><a href="/item-follower-endpoint">Item Follower Endpoint</a></li>
+		<li><a href="/saucery-app-endpoint">Saucery App Endpoint</a></li>
+		<li><a href="/breeze-app-endpoint">Breeze App Endpoint</a></li>
+    </ul>
+</div>

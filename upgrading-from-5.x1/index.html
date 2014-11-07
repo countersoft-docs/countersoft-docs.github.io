@@ -1,0 +1,57 @@
+---
+layout: default
+title: Upgrading From 5.x/6.0
+
+---
+<h1>Upgrading From 5.x/6.x</h1>
+<p>A <a href="/using-the-zip-file">zip file</a> download is available containing both the Gemini web application and the SQL database scripts required for the upgrade process.</p>
+<p><span class="label label-important">Note</span>&nbsp;We recommend that you perform this upgrade on a test instance. However, if you are using Ticketing and Exchange that we recommend archiving all messages in the inbox before upgrading.</p>
+
+
+<h2>Step 1 - Check Pre-requisites</h2>
+<p>Please <a href="/pre-requisites">check</a> you have everything ready for the installation process.</p>
+
+<h2>Step 2 - Unzip</h2>
+<p><span class="label label-important">Note</span>&nbsp;Right click on the file then select Properties and click Unblock.</p>
+<p>Open the zip file that was downloaded, and open the folder labeled "2. Web App Manual Install". Unzip the Gemini zip file within the folder, and you should see the contents as follows:</p>
+<p><img src="step2.png" /></p>
+<p><span class="label label-important">Note</span>&nbsp;Stop the application pool for Gemini site in IIS Manager.</p>
+
+<h2>Step 3 - Copy Web Application</h2>
+<p><span class="label label-important">Note</span>&nbsp;Please remove all previous files - do not overwrite! Remember to backup your current web app directory. If you have custom templates, copy the contents of App_Data\templates and assets\images\meta folders from your backup folder to the Gemini Web Application folder.</p>
+<p>Copy the contents of the Gemini Web Application folder into your current web application folder:</p>
+<p><img src="step3.png" /></p>
+
+<h2>Step 4 - Edit Web.config</h2>
+<p>Edit the new web.config file and put in the correct SQL Server user credentials for your Gemini database:</p>
+<p><img src="step4a.png" /></p>
+<p>Remember to set your authentication settings:</p>
+<p><img src="step4b.png" /></p>
+<p>Save the web.config and your Gemini should now be upgraded to the latest release.</p>
+<p>You can now navigate to the Gemini web application using your browser (e.g. http://myserver/gemini").</p>
+
+<h2>Step 5 - Set Folder Permissions</h2>
+<p>For complete administrative control, Gemini requires write access to the following <b>THREE FOLDERS</b> that are located where you installed Gemini:</p>
+<p><img src="step5.png" /></p>
+<ul>
+    <li>Right click <code>App_Code</code> folder, select Security tab, allocate Modify/Full Control permissions to the EVERYONE group</li>
+    <li>Right click <code>App_Data</code> folder, select Security tab, allocate Modify/Full Control permissions to the EVERYONE group</li>
+    <li>Right click <code>Assets</code> folder, select Security tab, allocate Modify/Full Control permissions to the EVERYONE group</li>
+</ul>
+
+<h2>Step 6 - Using SQL Upgrade Scripts</h2>
+<p>If the SQL user does not have the appropriate user permissions to upgrade Gemini automatically, you will need to run the appropriate SQL scripts provided.</p>
+<ul>
+	<li>Locate your Gemini installation folder.</li>
+	<li>Open the folder named "SQL".</li>
+	<li>Open and run all SQL scripts, that correlate to your current Gemini version, against your existing database.</li>
+</ul>
+<p><span class="label label-important">For Example</span>&nbsp;If your current Gemini version is 5.1.2, you will need to run the following upgrade scripts: 5.1.3, 5.1.5, 5.1.6, etc. After running the SQL scripts, start the application pool for Gemini site in IIS Manager.</p>
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+        <li><a href="/upgrading/">Upgrading</a></li> 
+        <li><a href="/upgrading-from-4.x/">Upgrading From 4.2</a></li>
+        <li><a href="/upgrading-faq/">Upgrading FAQ</a></li> 
+    </ul>
+</div>

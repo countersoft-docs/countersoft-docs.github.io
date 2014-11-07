@@ -1,0 +1,63 @@
+---
+layout: default
+title: Cascading Custom Field Lookups
+---
+<h1>Cascading Custom Field Lookups</h1> 
+
+<P>Where the value of one field depends on the value of another you can use a Cascading Custom field. You should always start by defining the highest level parent table, for example if you wish to cascade Country to State to Zip Code you should start by defining the Country table. When you create the child level definitions, you will be prompted to select the parent table. It follows that the highest level from which field cascade cannot be a 'cascading' dynamic lookup</P>
+
+<p>You will be prompted for the following information</P>
+
+<ul>
+	<li><b>Cascading Parent Field</b>: field on the screen that links to the table one level up e.g. 'State' if defining 'Zip Codes' from the example above</li>
+	<li><b>Cascading Lookup Field Name</b>: field in the table that will be used for the lookup on the parent</li>
+	<li><b>Lookup Table Name</b>: name of the table that contains the valid values</li>
+	<li><b>Lookup Key Field Name</b>: name of the field that is the key to the lookup table</li>
+	<li><b>Lookup Description Field Name</b>: field that contains the description to show</li>
+	<li><b>Lookup Sort Field Name</b>: field to order by when returning data</li>
+	<li><b>Create Table in SQL</b>: if the table does not exist it will be created for you on Save</li>
+	<li><b>Filter by Project</b>: if you add a column to your lookup table called “projectid” (case insensitive) then values are returned per project</li>
+	<li><b>Show with Attributes</b>: if selected then the field value(s) will be shown on the left hand side in the List and View Item screens</li>
+</ul>
+
+<p>Example:</p>
+<ul>
+	<li><b>tariff (SQL table)</b>
+		<ul>
+			<li>tariffid</li>
+			<li>description</li>
+		</ul>
+	</li>
+	<li><b>device (SQL table)</b>
+		<ul>
+			<li>deviceid</li>
+			<li>tariffid</li>
+			<li>description</li>
+		</ul>
+	</li>
+</ul>
+
+<p>In the above example when defining a cascading lookup for devices, you would be expected to already have selected a Cascading Lookup field for tariff from the tariff table. If you call this field 'tariff' the <b>Cascading Parent Field</b> for devices would be 'tariff' and the Lookup Field Name would be 'tariffid', the foreign key to the tariff table in the device table.</p>
+<p><img src="cascading-custom-fields.png" /></p>
+
+<p><span class="label label-important">Note</span>The Custom Field screen will only create simple Field/Description tables in SQL. A table like 'devices' in the example above is a complex table because of the 'tariffid' field. Child tables in Cascading Custom Fields must be created using a SQL tool such as SQL Management Studio.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/process">Process</a>
+		<li><a href="/screens">Screens</a></li>
+		<li><a href="/workflows">Workflows</a></li>
+		<li><a href="/menu">Menu</a></li>
+		<li><a href="/managing-custom-fields">Managing Custom Fields</a>
+		<li><a href="/basic-custom-fields">Basic Custom Fields</a></li>
+		<li><a href="/static-custom-field-lookup">Static Custom Field Lookup</a></li>
+		<li><a href="/dynamic-custom-field-kookup">Dynamic Custom Field Lookup</a></li>		
+		<li><a href="/priority">Priority</a></li>
+		<li><a href="/severity">Severity</a></li>
+		<li><a href="/status">Status</a></li>
+		<li><a href="/resolution">Resolution</a></li>
+		<li><a href="/link-types">Link Types</a></li>
+		<li><a href="/time-types">Time Types</a></li>	
+	</ul>
+</div>

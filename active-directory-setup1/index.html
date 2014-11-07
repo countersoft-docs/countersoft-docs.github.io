@@ -1,0 +1,67 @@
+---
+layout: default
+title: Active Directory Setup
+---
+<h1>Active Directory Setup</h1> 
+
+<p>You can integrate with Active Directory by mapping Gemini Security Groups to Active Directory Groups.</p>
+<p><img src="system-AD.png" /></p>
+<p>The selected account for accessing AD should ideally be a service account with a non-expiring password. Syntax for AD username:</p>
+<ul>
+	<li>[domain name]\user</li>
+	<li>user@[domain name].[node extension]</li>
+</ul>
+<p>Examples:</p>
+<ul>
+	<li>my_domain\bob</li>
+	<li>bob@my_domain.com</li>
+</ul>
+
+
+<p>You can also choose to create new users in Gemini that exist in Active Directory.</p>
+<p><span class="label label-important">Tip</span>If you need to connect to more than one domain the connection strings can be double pipe (||) delimited.
+</p>
+
+<h2>Connection String</h2>
+<p>There are various ways to specify the AD connection string. Syntax:</p>
+<ul>
+	<li>dc=[domain name],dc=[node extension]</li>
+	<li>[domain controller]/dc=[domain name],dc=[node extension]</li>
+</ul>
+<p>Examples:</p>
+<ul>
+	<li>dc=my_domain,dc=com</li>
+	<li>server_name/dc=my_domain,dc=com</li>
+</ul>
+
+<h2>Validating</h2>
+<p>Once you have saved your configuration wait 5 minutes then navigate to any <a href="/active-directory-groups">Group</a> and click on the Active Directory multi-select field. If there is no error in the connection you will see a list of your AD Groups.</p>
+
+<h2>Import Rules</h2>
+<p>To help with Active Directory congestion and Gemini performance, Gemini is configured to only import an AD user as long as it meets the three (3) following criteria:</p>
+	<ul>
+		<li>The AD account <b>must not</b> be disabled.</li>
+		<li>The AD account <b>must</b> have an email associated with the AD "email" field if you have enabled "<b>Only synchronzie users with valid email"</b> option.</li>
+		<li>The AD account <b>must</b> have logged in at least once to the domain if you have enabled "<b>Only synchronzie users that have logged in at least once</b>" option.</li>
+	</ul>
+<p><span class="label label-important">Tip</span>If you want to force a specific domain name for new users. Just simply enter a value of domain in "<b>AD Domain</b>" field.</p>
+
+<h2>Mapping between AD user attributes to Gemini custom fields</h2>
+<p>Gemini allows you to map Active Directory user attributes to custom fields. So when you view a ticket you can see the active directory mapped information in the ticket</p>
+
+<h2>Configuration</h2>
+<p>From the Apps section you can set the interval between each AD sync, check for errors and even force the sync to run immediately.</p>
+<p><img src="apps.png" /></p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/global-options">Global Options</a></li>
+		<li><a href="/mail-server-configuration">Mail Server Configuration</a></li>
+		<li><a href="/email-alerts">Email Alerts</a></li>
+		<li><a href="/windows-authentication">Windows Authentication</a></li>
+		<li><a href="/global-app-nav-cards">Global App-Nav Cards</a></li>
+		<li><a href="/system-log">System Log</a></li>
+		<li><a href="/licensing">Licensing</a></li>
+	</ul>
+</div>

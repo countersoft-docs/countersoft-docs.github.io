@@ -1,0 +1,34 @@
+---
+layout: default
+title: Developing Timer Apps
+---
+<h1>Developing Timer Apps</h1>
+<p>Timer apps allow you to invoke custom logic at set intervals. For example, you may wish to check for new comments every 15 minutes.</p>
+
+<h2>Code</h2>
+<p>A custom Timer app consist of the following elements.</p>
+<p><img src="timer1.png" /></p>
+<p><img src="timer2.png" /></p>
+<p>The <code>GetInterval</code> method should first check for a saved value and then return a default value if nothing has been saved.</p>
+
+<p><span class="label label-success">Download</span>The Countersoft <a href="http://countersoft.github.io/" rel="nofollow">GitHub repository</a> contains sample applications that are built using the Apps Framework</p>
+
+<h2>Configuration</h2>
+<p>Gemini Administrators can either enable or disable every Event App.</p>
+<p>Follow the packaging and deployment <a href="/developing-custom-apps">instructions</a> to deploy Event app in Gemini.</p>
+<p><img src="config.png" /></p>
+<p>You can manually invoke the Timer app at any time by clicking the Play button.</p>
+
+<h2>Interval</h2>
+<p>Timer apps can be configured to run at user specified intervals.</p>
+<p><img src="interval.png" /></p>
+<p><a href="http://en.wikipedia.org/wiki/Cron" rel="nofollow">Cron</a> job syntax is supported in additional to minute and hour intervals.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+		<li><a href="/developing-event-apps">Developing Event Apps</a></li>
+		<li><a href="/developing-ui-apps">Developing UI Apps</a></li>
+		<li><a href="/developing-full-page-apps">Developing Full Page Apps</a></li> 
+    </ul>
+</div>

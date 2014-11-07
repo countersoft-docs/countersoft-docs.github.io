@@ -1,0 +1,27 @@
+---
+layout: default
+title: Time Type Events            
+---
+<h1>Time Type Events</h1>
+
+<p>The following events are available before and after Time Type creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeTimeTypeListener</span></p>
+<pre>
+TimeType BeforeTimeTypeCreated(TimeTypeEventArgs args);
+TimeType BeforeTimeTypeUpdated(TimeTypeEventArgs args);
+TimeType BeforeTimeTypeDeleted(TimeTypeEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterTimeTypeListener</span></p>
+<pre>
+void AfterTimeTypeCreated(TimeTypeEventArgs args);
+void AfterTimeTypeUpdated(TimeTypeEventArgs args);
+void AfterTimeTypeDeleted(TimeTypeEventArgs args);
+</pre>

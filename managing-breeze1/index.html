@@ -1,0 +1,37 @@
+---
+layout: default
+title: Managing Breeze
+---
+<h1>Managing Breeze</h1> 
+
+<p>Breeze converts inbound emails from multiple sources into work items such as Support Tickets, Enquiries, Cases etc. Breeze integrates with any project and can be configured to have one-to-many and many-to-one relationships between mailboxes and projects.</p>
+
+<h3>How Breeze Works</h3>
+<p>There are 5 core elements to Breeze: Queues, Mailboxes, the Outlook Connector, SMTP Servers and Response Templates</p>
+
+<h4>Queues</h4>
+<p>Each Queue defines a level of inbound email aggregation for one or more mailboxes. Queues define a default project that can be overwritten at the individual Mailbox level.</p>
+
+<h4>Mailboxes</h4>
+<p>Each Mailbox points to a Queue and defines the inbound email address and the rules to be associated with emails sent to that address, such as: should email signatures be stripped?, should the Mailbox only process certain subject lines?</p>
+
+<h4>Outlook Connector</h4>
+<p>The Outlook Connector allows the recipient of a personal email to convert it to a work item with the click of a button. The Outlook connector retains permanent linkage between the email and the work item it creates.</p>
+
+<h4>SMTP Servers</h4>
+<p>Each Mailbox can be configured to respond (or not) to inbound emails. If you choose to respond to inbound emails then you need to configure one or more SMTP Servers for Breeze and attach the appropriate SMTP Server to the responding Mailbox. If you choose to respond you will also need to define a Response Template of type 'Breeze Template' and attach the Response Template to the Mailbox.</p>
+
+<h2 class="video-header">Watch How To Do It: Breeze</h2>
+<p class="video-description">The following video will provide guided detail into all aspects regarding functionality and configuration of Breeze.</p>
+<iframe class="video" src="http://player.vimeo.com/video/87858514?title=0&amp;byline=0&amp;portrait=0&amp;&amp;autoplay=0" width="900" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/establishing-inbound-queues">Establishing Inbound Queues</a></li>
+		<li><a href="/using-outbound-smtp">Using Outbound SMTP</a></li>
+		<li><a href="/listening-to-mailboxes">Listening To Mailboxes</a></li>
+		<li><a href="/using-match-expressions">Using Match Expressions</a></li>
+		<li><a href="/setting-up-reply-from-addresses">Setting up Reply From Addresses</a></li>
+	</ul>
+</div>

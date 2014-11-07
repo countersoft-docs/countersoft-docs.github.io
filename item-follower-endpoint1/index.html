@@ -1,0 +1,88 @@
+---
+layout: default
+title: Items Follower Endpoint
+---
+<h1>Item Follower Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns all follower of an Item.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/items/{itemid}/watchers</strong></p>
+
+<p>The URL must contain the item Id. It returns a list of IssueWatcherDto's.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;IssueWatcherDto&gt; follower = serviceManager.Item.IssueWatchersGet(36);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/watchers";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method adds an User as a follower to an Item.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/items/{itemid}/watchers/{userid}</strong></p>
+
+<p>The URL must contain the Item Id and User Id. The return value is an IssueWatcherDto where the Item Id is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Item.IssueWatchersCreate(36, 1);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/watchers/1";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: null,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+
+<h2>Delete</h2>
+<p>This method deletes an Item.</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/items/{itemid}/watchers/{userid}</strong></p>
+
+<p>The URL must contain the Item Id and User Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Item.IssueWatchersDelete(36, 1);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/watchers/1";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+      alert('Success!');
+    }
+});
+</pre>

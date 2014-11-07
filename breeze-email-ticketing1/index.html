@@ -1,0 +1,72 @@
+---
+layout: default
+title: Breeze - Email Ticketing
+---
+<h1>Breeze - Email Ticketing</h1> 
+
+<p>Breeze converts inbound emails from multiple sources into Gemini items. An item can be viewed as a Ticket, Request, Enquiry, etc Breeze can pull emails and place them inside any Gemini project.</p>
+
+<h2>Overview</h2>
+<p>A Breeze Queue consists of at least one mailbox. You can define multiple Queues and process many mailbox accounts.</p>
+<ul>
+	<li>Queue <b>Sales</b>
+		<ul>
+			<li>Mailbox <b>sales@fenrise.com</b></li>
+		</ul>
+	</li>
+	<li>Queue <b>Support</b>
+		<ul>
+			<li>Mailbox <b>support@fenrise.com</b></li>
+			<li>Mailbox <b>customers@fenrise.com</b></li>
+			<li>Mailbox <b>webmaster@fenrise.com</b></li>
+		</ul>
+	</li>
+</ul>
+
+<p>In the following example all emails to <code>sales@fenrise.com</code> are placed into the <code>Sales</code> queue.</p>
+<p><img src="queue.png" /></p>
+
+<p>You can define email templates sent to customers/end-users when they send emails (e.g. "thanks, we have opened a ticket").</p>
+<p><img src="template.png" /></p>
+
+<p>Your customers then receive an acknowledgment email detailing their request and the Gemini ticket number.</p>
+<p><img src="thanks.png" /></p>
+
+<p><span class="label label-warning">Note</span>Only Gemini administrators can configure Breeze</p>
+
+<h2>Handling Tickets</h2>
+<p>An email that is processed by Breeze is viewable within Gemini just like another other item. The sender's email address is displayed.</p>
+<p><img src="ticket-view.png" /></p>
+<p>You can then work on the ticket and respond back to the sender.</p>
+<p><img src="ticket-reply.png" /></p>
+<p>You can check to see what changed on the ticket since your last reply.</p>
+<p><img src="ticket-changes.png" /></p>
+<p>The sender of the ticket then receives your response as an email.</p>
+<p><img src="ticket-sender.png" /></p>
+
+<h2>Microsoft Outlook</h2>
+<p>The Microsoft Outlook connector allows one-click conversion of emails into tickets.</p>
+<p>When viewing an email the Gemini Breeze toolbar will appear.</p>
+<p><img src="outlook-ribbon.png" /></p>
+<p>There are two options to turn the email into a ticket:</p>
+<ul>
+	<li><b>Open Case:</b>&nbsp;turn email into ticket and show in web browser</li>
+	<li><b>Reply &amp; Open Case:</b>&nbsp;turn email into ticket then compose email reply back to sender</li>
+</ul>
+
+<p>You can specify the Gemini project where new tickets should be created.</p>
+<p><img src="outlook-project.png" /></p>
+
+<p>If the toolbar options are unavailable click Settings and provide your Gemini credentials.</p>
+<p><img src="outlook-login.png" /></p>
+
+<p>The Settings dialog allows every user to configure their Breeze Outlook connector preferences.</p>
+<p><img src="outlook-settings.png" /></p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/saucery-code-review">Saucery - Code Review</a></li>
+		<li><a href="/sentry-testing">Sentry - Testing</a></li>
+	</ul>
+</div>

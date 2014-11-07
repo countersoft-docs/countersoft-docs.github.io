@@ -1,0 +1,61 @@
+---
+layout: default
+title: Upgrading From 4.2
+---
+<h1>Upgrading From 4.2</h1>
+
+<p>The zip file download contains both the Gemini web application and the sample database to get you going.</p>
+
+<p><span class="label label-important">Note</span>&nbsp;Please read the <a href="/migration-guide">Migration Guide</a> before you proceed any further. We recommend that you perform this upgrade on a test instance.</p>
+
+<h2>Step 1 - Backup</h2>
+<p>Please backup your existing Gemini SQL Database and Gemini web application folders before following this upgrade process. You can use SQL Management Studio to back up your database.</p>
+<p>Please <a href="/pre-requisites">check</a> you have everything ready for the installation process.</p>
+
+<h2>Step 2 - Unzip</h2>
+<p>Unzip the Gemini zip file and you should see the contents as follows:</p>
+<p><img src="step2.png" /></p>
+
+<h2>Step 3 - Database Upgrade</h2>
+<p>Make sure that you have selected the correct database.</p>
+<p><img src="step3a.png" /></p>
+<p>Open and run the following scripts in SQL Management Studio:</p>
+<p><img src="step3b.png" /></p>
+<p>Once open in SQL Management Studio, execute the scripts. Gemini will automatically upgrade the database to the latest version if the SQL user has the permissions to do so.</p>
+
+<h2>Step 4 - Create Web Application</h2>
+<p>Copy the contents of the Gemini Web Application folder into your current web application folder (removing all existing files first):</p>
+<p><img src="step4.png" /></p>
+
+<h2>Step 5 - Edit Web.config</h2>
+<p>Edit the new web.config file and put in the correct SQL Server user credentials for your Gemini database:</p>
+<p><img src="step5a.png" /></p>
+<p>Remember to set your correct authentication settings:</p>
+<p><img src="step5b.png" /></p>
+
+<h2>Step 6 - Set Application Pool</h2>
+<p>Go to your IIS and change the previous Application Pool's .NET Framework version from 2.0 to 4.0.</p>
+<p><img src="step6.jpg" /></p>
+<p>Once changed your Gemini should now be upgraded to the latest release.</p>
+<p>After installation you can navigate to the Gemini web application using your browser (e.g. http://myserver/gemini").</p>
+
+<h2>Step 7 - Set Folder Permissions</h2>
+<p>For complete administrative control, Gemini requires write access to the following <b>THREE FOLDERS</b> that is located where you installed Gemini:</p>
+<p><img src="step7.jpg" /></p>
+<ul>
+    <li>Right click <code>App_Code</code> folder, select Security tab, allocate Modify/ Full Control permissions to the EVERYONE group</li>
+    <li>Right click <code>App_Data</code> folder, select Security tab, allocate Modify/ Full Control permissions to the EVERYONE group</li>
+    <li>Right click <code>Assets</code> folder, select Security tab, allocate Modify/ Full Control permissions to the EVERYONE group</li>
+</ul>
+
+<p><span class="label label-important">Note</span>&nbsp;Please read the <a href="/migration-guide">Migration Guide</a> before you proceed any further. We recommend that you perform this upgrade on a test instance.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+        <li><a href="/upgrading/">Upgrading</a></li>
+        <li><a href="/migration-guide/">Migration Guide</a></li>
+        <li><a href="/upgrading-from-5.x/">Upgrading From 5.x</a></li>
+        <li><a href="/upgrading-faq/">Upgrading FAQ</a></li>         
+    </ul>
+</div>

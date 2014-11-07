@@ -1,0 +1,27 @@
+---
+layout: default
+title: Time Logs Events            
+---
+<h1>Time Logs Events</h1>
+
+<p>The following events are available before and after Time Logs creation, update and deletion.</p>
+
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeIssueTimeTrackingListener</span></p>
+<pre>
+IssueTimeTracking BeforeIssueTimeTrackingCreated(IssueTimeTrackingEventArgs args);
+IssueTimeTracking BeforeIssueTimeTrackingUpdated(IssueTimeTrackingEventArgs args);
+IssueTimeTracking BeforeIssueTimeTrackingDeleted(IssueTimeTrackingEventArgs args);
+</pre>
+
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterIssueTimeTrackingListener</span></p>
+<pre>
+void AfterIssueTimeTrackingCreated(IssueTimeTrackingEventArgs args);
+void AfterIssueTimeTrackingUpdated(IssueTimeTrackingEventArgs args);
+void AfterIssueTimeTrackingDeleted(IssueTimeTrackingEventArgs args);
+</pre>

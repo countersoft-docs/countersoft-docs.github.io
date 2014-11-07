@@ -1,0 +1,65 @@
+---
+layout: default
+title: Security Options
+---
+<h1>Security Options</h1> 
+<p>Gemini has a variety of options for modifying the security of your installation. Gemini allows for the use of social media APIs, such as Facebook and Open ID. You may also modify and change additional security options, such as password policies, and user groups that are assigned to the Portal Group.</p>
+
+<p><img src="security-options.png" /></p>
+
+<h2>Self-registration and Unathenticated Access</h2>
+<p>Check the 'Allow users to self-register' check box if you want new visitors to the Gemini site to be able to register themselves. This option does not allow such self-registered users to control their permissions and their access will be controlled by the <b>New User Default Groups</b> that are also defined on this page.</p>
+
+<p>Check the 'Allow users to browse Gemini without logging on first' to allow unauthenticated access to your Gemini site. Unauthenticated users will be given permissions associated with the user group 'Everyone', which is different from the user group 'Everyone (Authenticated)', allowing you to control what they can see and do on the site.</p>
+
+<h2>Social Media APIs</h2>
+<p>Check this option if you want to allow users to authenticate themselves using Open Id standards. If enabled, users will be able to log on using their Yahoo and OpenID credentials.</p>
+
+<p>Check this option if you want to allow users to authenticate themselves using faceboook. To use this option, you must create/enter Gemini's facebook app id (<i>see facebook documentation for more on their authentication with 3rd party apps</i>).</p>
+
+<h3>Google Authentication using OAuth 2.0</h3>
+
+<p>Check this option if you want to allow users to authenticate themselves using Google. To activate Google Authentication for Gemini, follow these steps:</p>
+
+<ol>
+ <p>You can obtain the OAuth 2.0 credentials Client ID and Client Secret from <a href="https://console.developers.google.com">https://console.developers.google.com.</a></p>
+ <li>Login with your google account on <a href="https://console.developers.google.com">https://console.developers.google.com</a></li>
+ <li>Click on "<b>Create Project</b>" and fill in the details.</li>
+ <p><img src="CreateProjectGoogle.png" /></p>
+ <li>Google will create the project and redirect you to the project. Click on <b>APIs & Auth -> Credentials</b></li>
+ <li>Click on "<b>Create new Client ID</b>" and fill in the details. Replace "localhost" and "localhost/gemini" with your Gemini URL and click on "<b>Create Client ID</b>"</li>
+ <p><img src="CreateClientGoogle.png" /></p>
+ <li>You should now see your Client ID and Client Secret. Copy the Client ID and Client Secret from Google Developers Console.</li>
+ <p><img src="ClientDetailstGoogle.png" /></p>
+ <li>Enable Google Authentication from <b>Customize -> People -> Options </b>and paste the Client ID and Client Secret.</li>
+ <p><img src="enableGoogle.png" /></p>
+</ol>
+<p>Google authentication OAuth 2.0 is backwards compatible and will recognize your already registered user.</p>
+
+<h2>Password Policy</h2>
+<p>You can set the password policy in terms of re-use, expiry, format and re-tries attempts.</p>
+<p><img src="password.png" /></p>
+
+<h2>Password Reset and New User Options</h2>
+<ul>
+	<li>You may specify the email subject line and message for the password reset email, which will be sent to users as part of the 'forgotten password' process.</li>
+	<li>As an additional security measure, you may force new users to reset their passwords immediately after logging on for the first time.</li>
+	<li>You may also specify the default group that new users will be assigned if you do not specify a group(s) for them.</li>
+</ul>
+
+<h2>Portal Group</h2>
+<p>The Portal Group is an assigned group of users that are restricted to the 'Can Only View Own Items' permissons setting. It is advised to assign the Portal Group as an external group.
+<ul>
+	<li>You may edit the Welcome Title and Welcome Message that Portal Group users are greeted with when logging in to your Gemini installation.</li>
+</ul>
+
+<h2 class="video-header">Watch How To Do It: Security Options</h2>
+<p class="video-description">The following video will help provide an overview of security options and the Portal Group within Gemini.</p>
+<iframe class="video" src="http://player.vimeo.com/video/87879617?title=0&amp;byline=0&amp;portrait=0&amp;&amp;autoplay=0" width="900" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/permissions">Permissions</a></li>
+	</ul>
+</div>

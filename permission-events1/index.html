@@ -1,0 +1,25 @@
+---
+layout: default
+title: Permission Events            
+---
+<h1>Permission Events</h1>
+
+<p>The following events are available before and after Permission creation, update and deletion.</p>
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforePermissionSetListener</span></p>
+<pre>
+PermissionSet BeforePermissionSetCreated(PermissionSetEventArgs args);
+PermissionSet BeforePermissionSetUpdated(PermissionSetEventArgs args);
+PermissionSet BeforePermissionSetDeleted(PermissionSetEventArgs args);	
+</pre>
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterPermissionSetListener</span></p>
+<pre>
+void AfterPermissionSetCreated(PermissionSetEventArgs args);
+void AfterPermissionSetUpdated(PermissionSetEventArgs args);
+void AfterPermissionSetDeleted(PermissionSetEventArgs args);
+</pre>

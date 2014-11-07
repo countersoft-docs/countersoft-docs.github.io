@@ -1,0 +1,647 @@
+---
+layout: default
+title: Using Geckoboard
+---
+<h1>Using Geckoboard</h1>
+
+<p> <a href="http://www.geckoboard.com/" rel="nofollow">Geckoboard</a> is a real time dashboards displaying key business data and metrics in one place. You can choose to show over a dozen different widgets from simple item lists to visual data funnels.
+
+<p>Follow the below instructions to configure Gemini and Geckoboard.</p>
+
+<h2>Before You Start</h2>
+<p>Register for an account with Geckoboard and then ensure that the Gemini web.config file has an API key specified. We recommend that you use a GUID as the API key.</p>
+<p><img src="apikey.png" /></p>
+
+<h2>Geckoboard Widgets</h2>
+<p>Gecko widget content comes from any workspace within Gemini. Make a note of the Workspace Id as highlighted below.</p>
+<p><img src="grid.png" /></p>
+
+<p>For this example, select "Custom Widget" and then select "RAG Column & Numbers".</p>
+<p><img src="choose-widget.png" /></p>
+<p>In the pop-up window to configure the widget you will need to specify the following parameters as highlighted.</p>
+<p><img src="choose-widget-params.png" /></p>
+
+<p>For this example, specify the following for URL data feed:</p>
+<p><span class="label">http://{gemini url}/api/wallboard/{workspace id}/progress/</span></p>
+<p>Specify the API key as per your web.config API key value. Ensure all other parameters are specified as the screenshot above.</p>
+<p>There is also a Gemini stylesheet for Geckboard that can be applied to your dashboard. Click "configure dashboard" and "Browse" for custom CSS. You will find <code>wallboard.css</code> under the assets directory of Gemini.</p>
+
+<h3>Progress Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides breakdown of open, closed and remaining items</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> RAG Columns & Numbers</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/progress</td>
+    </tr>
+</table>
+<p><img src="widget-progress.png" /></p>
+
+<h3>Open Count Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides count of open items</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/opened-count</td>
+    </tr>
+</table>
+<p><img src="widget-opened.png" /></p>
+
+<h3>Closed Count Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides count of closed items</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/closed-count</td>
+    </tr>
+</table>
+<p><img src="widget-closed.png" /></p>
+
+<h3>All Items Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all items.</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/all/{max items}</td>
+    </tr>
+</table>
+<p><img src="widget-all.png" /></p>
+
+<h3>Open Items Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all open items</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/opened/{max items}</td>
+    </tr>
+</table>
+<p><img src="widget-open.png" /></p>
+
+<h3>Closed Items Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all closed items</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/closed/{max items}</td>
+    </tr>
+</table>
+<p><img src="widget-close.png" /></p>
+
+<h3>Due Today Items Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all items due today</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/due-today/{max items}</td>
+    </tr>
+</table>
+<p><img src="widget-due-today.png" /></p>
+
+<h3>Due Tomorrow Items Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all items due tomorrow</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/due-tomorrow/{max items}</td>
+    </tr>
+</table>
+<p><img src="widget-due-tomorrow.png" /></p>
+
+<h3>Due This Week Items Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all items due this week</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/due-thisweek/{max items}</td>
+    </tr>
+</table>
+<p><img src="widget-due-thisweek.png" /></p>
+
+<h3>Due Next Week Items Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all items due next week</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/due-nextweek/{max items}</td>
+    </tr>
+</table>
+<p><img src="widget-due-nextweek.png" /></p>
+
+<h3>Opened Recently Items Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all items opened recently</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/opened-recently/{max items}</td>
+    </tr>
+</table>
+<p><img src="widget-opened-recently.png" /></p>
+
+<h3>Closed Recently Items Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all items closed recently</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/closed-recently/{max items}</td>
+    </tr>
+</table>
+<p><img src="widget-closed-recently.png" /></p>
+
+<h3>Workload Count Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides count of assigned items by resource</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/workload</td>
+    </tr>
+</table>
+<p><img src="widget-workload.png" /></p>
+
+<h3>Workload Chart Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides chart of assigned items by resource</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Charts -> Highcharts</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/workload-pie</td>
+    </tr>
+</table>
+<p><img src="widget-workload-chart.png" /></p>
+
+<h3>Progress Chart Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides chart of open, closed and remaining items</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Charts -> Highcharts</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/progress-pie</td>
+    </tr>
+</table>
+<p><img src="widget-progress-chart.png" /></p>
+
+<h3>Workload Funnel Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides funnel chart of workload by resource</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Charts -> Funnel</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/workload-funnel</td>
+    </tr>
+</table>
+<p><img src="widget-workload-funnel.png" /></p>
+
+<h3>Type Funnel Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides funnel chart of item types</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Charts -> Funnel</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/type-funnel</td>
+    </tr>
+</table>
+<p><img src="widget-type-funnel.png" /></p>
+
+<h3>Status Funnel Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides funnel chart of workflow status values</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Charts -> Funnel</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/status-funnel</td>
+    </tr>
+</table>
+<p><img src="widget-status-funnel.png" /></p>
+
+<h3>Component Funnel Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides funnel chart of component types</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Charts -> Funnel</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/component-funnel</td>
+    </tr>
+</table>
+<p><img src="widget-component-funnel.png" /></p>
+
+<h3>Priority Funnel Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides funnel chart of priority types</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Charts -> Funnel</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/priority-funnel</td>
+    </tr>
+</table>
+<p><img src="widget-priority-funnel.png" /></p>
+
+<h3>Severity Funnel Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides funnel chart of severity types</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Charts -> Funnel</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/severity-funnel</td>
+    </tr>
+</table>
+
+<br></br>
+<h2>SLA Widgets</h2>
+<h3>SLA Breached Count Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides count of breached items</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/breached-count</td>
+    </tr>
+</table>
+<p><img src="breached.png" /></p>
+
+<h3>SLA Red Status Count Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides count of items which are about to breached</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/red-count</td>
+    </tr>
+</table>
+<p><img src="red.png" /></p>
+
+<h3>SLA Amber Status Count Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides count of items which do not have a response for a while</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/amber-count</td>
+    </tr>
+</table>
+<p><img src="amber.png" /></p>
+
+<h3>SLA Green Status Count Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides count of items with SLA which just been newly created</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/green-count</td>
+    </tr>
+</table>
+<p><img src="green.png" /></p>
+
+<h3>SLA Breached Items List Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of all breached items</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/breached-total-list</td>
+    </tr>
+</table>
+<p><img src="breachedItems.png" /></p>
+
+<h3>Breached Items Per SLA</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides list of breached items grouped by SLA</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/breached-sla-list</td>
+    </tr>
+</table>
+<p><img src="BreachedItemsPerSla.png" /></p>
+
+<h3>SLA Open Items Count Per SLA Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides count of open items for each SLA</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/open-sla/0/{dateRestriction}
+        <p>dateRestriction is optional and can take the following values: today, yesterday, this-week, last-week, this-month, last-month</p></td>
+    </tr>
+</table>
+<p><img src="OpenBySla.png" /></p>
+
+<h3>Closed Items Count Per SLA Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides count of closed items for each SLA</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/closed-sla/0/{dateRestriction}
+        <p>dateRestriction is optional and can take the following values: today, yesterday, this-week, last-week, this-month, last-month</p></td>
+    </tr>
+</table>
+<p><img src="ClosedBySla.png" /></p>
+
+<h3>SLA Average Total Response Time Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides an average total response time</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/average-sla-response-total/0/{dateRestriction}/{includeOnlySLAItems}
+        <p>dateRestriction is optional and can take the following values: today, yesterday, this-week, last-week, this-month, last-month
+        <br>includeOnlySLAItems is optional and can take the following values: 1, 0</p></td>
+    </tr>
+</table>
+<p><img src="AverageTotalResponseTime.png" /></p>
+
+<h3>Average Response Time Per SLA Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides an average response time per SLA</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/average-sla-response/0/{dateRestriction}/{dateRestriction}/{includeOnlySLAItems}
+        <p>dateRestriction is optional and can take the following values: today, yesterday, this-week, last-week, this-month, last-month
+        <br>includeOnlySLAItems is optional and can take the following values: 1, 0</p></td>
+    </tr>
+</table>
+<p><img src="AverageResponseTimePerSla.png" /></p>
+
+<h3>SLA Average Total Closing Time Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides an average total closing time</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/average-sla-closing-total/0/{dateRestriction}/{dateRestriction}/{includeOnlySLAItems}
+        <p>dateRestriction is optional and can take the following values: today, yesterday, this-week, last-week, this-month, last-month
+        <br>includeOnlySLAItems is optional and can take the following values: 1, 0</p></td>
+    </tr>
+</table>
+<p><img src="AverageTotalClosingTime.png" /></p>
+
+<h3>Average Closing Time Per SLA Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides an average closing time per SLA</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/average-sla-closing/0/{dateRestriction}/{dateRestriction}/{includeOnlySLAItems}
+        <p>dateRestriction is optional and can take the following values: today, yesterday, this-week, last-week, this-month, last-month
+        <br>includeOnlySLAItems is optional and can take the following values: 1, 0</p></td>
+    </tr>
+</table>
+<p><img src="AverageClosingTimePerSla.png" /></p>
+
+<h3>SLA Status Widget</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides a status breakdown per SLA</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Widgets -> Text</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/sla-status-breakdown-list/0/sla</td>
+    </tr>
+</table>
+<p><img src="StatusBreakdownList.png" /></p>
+
+<h3>SLA Status Chart</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Purpose</th>
+        <td>Provides chart of items with status breached, red, amber and green.</td>
+    </tr>
+    <tr>
+        <th>Widget Type</th>
+        <td>Custom Charts -> Highcharts</td>
+    </tr>
+    <tr>
+        <th>Data Feed URL</th>
+        <td>http://{gemini url}/api/wallboard/{workspace id}/sla-status-breakdown-pie</td>
+    </tr>
+</table>
+<p><img src="StatusBreakdownPie.png" /></p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+        <li><a href="/using-gemini-desktop">Using Gemini Desktop</a></li>
+        <li><a href="/using-microsoft-visual-studio">Using Microsoft Visual Studio</a></li>
+        <li><a href="/using-microsoft-tfs">Using Microsoft TFS</a></li>
+        <li><a href="/using-microsoft-project">Using Microsoft Project</a></li>
+		<li><a href="/using-microsoft-outlook">Using Microsoft Outlook</a></li>
+        <li><a href="/using-flowdock">Using Flowdock</a></li>
+        <li><a href="/using-lucidchart">Using Lucidchart</a></li>
+        <li><a href="/using-source-control-systems">Using Source Control Systems</a></li>
+	</ul>
+</div>

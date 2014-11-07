@@ -1,0 +1,101 @@
+---
+layout: default
+title: Developing UI Apps
+---
+<h1>Developing UI Apps</h1>
+<p>UI apps allow you to inject custom user interface sections within Gemini.</p>
+
+<p><span class="label label-success">Download</span>The Countersoft <a href="http://countersoft.github.io/" rel="nofollow">GitHub repository</a> contains sample applications that are built using the Apps Framework</p>
+
+<h2>Structure</h2>
+<p>Every UI app will consist of views that are displayed to users and custom app code.</p>
+<p><img src="structure.png" /></p>
+
+<h2>UI Views</h2>
+<p>ASP.NET Razor views are used to render HTML. The <code>Model</code> contains the data that can be rendered in the view.</p>
+<p><img src="ui-view.png" /></p>
+<p>Such views can also call custom logic on the server side (usually MVC Controller methods).</p>
+
+<h2>App Code</h2>
+<p>The <code>Caption</code> method will be called first, and it's used to get the app's title, such as Checklist.</p>
+<p>The <code>Show</code> method will be called to get the app's contents, such as the grid in the Checklist app.</p>
+<p><img src="show1.png" /></p>
+
+<p>UI apps extends the <code>BaseAppController</code> object.</p>
+<pre>
+public class MyUiApp : BaseAppController
+{
+    public MyUiApp()
+    {
+        [AppType(AppTypeEnum.Widget),
+        AppGuid("8FAC8849-04C0-418B-BC3B-E30A815A3E7A"),
+        AppControlGuid("C8F0693D-129C-4D19-9865-9CED964F06AB"),
+        AppAuthor("Countersoft"),
+        AppKey("Checklist"), 
+        AppName("Checklist"),
+        AppDescription("Apply checklist to any item type")]
+    }
+}
+</pre>
+
+<p>UI apps have a <code>Show</code> method that calls to display the contents of the app.</p>
+<pre>
+public override WidgetResult Show(IssueDto issue = null)
+    { 
+    ...
+    return new WidgetResult() { Success = true, Markup = new WidgetMarkup("views/checklist.cshtml", model) };
+}
+</pre>
+
+<p>This would render <code>Checklist</code> on-screen.</p>
+<p><img src="caption.png" /></p>
+
+<p>The following code generates HTML mark-up using the data model.</p>
+<pre>
+result.Markup = new WidgetMarkup("views\\my-view.cshtml", data);
+</pre>
+
+<p>Note the use of <code>IssueWidgetStore</code> for loading and saving any custom data your app may require.</p>
+
+
+<h2>App Callbacks</h2>
+<p>Custom UI views can call server-side logic using AJAX calls (as depicted above).</p>
+<pre>
+gemini_ajax.call("apps/checklist", "action", function (response)
+        {
+            if (response.Result.Data.success)
+            {
+                $("#checklist-app-container").html(response.Result.Data);
+            }
+            function (xhr, ajaxOptions, thrownError)
+            {
+                alert('FAILED, Status=' + xhr.status + ' -> ' + thrownError);
+            },
+            { checkId: id, checkedState: checked }, null, true);
+         });
+</pre>
+<p>In the above example the <code>localhost/Gemini/apps/action/{issueid}</code> end-point is the callback to your custom logic.</p>
+<p>Such custom callbacks are defined as follows in your App code.</p>
+<p>The <code>Save</code> method fetches the checklist app data.</p>
+<p><img src="show2.png" /></p>
+<p>The above code follows the typical ASP.NET MVC controller approach.</p>
+
+<h2>Deployment</h2>
+<p>Follow the packaging and deployment <a href="/developing-custom-apps">instructions</a> to deploy UI app in Gemini.</p>
+
+<h2>Configuration</h2>
+<p>Gemini Administrators can select when the custom UI app appears by changing <a href="/screens">screen setup</a> for Project Templates.</p>
+<p><img src="screens.png" /></p>
+
+<h2>End Result</h2>
+<p>When viewing an item you will be able to see your custom UI app.</p>
+<p><img src="view-item.png" /></p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+		<li><a href="/developing-timer-apps">Developing Timer Apps</a></li>
+		<li><a href="/developing-event-apps">Developing Event Apps</a></li>
+        <li><a href="/developing-full-page-apps">Developing Full Page Apps</a></li>
+    </ul>
+</div>

@@ -1,0 +1,166 @@
+---
+layout: default
+title: User Group Endpoint
+---
+<h1>User Group Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns a User Group.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/groups/{groupid}</strong></p>
+
+<p>The URL must have the Group Id. It returns the ProjectGroup Entity.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var group = serviceManager.Groups.GetProjectGroup(2);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/groups/2";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all User Groups.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/groups</strong></p>
+
+<p>It returns a list of ProjectGroup Entities.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;Countersoft.Gemini.Commons.Entity.Security.ProjectGroup&gt; groups = serviceManager.Groups.GetProjectGroups();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/groups";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new Group.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/groups</strong></p>
+
+<p>The request body must contain the ProjectGroup entity. The return value is the new ProjectGroup entity where the Group Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+Countersoft.Gemini.Commons.Entity.Security.ProjectGroup group = new Countersoft.Gemini.Commons.Entity.Security.ProjectGroup();
+
+group.Name = "Administrator";
+group.Description = "Department Administrator";
+group.Active = true;
+
+serviceManager.Groups.CreateProjectGroup(group);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/groups";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+    Name: "Administrator",
+    description: "Department Administrator",
+    active: "true"
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+        });
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing group.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/groups</strong></p>
+
+<p>The request body must contain the ProjectGroup entity including the Id. The return value is the updated ProjectGroup entity.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+Countersoft.Gemini.Commons.Entity.Security.ProjectGroup group = new Countersoft.Gemini.Commons.Entity.Security.ProjectGroup();
+
+group.Id = 12;
+group.Name = "Administrator";
+group.Description = "General Administrator";
+group.Active = true;
+
+login.Groups.UpdateProjectGroup(group);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/groups";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+                  Id: "12",
+                  Name: "Administrator",
+                  description: "General Administrator",
+                  active: "true"        
+                 };
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes a Group</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/groups/{groupid}</strong></p>
+
+<p>The URL must contain the Group Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Groups.DeleteProjectGroup(12);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/groups/12";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>

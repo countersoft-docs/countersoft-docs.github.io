@@ -1,0 +1,25 @@
+---
+layout: default
+title: Priority Events            
+---
+<h1>Priority Events</h1>
+
+<p>The following events are available before and after Priority creation, update and deletion.</p>
+
+<h2>Before</h2>
+<p>Use these events to modify the entity before it is persisted.</p>
+<p><span class="label label-warning">IBeforeIssuePriorityListener</span></p>
+<pre>
+IssuePriority BeforeIssuePriorityCreated(IssuePriorityEventArgs args);
+IssuePriority BeforeIssuePriorityUpdated(IssuePriorityEventArgs args);
+IssuePriority BeforeIssuePriorityDeleted(IssuePriorityEventArgs args);
+</pre>
+
+<h2>After</h2>
+<p>Use these events to be notified after an entity operation.</p>
+<p><span class="label label-warning">IAfterIssuePriorityListener</span></p>
+<pre>
+void AfterIssuePriorityCreated(IssuePriorityEventArgs args);
+void AfterIssuePriorityUpdated(IssuePriorityEventArgs args);
+void AfterIssuePriorityDeleted(IssuePriorityEventArgs args);
+</pre>

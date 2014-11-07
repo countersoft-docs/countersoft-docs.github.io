@@ -1,0 +1,105 @@
+---
+layout: default
+title: Developing Custom Apps
+---
+<h1>Developing Custom Apps</h1>
+<p>Th Apps Framework enables anyone to build apps that extend or bring new functionality to Gemini.</p>
+
+<h2>Technology Stack</h2>
+<p>Underlying the Apps Framework is built on Microsoft .NET technology.</p>
+<ul>
+	<li>Microsoft .NET 4.0 Framework</li>
+	<li>ASP.NET MVC 4</li>
+	<li>ASP.NET Razor View Engines</li>
+	<li>JavaScript and JQuery</li>
+</ul>
+
+<h2>Samples</h2>
+<p>The Countersoft <a href="https://github.com/countersoft/DeveloperSamples" rel="nofollow">GitHub repository</a> contains sample applications that are built using the Apps Framework.</p>
+<p>This documentation references those samples.</p>
+
+<h2>Structure</h2>
+<p>Every app has the following common elements.</p>
+<p><img src="structure.png" /></p>
+<h3>References</h3>
+<p>The Gemini assemblies that compose the Apps Framework must be referenced.</p>
+<h3>Views</h3>
+<p>The <code>views</code> folder consists of Razor views - the user interface for your app if applicable.</p>
+<h3>Manifest</h3>
+<p>The <code>app.manifest</code> file describes your app.</p>
+
+<h2>App.Manifest</h2>
+<p>The manifest file describes your app and is used during deployment.</p>
+<p><img src="manifest.png" /></p>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>Option</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>GUID</td>
+			<td>Globally unique identifer <a href="http://www.newguid.com/" rel="nofollow">(GUID)</a> for your app</td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>Application title displayed in Screen setup for Administrators to identify your app</td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>Brief description of the application</td>
+		</tr>
+		<tr>
+			<td>Version Major</td>
+			<td><a href="http://semver.org/" rel="nofollow">Semantic versioning</a> for your app</td>
+		</tr>
+		<tr>
+			<td>Version Minor</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Version Patch</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Publisher</td>
+			<td>Name of the organization/individual who owns the app</td>
+		</tr>
+		<tr>
+			<td>Released</td>
+			<td>Date the app was released</td>
+		</tr>
+		<tr>
+			<td>Debug</td>
+			<td>Can be <code>true</code> or <code>false</code>. When <code>true</code> app is not cached and can be changed on disk (useful during development)</td>
+		</tr>
+	</tbody>
+</table>
+
+<h2>Packaging</h2>
+<p>Every app is ZIPPED with the following folder structure.</p>
+<p><img src="package.png" /></p>
+<h3>Views</h3>
+<p>The <code>views</code> folder consists of Razor views - the user interface for your app if applicable.</p>
+<h3>Manifest</h3>
+<p>The <code>app.manifest</code> file describes your app.</p>
+<h3>Assembly</h3>
+<p>The <code>dll</code> file represents the compiled code for the app.</p>
+
+<h2>Deployment</h2>
+<p>Apps are deployed to the <code>App_data/Apps</code> folder which is located where you installed Gemini on your web server.</p>
+<p><img src="app_data.png" /></p>
+<p>The packaged apps represent ZIP files which are then extracted and deployed for use.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+		<li><a href="/developing-timer-apps">Developing Timer Apps</a></li>
+		<li><a href="/developing-event-apps">Developing Event Apps</a></li>
+		<li><a href="/developing-ui-apps">Developing UI Apps</a></li>
+		<li><a href="/developing-full-page-apps">Developing Full Page Apps</a></li> 
+    </ul>
+</div>

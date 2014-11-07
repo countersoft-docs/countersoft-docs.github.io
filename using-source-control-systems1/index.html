@@ -1,0 +1,98 @@
+---
+layout: default
+title: Using Source Control Systems
+---
+<h1>Using Source Control Systems</h1> 
+
+<p>The Saucery app for Gemini provides File Association and Code Review capabilities for popular Source Control systems.</p>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>System</th>
+			<th>File Association</th>
+			<th>Code Review</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>GitHub</td>
+			<td>Yes</td>
+			<td>Yes</td>
+		</tr>
+		<tr>
+			<td>Mercurial</td>
+			<td>Yes</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Subversion</td>
+			<td>Yes</td>
+			<td>Yes</td>
+		</tr>
+		<tr>
+			<td>Tortoise SVN</td>
+			<td>Yes</td>
+			<td>Yes</td>
+		</tr>
+		<tr>
+			<td>Git</td>
+			<td>Yes</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Microsoft Team Foundation Server 2010</td>
+			<td>Yes</td>
+			<td>Yes</td>
+		</tr>
+		<tr>
+			<td>Microsoft Team Foundation Server 2012</td>
+			<td>Yes</td>
+			<td>Yes</td>
+		</tr>
+	</tbody>
+</table>
+
+<p><span class="label label-warning">Note</span>Remainder of this section assumes the Gemini Administrator has already <a href="/integrating-source-control">configured</a> the Source Control system</p>
+
+<h2>Enable</h2>
+<p>Ensure that Code Review is enabled for those processes that you wish to associate with Source Control (e.g. bug). </p>
+<p><img src="process.png" /></p>
+<p>Select the screen option for the item you want to attach Code Review.</p>
+<p><img src="screen.png" /></p>
+<p>Verify by opening an item to see the Code Review section:</p>
+<p><img src="view.png" /></p>
+
+<h2>Microsoft Team Foundation Server 2010/2012</h2>
+<p>When commiting files provide a Gemini item number within the commit Comment.</p>
+<p><img src="tfs-commit.png" /></p>
+<p><span class="label label-warning">Note</span>The "GEM:" prefix is mandatory and you can specify multiple Gemini items by comma-separating them</p>
+<p>You will see the commit message and associated files in the Code Review section of the item.</p>
+<p><img src="commit.png" /></p>
+
+<h2>Subversion / Tortoise SVN</h2>
+<p>When commiting files provide a Gemini item number either within the commit Comment or using the Gemini box top-right.</p>
+<p><img src="svn-commit.png" /></p>
+<p><span class="label label-warning">Note</span>The "GEM:" prefix is mandatory and you can specify multiple Gemini items by comma-separating them</p>
+<p>You will see the commit message and associated files in the Code Review section of the item.</p>
+<p><img src="commit.png" /></p>
+
+<h2>GitHub / Git / Mercurial</h2>
+<p>When commiting files provide a Gemini item number within the commit Comment.</p>
+<p><img src="github-commit.png" /></p>
+<p><span class="label label-warning">Note</span>The "GEM:" prefix is mandatory and you can specify multiple Gemini items by comma-separating them</p>
+<p>You will see the commit message and associated files in the Code Review section of the item.</p>
+<p><img src="commit.png" /></p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/using-gemini-desktop">Using Gemini Desktop</a></li>
+		<li><a href="/using-microsoft-visual-studio">Using Microsoft Visual Studio</a></li>		
+		<li><a href="/using-microsoft-project">Using Microsoft Project</a></li>
+		<li><a href="/using-microsoft-outlook">Using Microsoft Outlook</a></li>
+		<li><a href="/using-lucidchart">Using Lucidchart</a></li>
+		<li><a href="/using-flowdock">Using Flowdock</a></li>
+        <li><a href="/using-geckoboard">Using Geckoboard</a></li>
+	</ul>
+</div>

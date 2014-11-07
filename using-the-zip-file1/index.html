@@ -1,0 +1,85 @@
+---
+layout: default
+title: Using the Zip File
+---
+<h1>Using the Zip File</h1>
+
+<p>The zip file download contains both the Gemini web application and the sample database to get you going.</p>
+
+<p>The following must be present on your Windows Server. You can choose to have your IIS Web Server and SQL Server on the same machine or each running on different machines.</p>
+
+<ul>
+    <li>Microsoft .NET Framework v4.0</li>
+    <li>SQL Server 2005, 2008, 2008 Express or 2012 </li>
+    <li>SMTP Service/Server (optionally required for email notifications)</li>
+</ul>
+
+<p>If you cannot confirm, or do not understand any of the above items, then either contact us or your IT administrator.</p>
+
+<p>If you have not downloaded Gemini, please <a href="http://www.countersoft.com/gemini.zip">click here</a> to download the latest release.</p>
+<br></br>
+<p><span class="label label-important">Note</span>&nbsp;Right click on the file then select Properties and click Unblock.</p>
+<p>Unzip Gemini and open the manual install folder.</p>
+<p><img src="which-folder.png" /></p>
+
+<h2>Step 1 - Check Pre-requisites</h2>
+<p>Please <a href="/pre-requisites">check here</a> if you have everything ready for the installation process.</p>
+
+<h2>Step 2 - Unzip</h2>
+<p>Unzip the Gemini zip file and you should see the contents as follows:</p>
+<p><img src="step2.png" /></p>
+
+<h2>Step 3 - Create Application Pool</h2>
+<p>First you will need to create an application pool for your site to refer to. In IIS right-click and add an application pool.</p>
+<p><img src="step3a.png" /></p>
+<p>Name the application pool. Set the .NET Framework to v4.0 and Managed pipeline mode to Integrated.</p>
+<p><img src="step3b.png" /></p>
+
+<h2>Step 4 - Create Web Application</h2>
+<p>In IIS right-click and add Gemini as an Application:</p>
+<p><img src="step4a.png" /></p>
+<p>You will need to give your Gemini application a name such as "Gemini". This will mean Gemini will be accessible via http://servername/Gemini.</p>
+<p>Select the Gemini application pool:</p>
+<p><img src="step4b.png" /></p>
+<p>After the Gemini web application has been created you will see this:</p>
+<p><img src="step4c.png" /></p>
+
+<h2>Step 5 - Create SQL Database</h2>
+<p>Create a SQL Server database that will be used by Gemini.</p>
+<p>It is advisable to use SQL Server 2005/2008/2012 Web, Standard or Enterprise edition. Gemini will also run with SQL Express but it is not recommended for mission critical deployments.</p>
+<p>Where possible use SQL authentication and make a note of your SQL Server user credentials (required for next step). Ensure your SQL user has DBO permissions in the new database.</p>
+
+<h2>Step 6 - Edit Web.config</h2>
+<p>Right-click on the Gemini Web Application in IIS and select the Explore option:</p>
+<p><img src="step6a.png" /></p>
+<p>Edit the web.config file and put in the correct SQL Server user credentials:</p>
+<p><img src="step6b.png" /></p>
+<p>Save the web.config and Gemini should now be setup.</p>
+<p>After installation you can navigate to the Gemini web application using your browser (e.g. http://myserver/gemini).</p>
+<p><img src="step6c.png" /></p>
+<p>If you see something like the above, then Gemini has been installed correctly.</p></p>
+<p><span class="label label-warning">Login Credentials</span>&nbsp;Username is "manager" and password is "manager"</p>
+
+<h2>Step 7 - Set Folder Permissions</h2>
+<p>For complete administrative control, Gemini requires write access to the following <b>THREE FOLDERS</b> that are located where you installed Gemini:</p>
+<p><img src="step7.png" /></p>
+<ul>
+    <li>Right click the <code>App_Code</code> folder, select Security tab, allocate Modify/Full Control permissions to the EVERYONE group</li>
+    <li>Right click the <code>App_Data</code> folder, select Security tab, allocate Modify/Full Control permissions to the EVERYONE group</li>
+    <li>Right click the <code>Assets</code> folder, select Security tab, allocate Modify/Full Control permissions to the EVERYONE group</li>
+</ul>
+
+<h2 class="video-header">Watch How To Do It: Manual Installation</h2>
+<p class="video-description">The following video will provide you with a brief, rapid overview of manually installing Gemini using the zip file.</p>
+<iframe class ="video"src="http://player.vimeo.com/video/87858540" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+        <li><a href="/pre-requisites">Pre-requisites</a></li>
+        <li><a href="/using-the-installer">Using the Installer</a></li>
+        <li><a href="/upgrading-from-4.x">Upgrading From 4.2</a></li>
+        <li><a href="/upgrading-from-5.x">Upgrading From 5.x</a></li>
+        <li><a href="/installation-faq">Installation FAQ</a></li>
+    </ul>
+</div>

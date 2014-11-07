@@ -1,0 +1,50 @@
+---
+layout: default
+title: Windows Authentication
+---
+<h1>Windows Authentication</h1> 
+
+<p>By default Gemini uses forms authentication (username/password) but you can also use Windows authentication.</p>
+
+<h2>Create Domain User Account</h2>
+
+<p>Before enabling Windows Authentication, ensure you first create a new Gemini user that will allow you to login after the switch to Windows Authentication has been made.</p>
+<p><img src="gemini-user.png" /></p>
+
+<p><span class="label label-important">Note</span>No password is required on the user account, just ensure the username is a valid and fully qualified domain\user account.</p>
+
+<h2>Amend Web.Config</h2>
+
+<p>Change the <code>mode</code> from <code>Forms</code> to <code>Windows</code> in the Gemini <code>web.config</code> file.</p> 
+<p><img src="web-config.png" /></p>
+
+<h2>Change IIS</h2>
+
+<h3>Windows Server 2008 / IIS 7</h3>
+<p>Select the Authentication setting for your web application.</p>
+<p><img src="IIS-config.png" /></p>
+<p>Now enable Windows Authentication and disable all other authentication options.</p>
+<p><img src="IIS-authentication.png" /></p>
+
+<h3>Windows Server 2003 / IIS 6</h3>
+<p>Under Directory Security, edit Authentication and access control and then ensure that only Integrated Windows authentication is selected.</p>
+<p><img src="IIS-directory-security.png" /></p>
+
+<h3>Application Pool</h3>
+<p>You may need to ensure that the IIS Application Pool assigned to Gemini is using the <code>Network Service</code> account.</p>
+
+<h2>Restart IIS</h2>
+<p>Restart your Gemini application by running 'IISRESET' from the command line or by re-starting the Gemini application pool.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/global-options">Global Options</a></li>
+		<li><a href="/mail-server-configuration">Mail Server Configuration</a></li>
+		<li><a href="/email-alerts">Email Alerts</a></li>
+		<li><a href="/active-directory-setup">Active Directory Setup</a></li>
+		<li><a href="/global-app-nav-cards">Global App-Nav Cards</a></li>
+		<li><a href="/system-log">System Log</a></li>
+		<li><a href="/licensing">Licensing</a></li>
+	</ul>
+</div>

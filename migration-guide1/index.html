@@ -1,0 +1,180 @@
+---
+layout: default
+title: Migrating from 4.x         
+---
+<h1>Migrating from 4.x</h1>
+
+<p><span class="label label-important">Important</span>&nbsp;Read the following guide before you start to migrate from 4.x to 6.x</p>
+
+<h2>What's Changed</h2>
+<p>The following represents functionality that has either been retired or pending in a future release.</p>
+
+<h3>Changes</h3>
+<ul>
+	<li><b>Permissions:</b>&nbsp;reduced so you have less roles to manage</li>
+	<li><b>API:</b>&nbsp;end-points have been changed</li>
+	<li><b>Email Alerts:</b>&nbsp;brand new notifications model</li>
+	<li><b>Email Alert Templates:</b>&nbsp;alert templates can now be maintained via Gemini UI and can vary by project</li>
+	<li><b>Watchers:</b>&nbsp;have been re-labeled as Followers</li>
+	<li><a href="http://gemini.countersoft.com/project/GEM/2/progress/changelog">Full Change Log</a></li>
+</ul>
+
+<h3>Retired</h3>
+<ul>
+	<li><b>Gantt Chart:</b>&nbsp;recommendation is to leverage the Microsoft Project Connector for Gantt functionality</li>
+	<li><b>Reset Votes:</b>&nbsp;no facility to reset votes across a project</li>
+	<li><b>Project Permissions Administration:</b>&nbsp;no facility to control group membership WITHIN a project (global only)</li>
+	<li><b>Report Visibility:</b>&nbsp;individual report visibility has been dropped</li>
+	<li><b>Risk Field:</b>&nbsp;this field has been removed (create as Custom Field if required)</li>
+	<li><b>Email Alerts:</b>&nbsp;you can no longer configure alerts for other users - share AppNav cards instead</li>
+</ul>
+
+<h3>Pending</h3>
+<ul>
+	<li><b>Project Attributes:</b>&nbsp;will be replaced with the ability to attach Custom Fields to Projects</li>
+	<li><b>Version Attributes:</b>&nbsp;will be replaced with the ability to attach Custom Fields to Versions</li>
+	<li><b>Version Milestones:</b>&nbsp;will be replaced with new functionality</li>
+	<li><b>Custom Calendar Events:</b>&nbsp;will be replaced with new functionality</li>
+	<li><b>Custom Reports:</b>&nbsp;will be replaced with new functionality</li>
+	<li><b>Closing Comment:</b>&nbsp;will be replaced with new functionality</li>
+</ul>
+
+<h3>Understanding Project Templates</h3>
+<p>By far the biggest change in Gemini 6 is the introduction of Project Templates - our approach to scaling Gemini to handle projects of different types.</p>
+<p>Each Project Template is designed to provide specific screens, meta data and behaviors. For example you can use different processes and display different taxonomy on-screen for Agile, Scrum and Issue Tracking projects.</p>
+<p>Project Templates replace the previous approach of using Schemes and Groups to organize re-usable meta data.  For example, a software development Project Template may have processes such as Bug, Enhancement and New Feature but a ticketing Project Template may have processes such as Support Request, Investigation, etc.</p>
+<p>The goal is to ensure that every project is based upon the most appropriate Project Template.</p>
+<p>Each Project Template contains various meta data elements:</p>
+<p><img src="templates.png" /></p>
+
+<h4>Process</h4>
+<p>Processes map to what was previously labeled "Item Types" (e.g. Bug, Requirement, Change Request, etc.).</p>
+
+<h4>Custom Fields</h4>
+<p>Custom Fields are still the same as Gemini 4.</p>
+
+<h4>Status, Priority, Severity</h4>
+<p>These meta fields are the same as Gemini 4.</p>
+
+<h4>Resolution</h4>
+<p>Resolutions can now vary by Project Template whereas in Gemini 4 the resolution meta data was the same across all projects.</p>
+
+<h4>Links</h4>
+<p>Links function the same way as before except there is no notion of link direction.</p>
+
+<h4>Time</h4>
+<p>By popular request Time types can now vary by project.</p>
+
+<h3>Screens and Visibility</h3>
+
+<p>What has changed:</p>
+
+<ul>
+	<li>You can define field order</li>
+	<li>You can completely hide/show processes from certain user groups</li>
+	<li>You can control required fields</li>
+</ul>
+
+<p><span class="label label-important">Important</span>&nbsp;Screen setup from Gemini 4 WILL NOT BE MIGRATED OVER TO GEMINI 6. You will be required to re-set Screen definitions.</p>
+
+<p>One of the biggest improvements in Gemini 6 is the way data fields are handled. More control has been provided so that you can completely which fields are displayed and to which group of users. Furthermore, you can also control the order in which fields are displayed on-screen (e.g. Priority is displayed before Type).</p>
+
+<p>Another unique new feature of Screens is that you can completely hide certain processes users. For example, only "Developers" can view "Bugs" and only "Project Managers" can view "Change Requests".</p>
+
+<p>Screens are customized by each Process:</p>
+<p><img src="screens1.png" /></p>
+<p>Clicking on the Screens link will allow you to define the Screen setup. You can also re-use Screens between Processes.</p>
+<p><img src="screens2.png" /></p>
+
+<h3>Workflow</h3>
+
+<p>What has changed:</p>
+<ul>
+	<li>You can control who can make every transition from one state to the next</li>
+	<li>You now draw your Workflow</li>
+</ul>
+
+<p><span class="label label-important">Important</span>&nbsp;Workflow setup from Gemini 4 WILL NOT BE MIGRATED OVER TO GEMINI 6. You will be required to re-define Workflows.</p>
+
+<p>Every process has it’s own Workflow to control how an item moves from OPEN to CLOSED state. You can re-use a Workflow across multiple Processes within the same Project Template.</p>
+<p><img src="workflow1.png" /></p>
+
+<p>Clicking on the Workflow link will allow you to define the Workflow setup. You can also re-use Workflows between Processes.</p>
+<p><img src="workflow2.png" /></p>
+
+<p>Just move around the boxes and connect them to define your workflow.</p>
+
+<h3>The "Migration" Template</h3>
+
+<p>During the migration process all existing projects will automatically migrated to a special "Migration" Project Template.</p>
+<p><img src="migration.png" /></p>
+
+<p>This template will contain previous meta data from Gemini 4 for reference purposes. All projects in Gemini will be temporarily allocated to the migration template during the migration process.</p>
+<p>The objective from this point in the migration process is to ensure every project is allocated the appropriate template (i.e. no project should be using the migration template).</p>
+<p>It is recommended that you do not modify, duplicate or otherwise change the Migration Template.</p>
+
+<h3>Preparing Your Project Templates</h3>
+
+<p>You should create or change the pre-packaged Project Templates to match what you need. For example, amend the Agile template to include the processes you wish to to manage:</p>
+<p><img src="prepare.png" /></p>
+
+<p>The objective is to prepare the following meta data per project template BEFORE you attach any projects to the template:</p>
+
+<ul>
+	<li>Processes define each process (e.g. Item Type in Gemini 4 speak)</li>
+	<li>Custom Fields</li>
+	<li>Status</li>
+	<li>Priority</li>
+	<li>Severity</li>
+	<li>Resolution</li>
+	<li>Links</li>
+	<li>Time Types</li>
+</ul>
+
+<p>Ensure that you have appropriate meta data when you come to MOVE your projects from the migration template to project templates.</p>
+<p><img src="map.png" /></p>
+
+<p><span class="label label-important">Important</span>&nbsp;Ensure you have created your required custom fields before mapping the template.</p>
+
+<h3>Migrate Your Projects To Project Templates</h3>
+
+<p>Once you have readied Project Templates you should migrate each project from the Migration Project Template to an appropriate template. Click on the cog icon to do so:</p>
+<p><img src="migrate1.png" /></p>
+<p>You can then choose how to map previous meta data to new Gemini5 meta data:</p>
+<p><img src="migrate2.png" /></p>
+
+<h3>User Groups</h3>
+<p>All existing user groups will be migrated intact.</p>
+<p>However the method to allocate group members has changed.</p>
+
+<h3>Permissions</h3>
+<p>The permissions model in Gemini 5 has been simplified down to 14 different roles that can be assigned to users.</p>
+<p><span class="label label-important">Important</span>&nbsp;Permissions setup from Gemini 4 WILL NOT BE MIGRATED OVER TO GEMINI 6. You will be required to re-define Permissions.</p>
+<p>The objective:</p>
+<ul>
+	<li>Define permissions</li>
+	<li>Allocate appropriate permissions to projects</li>
+</ul>
+<p>Please ensure this step is complete BEFORE you attempt to navigate or otherwise use Gemini.</p>
+
+<h3>Email Alerts</h3>
+<p>Gemini 6 sports a completely new and powerful way to subscribe to email notifications. You simply subscribe for updates on any Workspace.</p>
+<p><img src="appnav1.png" /></p>
+<p>For example, you can set a filter to find items you care about and then select the type of notifications you wish to receive:</p>
+<p><img src="appnav2.png" /></p>
+<p>Email templates can also be configured through Gemini:</p>
+<p><img src="alerttemplate.png" /></p>
+<p>You can choose to design your own email alert template AND vary these templates by Project.</p>
+
+<h3>Home Page</h3>
+<p>The very first thing to note is that with Gemini 6 any page can be your home page after login. Just pin any page and make it the first card in your Workspace bar:</p>
+<p><img src="pin.png" /></p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+        <li><a href="/upgrading/">Upgrading</a></li>
+        <li><a href="/upgrading-from-4.x/">Upgrading From 4.x</a></li>
+        <li><a href="/upgrading-from-5.x/">Upgrading From 5.x/6.x</a></li> 
+    </ul> 
+</div>

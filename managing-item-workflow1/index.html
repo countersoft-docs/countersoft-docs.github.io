@@ -1,0 +1,53 @@
+---
+layout: default
+title: Managing Item Workflow
+---
+<h1>Managing Item Workflow</h1>
+
+<p>The goal of every item is to move from creation and closure. When viewing an item edit the status field.</p>
+<p><img src="view.png" /></p>
+
+<p>You can select the next available status value.</p>
+<p><img src="edit.png" /></p>
+
+<h2>Understanding Workflow</h2>
+<p>Workflow is central to the life of a item. An item is created and at some point hopefully close.</p>
+<p>An item moves through states that tell everyone else where it is at in the workflow.</p>
+
+<p>Project Templates determine the status values that make up the workflow for your project.</p>
+<p><img src="status-values.png" /></p>
+
+<p>Gemini administrators then design the workflow for different projects and processes. The following workflow details which status values are available at different points in the workflow.</p>
+<p><img src="workflow.png" /></p>
+
+<p>The above workflow dictates that when an item is "Assigned" the next status can only be "In Progress". This is enforced when you attempt to change the items' status value.</p>
+
+<h3>How Status Transitions Work</h3>
+<p>Not everyone can move an item to a new status. Restrictions can be placed to ensure only those individuals in a particular user group can transition an item to the next stage.</p>
+<p><img src="workflow-transitions.png" /></p>
+
+<h2>Parent/Child Workflow</h2>
+<p>An item that has associated child items (Dependencies) has one special workflow rule: you cannot close the parent until the all dependencies are closed beforehand. The following item has dependencies.</p>
+<p><img src="parent.png" /></p>
+<p>When attempting to change the status of a parent item you may find that the Closed status cannot be selected.</p>
+<p><img src="blocked-workflow.png" /></p>
+<p>The Closed status will remain un-selectable until all dependencies have been closed.</p>
+
+<h2 class="video-header">Watch How To Do It: Managing Workflow</h2>
+<p class="video-description">The following videos present the flexibility and power of workflows found within Gemini.</p>
+<iframe class="video" src="http://player.vimeo.com/video/87861385?title=0&amp;byline=0&amp;portrait=0&amp;&amp;autoplay=0" width="900" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<iframe class="video" src="http://player.vimeo.com/video/87857195?title=0&amp;byline=0&amp;portrait=0&amp;&amp;autoplay=0" width="900" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+    <ul>
+        <li><a href="/creating-items">Creating Items</a></li>
+        <li><a href="/editing-items">Editing Items</a></li>
+        <li><a href="/deleting-items">Deleting Items</a></li>
+        <li><a href="/moving-items">Moving Items</a></li>
+        <li><a href="/copying-items">Copying Items</a></li>
+        <li><a href="/item-visibility">Item Visibility</a></li>
+        <li><a href="/assigning-work-to-resources">Assigning Work to Resources</a></li>
+    </ul>
+</div>
