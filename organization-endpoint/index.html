@@ -1,0 +1,216 @@
+---
+layout: default
+title: Organization Endpoint
+---
+<h1>Organization Endpoint</h1>
+
+<h2>Get</h2>
+<p>This method returns an organization.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/organizations/{id}</strong></p>
+
+<p>The URL must have the Organization Id. It returns the Organization Entity.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var organization = serviceManager.Groups.GetOrganization(2);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/organizations/2";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Get All</h2>
+<p>This method returns all organizations.</p>
+
+<p><span class="label label-warning">Get</span><strong>/api/organizations</strong></p>
+
+<p>It returns a list of Organization Entities.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+List&lt;Countersoft.Gemini.Commons.Entity.Security.Organization&gt; organizations = serviceManager.Groups.GetOrganizations();
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/organizations";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "GET",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+
+<h2>Create</h2>
+<p>This method creates a new organization.</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/organizations</strong></p>
+
+<p>The request body must contain the Organization entity. The return value is the new Organization entity where the Organization Id field is populated.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+Countersoft.Gemini.Commons.Entity.Security.Organization organization = new Countersoft.Gemini.Commons.Entity.Security.Organization();
+
+organization.Name = "Administrator";
+organization.Description = "Department Administrator";
+
+serviceManager.Groups.CreateOrganizations(organization);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/organizations";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+    Name: "Administrator",
+    description: "Department Administrator",
+};
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+        });
+</pre>
+
+<h2>Update</h2>
+<p>This method updates an existing organization.</p>
+
+<p><span class="label label-warning">PUT</span><strong>/api/organizations</strong></p>
+
+<p>The request body must contain the Organization entity including the Id. The return value is the updated Organization entity.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+Countersoft.Gemini.Commons.Entity.Security.Organization organization = new Countersoft.Gemini.Commons.Entity.Security.Organization();
+
+organization.Id = 12;
+organization.Name = "Administrator";
+organization.Description = "General Administrator";
+
+login.Groups.UpdateOrganizations(organization);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/organizations";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+var geminiData = {
+                  Id: "12",
+                  Name: "Administrator",
+                  description: "General Administrator",      
+                 };
+
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function (data) {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Delete</h2>
+<p>This method deletes an organization.</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/organizations/{id}</strong></p>
+
+<p>The URL must contain the Organization Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Groups.DeleteOrganizations(12);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/organizations/12";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Join Organization</h2>
+<p>This method add an user into an organization.</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/organizations/{id}/join/{userId}</strong></p>
+
+<p>The URL must contain the Organization Id and User Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Groups.JoinOrganization(12, 2);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/organizations/12/join/2";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Leave Organization</h2>
+<p>This method deletes an user from an organization.</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/organizations/{id}/leave/{userId}</strong></p>
+
+<p>The URL must contain the Organization Id and User Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Groups.LeaveOrganization(12, 2);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/organizations/12/leave/2";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>
