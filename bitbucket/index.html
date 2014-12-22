@@ -1,0 +1,45 @@
+---
+layout: default
+title: Bitbucket
+---
+<h1>Bitbucket</h1> 
+
+<h2>Setup</h2>
+<p><span class='label label-important'>Note</span>Works with Gemini version 6.4.1+ and upwards.</p> 
+<p>Open your Bitbucket repository and navigate to 'Settings'.</p>
+
+<p>Click 'Hooks' and add a new POST hook.</p>
+<p><img src='service-hooks.png' /></p>
+
+<p>Ensure you specify the URL like below.</p>
+
+<pre>http://YOUR GEMINI URL/api/saucery/bitbucket/codecommit?auth=AUTHCREDENTIALS</pre>
+
+<p>Replace the AUTHCREDENTIALS with a base64 encoded <b>apikey:username</b> combination, where apikey is taken from the web.config.</p>
+
+<h2>Usage</h2>
+
+<p>When committing files into Bitbucket simply provide a Gemini item number like so.</p>
+<p><img src='bitbucketcommit.png' /></p>
+
+<p><span class='label label-important'>Note</span>the 'GEM:' prefix is mandatory and you can specify multiple Gemini items by comma-separating them as part of the commit comment message.</p> 
+
+<p>All committed files and comments appear under Code Review as follows.</p>
+<p><img src='codereview.png' /></p>
+
+<p>The first time you click on a file you will need to enter your Bitbucket credentials.</p>
+<p><img src='credentials.png' /></p>
+
+<div class='well well-small related-box'>
+    <span class='title'>Related</span>
+	<ul>
+		<li><a href='/team-foundation-server-2010'>Team Foundation Server 2010</a></li>
+		<li><a href='/team-foundation-server-2012'>Team Foundation Server 2012</a></li>
+		<li><a href='/subversion-server'>Subversion Server</a></li>
+		<li><a href='/tortoise-subversion-client'>Tortoise Subversion Client</a></li>
+		<li><a href='/git'>Git</a></li>
+		<li><a href='/github'>GitHub</a></li>
+		<li><a href='/mercurial'>Mercurial</a></li>
+		<li><a href="/saucery-faq">Saucery FAQ</a></li>
+	</ul>
+</div>
