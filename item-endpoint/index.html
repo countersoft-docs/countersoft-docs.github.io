@@ -78,7 +78,7 @@ $.ajax({
 
 <p><span class="label label-warning">PUT</span><strong>/api/items</strong></p>
 
-<p>The request body must contain the Issue entity. The return value is the updated IssueDto.</p>
+<p>The request body must contain the full Issue entity with all properties populated (issue a GET request first). The return value is the updated IssueDto.</p>
 
 <p>Microsoft.NET example:</p>
 <pre>
@@ -103,13 +103,15 @@ var geminiData = {
     ProjectId: "17",
     Title: "Fix comments overlay issue with html content",
     Description: "Html comments with style cause some issues",
-    ReportedBy: "1"
+    ReportedBy: "1",
+    .
+    .
 };
 
 $.ajax({
     url: geminiUrl,
     type: "PUT",
-    data: geminiProject,
+    data: geminiData,
     headers: { "Authorization": "Basic " + geminiLogin },
     success: function (data) {
       alert('Success!');
