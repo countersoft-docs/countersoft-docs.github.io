@@ -179,3 +179,86 @@ $.ajax({
     }
 });
 </pre>
+<h2>Insert Lookup Row</h2>
+<p>This method inserts a new row for the custom field's lookup table.</p>
+<p><span class="label label-warning">POST</span><strong>/api/customfieldslookup</strong></p>
+<p>The request body must contain the CustomFieldLookupDataId entity.</p>
+<p>Microsoft.NET example:</p>
+<pre>
+var lookup = new CustomFieldLookupDataId();
+lookup.CustomFieldId = 12;
+lookup.Key = "1";
+lookup.Value = "USA";
+serviceManager.CustomFields.InsertLookupRow(field);
+</pre>
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/customfieldslookup";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+var geminiData = {
+                  CustomFieldId: 12,
+                  Key: "1",
+                  Value: "USA"
+                 };
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+<h2>Update Lookup Row</h2>
+<p>This method updates a row for the custom field's lookup table.</p>
+<p><span class="label label-warning">PUT</span><strong>/api/customfieldslookup</strong></p>
+<p>The request body must contain the CustomFieldLookupDataId entity.</p>
+<p>Microsoft.NET example:</p>
+<pre>
+var lookup = new CustomFieldLookupDataId();
+lookup.CustomFieldId = 12;
+lookup.Key = "1";
+lookup.Value = "United States of America";
+serviceManager.CustomFields.UpdateLookupRow(field);
+</pre>
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/customfieldslookup";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+var geminiData = {
+                  CustomFieldId: 12,
+                  Key: "1",
+                  Value: "United States of America"
+                 };
+$.ajax({
+    url: geminiUrl,
+    type: "PUT",
+    data: geminiData,
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>
+<h2>Delete Lookup Row</h2>
+<p>This method delete a row from the custom field's lookup table.</p>
+<p><span class="label label-warning">DELETE</span><strong>/api/customfieldslookup/{customfieldid}/{rowid}</strong></p>
+<p>The url must contain the custom field id and row id to delete.</p>
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.CustomFields.DeleteLookupRow(12, "1");
+</pre>
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/customfieldslookup/12/1";
+var geminiLogin = Base64.encode("manager:xvitjc5bmm"); // user:apikey
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiLogin },
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

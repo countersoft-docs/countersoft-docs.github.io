@@ -171,20 +171,40 @@ title: Creating Your Own Reports
 		</tr>
 		<tr>
 			<td>{EstimateEffortMinutes}</td>
-			<td>Total minutes logged of estimate effort from the item</td>
+			<td>Total minutes estimated for the item</td>
 		</tr>
+        <tr>
+            <td>{estimaedtimewithkids}</td>
+            <td>Total minutes estimated for the item and its dependencies</td>
+        </tr>
 		<tr>
 			<td>TimeLogged</td>
 			<td>The number of hours and minutes to logged against item (0h 0m format)</td>
-		</tr>		
+		</tr>
+        <tr>
+            <td>{timeloggedminutes}</td>
+            <td>The total minutes logged against the item</td>
+        </tr>
+        <tr>
+            <td>{loggedtimewithkids}</td>
+            <td>Total minutes logged for the item and its dependencies</td>
+        </tr>							
 		<tr>
 			<td>RemainingTime</td>
 			<td>The number of hours and minutes to remaining for item (0h 0m format)</td>
 		</tr>		
+        <tr>
+            <td>{remainingtimeminutes}</td>
+            <td>The total minutes remaining for the item</td>
+        </tr>
 		<tr>
 			<td>ExcessTime</td>
-			<td>The number of hours and minutes exceeding original estimate (0h 0m format)</td>
+			<td>The number of hours and minutes exceeding estimate (0h 0m format)</td>
 		</tr>
+        <tr>
+            <td>{excesstimeminutes}</td>
+            <td>The total minutes exceeding the estimate for the item</td>
+        </tr>
 		<tr>
 			<td>Votes</td>
 			<td>The number of votes for this item</td>
@@ -201,6 +221,34 @@ title: Creating Your Own Reports
 			<td>{ParentItemId}</td>
 			<td>The item id of the parent of the item</td>
 		</tr>					
+        <tr>
+            <td>{projectlabel}</td>
+            <td>The label of the project that the item belongs to</td>
+        </tr>					
+        <tr>
+            <td>{versionstartdate}</td>
+            <td>The start date of the version that the item belongs to</td>
+        </tr>					
+        <tr>
+            <td>{versionreleasedate}</td>
+            <td>The release date of the version that the item belongs to</td>
+        </tr>
+        <tr>
+            <td>{slaname}</td>
+            <td>The name of the item's SLA</td>
+        </tr>
+        <tr>
+            <td>{slatimeleft}</td>
+            <td>The time left for the item's SLA clock (in minutes)</td>
+        </tr>
+        <tr>
+            <td>{slatimepassed}</td>
+            <td>The time passed for the item's SLA clock (in minutes)</td>
+        </tr>
+        <tr>
+            <td>{slatimeallocated}</td>
+            <td>The time allocated to item's SLA clock (in minutes)</td>
+        </tr>
 		<tr>
 			<td>Count()</td>
 			<td>Output is always 1 - useful when you need to count individual items</td>
