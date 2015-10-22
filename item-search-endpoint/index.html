@@ -17,7 +17,7 @@ IssuesFilter filter = new IssuesFilter();
 
 filter.IncludeClosed = false;
 filter.SearchKeywords = "user";
-filter.Projects = "All";
+filter.Projects = "18|19";
 
 serviceManager.Item.GetFilteredItems(filter);
 </pre>
@@ -29,7 +29,7 @@ var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
 var geminiData = {
                    SearchKeywords: "user",
                    IncludeClosed: "false",
-                   Projects: "ALL"
+                   Projects: "18|19"
                  }
 
 $.ajax({
