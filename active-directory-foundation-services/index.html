@@ -1,0 +1,135 @@
+﻿---
+layout: default
+title: Active Directory Foundation Services
+---
+<h1>ADFS Setup</h1> 
+
+<p><i>ADFS requires Gemini 6.8.1 or higher</i></p>
+
+<h2>Configuring Microsoft ADFS Parameters</h2>
+
+<h2>Prerequisites</h2>
+<ul>
+	<li>An official SSL certificate (not self signed) for ADFS Signing should already been purchased.</li>
+	<li>ADFS 3.0 with WS-Federation must already be already installed.</li>
+	<li>ADFS must be configured to use the official certificate.</li>
+	<li>When referring to the final URL/Parameters of Gemini Website, the correct title case is required. Reference the IIS server Site setup and use the correct URL!</li>
+</ul>
+
+<p><i>https://countertest.countert.com/gemini/  is not equal to https://countertest.countert.com/Gemini/  and will fail.</i></p>
+
+
+<h2>Step 1 - Configuring Relying Patry Trusts</h2>
+<p> Go to: ADFS Management > Trust Relationships > Relying Party Trusts > Add Relying Party Trust and Click Start</p>
+<p><img src="relying-party.png" /></p>
+
+<p>Choose <i>Enter data about the relying party manually.</i></p>
+<p><img src="relying-party-2.png" /></p>
+
+<p>Set the <i>Display name</i> and you can set <i>Notes</i> for this relying party.</p>
+<p><img src="relying-party-3.png" /></p>
+
+<p>Choose <i>ADFS profile.</i></p>
+<p><img src="adfs-profile.png" /></p>
+
+<p>Click <i>Next.</i></p>
+<p><img src="adfs-profile-2.png" /></p>
+
+<p>Click <i>Enable support for the WS-Federation Passive protocol URL</i> and set the Relying party URL.</p>
+<p><img src="adfs-protocol.png" /></p>
+<p></p>
+<p><img src="adfs-protocol-2.png" /></p>
+
+<p>Click <i>Next.</i></p>
+<p><img src="configure-identifers.png" /></p>
+
+<p>If all is OK, the Relying party URL will appearin the list. You can add another one with the <i>Add</i> button.
+<p><img src="relying-party-url.png" /></p>
+
+<p>Click <i>Next.</i></p>
+<p><img src="issuance-rules.png" /></p>
+
+<p>Click <i>Next</i> with <i>Permit all users to access this relying party.</i></p>
+<p><img src="relying-party-finish.png" /></p>
+<p>Click <i>Close.</i></p>
+
+
+<h2>Step 2 - Configuring Claim Rules</h2>
+<p><img src="claim-rules.png" /></p>
+<p>Click <i>Add Rule.</i></p>
+
+<p><img src="rule-template.png" /></p>
+<p>Choose <i>Transform an Incoming Claim.</i></p>
+ 
+<p><img src="transform-claim.png" /></p>
+<p>Set the claim rule name to SID. Choose <i>Primary SID</i> in the <i>Incoming claim type</i> and <i>Outgoing claim type</i>. Click <i>Finish.</i></p> 
+
+<p><img src="transform-claim-2.png" /></p>
+<p>Set the claim rule name to Domain/name. Choose <i>Windows account name</i> in the <i>Incoming claim type</i> and <i>Outgoing claim type</i>. Click <i>Finish.</i></p> 
+
+<p><img src="apply-claim-rules.png" /></p>
+<p>Click <i>Apply.</i></p>
+
+
+<h2>Customizing the ADFS sign-in experience</h2>
+<p>Using Window PowerShell, you can change the General ADFS sign-in page: for example the company name, company logo, you can add descriptions and links, etc.</p>
+<p><img src="custom-adfs-signin.png" /></p>
+
+
+<p>Please configure the following, if you want to allow non ADFS configured people to use the original username password based logon screen of Gemini. This will allow users to bypass ADFS authentication.</P>
+
+<p>With the following Windows PowerShell script, add the Gemini Login link to the ADFS Sign-in page. Run the Windows PowerShell script with Administrator elevated privileges.</p>
+<p>Replace this value: <i>https://countertest.countert.com/gemini/</i> to the valid URI of your installed Gemini application in the script and execute:</p>
+<p><i>Set-AdfsGlobalWebContent -SignInPageDescriptionText &quot;&lt;p&gt;Use gemini login &lt;A href='https://countertest.countert.com/gemini/'&gt;here&lt;/A&gt;&lt;/p&gt;&quot;</i></p>
+
+<br/>
+
+<p><b>Example Configuration of <i>Keep Me Signed In</i> KMSI possibility for users in PowerShell</b></p>
+<p>Set-AdfsProperties -EnableKmsi $True</p>
+
+<p><b>Configuring the lifetime (minutes) for KMSI with the next script</b></p>
+<p>Set-AdfsProperties -KmsiLifetimeMins 1400</p>
+
+<h2>Configuring Gemini Parameters</h2>
+<p>Please use regular Gemini upgrade procedures to deploy the application changes to your existing Gemini installation. Your database will automatically be upgraded when starting the new Gemini version.</p>
+
+
+<h2>Step 1 - Configuring the System Parameters : Authentications</h2>
+<p> Go to: Customize > System > Authentications</p>
+<p><img src="gemini-authentication.png" /></p>
+
+<p>Check Enable ADFS. <b>Make sure you restart IIS server after modifying this parameter!</b></p>
+<p>Federation metadata URL: Provide Gemini with the URL of the federationmetedata.xml coming from your ADFS server.</p>
+<p>Log errors: We recommend you check this to log ADFS related errors in Gemini System log.</p>
+
+
+<h2>Step 2 - Configuring Users</h2>
+<p> Go to: Customize > People > Users</p>
+<p>When ADFS is Enabled the User form will show 2 new fields for ADFS.</p>
+<p><img src="gemini-users.png" /></p>
+
+<p>Edit users to set all necessary parameters.</p>
+<p><img src="gemini-edit-users.png" /></p>
+
+<p>ADFS SID: the user account SID in the originating domain</p>
+<p>Lock user data: The following data is not updated on the user from domain when checked:  e-mail, firstname, surname from ADFS synchrinization.</p>
+<p>The ADFS SID field and Username field (format: ADFSDomain\username) must be filled from the source domain to make a successful ADFS authentication.</p>
+
+<h2>Step 3 - 4.	Configuring web.config</h2>
+<p><i>You can turn ADFS authentication off and on by web server.</i></p>
+
+<p>In the <i>appSettings section</i> in web.config there is a parameter: <i>gemini.adfsenabled.</i></p> 
+<p>If the value is <i>true</i>, or does not exist, ADFS authentication is enabled on this web server for the given gemini site.</p>
+<p>Swiching this value to <i>false</i> means gemini ADFS authentication is not enabled on <b>this web server</b> for the given gemini site, even though ADFS Enabled is true in Gemini database.</p>
+
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="algorithm.pdf">The ADFS Algorithm (pdf)</a></li>
+		<li><a href="/global-options">Global Options</a></li>
+		<li><a href="/active-directory-setup">Active Directory Setup</a></li>
+		<li><a href="/windows-authentication">Windows Authentication</a></li>
+		<li><a href="/group-membership">Group Membership</a></li>
+	</ul>
+</div>
