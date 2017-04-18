@@ -1,4 +1,4 @@
-﻿---
+---
 layout: default
 title: ADFS Setup 
 ---
@@ -79,7 +79,7 @@ title: ADFS Setup
 
 <p>Please configure the following, if you want to allow non ADFS configured people to use the original username password based logon screen of Gemini. This will allow users to bypass ADFS authentication.</P>
 
-<p>With the following Windows PowerShell script, add the Gemini Login link to the ADFS Sign-in page. Run the Windows PowerShell script with Administrator elevated privileges.</p>
+<p>With the following PowerShell script, add the Gemini Login link to the ADFS Sign-in page. Run the Windows PowerShell script with Administrator elevated privileges.</p>
 <p>Replace this value: <i>https://countertest.countert.com/gemini/</i> to the valid URI of your installed Gemini application in the script and execute:</p>
 <p><i>Set-AdfsGlobalWebContent -SignInPageDescriptionText &quot;&lt;p&gt;Use gemini login &lt;A href='https://countertest.countert.com/gemini/'&gt;here&lt;/A&gt;&lt;/p&gt;&quot;</i></p>
 
