@@ -15,9 +15,9 @@ title: System Workspaces
 	<h2>Custom Cards</h2>
 	<p>Custom cards allow you to create Workspace style cards which 
 		link to additional resources, such as coporate homepage, or other systems.</p>
-	<p><img src="customworkspace.png" /></p>
+	<p><img src="custom-workspaces.png" /></p>
 	<p>To create a custom card, click Add, and complete the form.
-	<p><img src="customworkspaceadd.png" /></p>
+	<p><img src="custom-workspace-add.png" /></p>
 	<dt>Title</dt>
 	<dd>The text shown on the card</dd>
 	<dt>Message</dt>
@@ -41,17 +41,41 @@ title: System Workspaces
 	created any workspaces themselves. It is far better than a shared workspace, because 
 	shared workspaces will keep track of changes and be resource intensive when every ticket
 	is new to a new user.</p>
-	<p><img src="defaultworkspace.png" /></p>
+	<p><img src="default-workspaces.png" /></p>
 	<p>Select the workspace from the list and click save.</p>
 	<p>When a new user visits the Gemini site, they will have this workspaces filter and column definition applied. It will run under their context, 
 	so if "assigned to me" was enabled, each new user would only see their own assigned issues.</p>
 </section>
+
 <section id="workspace-ownership">
 	<h2>Workspace Ownership</h2>
+	<p>This section shows all the workspaces from the select user. All users, including disabled users, are shown here. 
+	Selecting a user will show their workspaces in the table below.</p>
+	<p><img src="workspace-ownership.png" /></p>
+	<h3>Definitions</h3>
+	<dt>Key</dt>
+	<dd>The workspace code shown on the workspace button</dd>
+	<dt>Title</dt>
+	<dd>The workspace tooltip shown when hovering over the workspace</dd>
+	<dt>From Shared</dt>
+	<dd>Denotes if the workspace is from a shared source. Normally, you would not take ownership of these.</dd>
+	<dt>Alerts</dt>
+	<dd>Denotes if there are alerts set on the workspace</dd>
+	<dt>Reports</dt>
+	<dd>If there are reports scheduled, these will be listed here</dd>
+	<dt>Badge</dt>
+	<dd>The badge count and colour as shown on the workspace panel</dd>
+	
+	
+	<h3>Taking Ownership</h3>
+	<p>If a user has left the organization, or is no longer active in Gemini, their workspaces, especially shared ones, 
+	could cause unecessary notifications, or take space on the workspace bundle. It is possible to take ownership of their workspaces,
+	and then disable alerts, reports or revoke sharing.</p>
+	<p>First select the workspace to take ownerhsip, then select the user who will take ownership and click the <em>Move Workspace</em> 
+	button. The workspace will be moved to that new owner and if that is the current user, the workspace will appear on the left hand 
+	side as normal. From there, it can be edited as normal.</p>
 	
 </section>
-
-<p>In addition to sending emails to the administrator email account, any system-level errors that are encountered are written to the System Log. All entries have a timestamp, verbose description of the error and, if the error was initiated from user action, the user associated with the error.</p>
 
 
 
