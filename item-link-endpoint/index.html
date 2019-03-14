@@ -30,3 +30,41 @@ $.ajax({
     }
 });
 </pre>
+
+
+
+<h2>Create</h2>
+<p>This method creates a link between two items.</p>
+
+<p><span class="label label-warning">Post</span><strong>/api/items/{itemid}/links</strong></p>
+
+<p>The URL must have an Item Id. It returns an issue link.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+var issueLink = new IssueLink();
+issueLink.IssueId = 4;
+issueLink.OtherIssueId = 10;
+issueLInk.LinkTypeId = 2;
+IssueLinkDto item = serviceManager.Item.CreateLink(issueLink);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/items/36/links";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    headers: { "Authorization": "Basic " + geminiUsername },
+	data: {
+		IssueId: 4, 
+		OtherIssueId : 10, 
+		LinkTypeId : 2 
+	},
+    success: function (data) {
+      alert('Success!');
+    }
+});
+</pre>

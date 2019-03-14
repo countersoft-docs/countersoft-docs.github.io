@@ -173,7 +173,7 @@ var geminiData = {
 $.ajax({
     url: geminiUrl,
     type: "POST",
-    data: geminiProject,
+    data: geminiData,
     headers: { "Authorization": "Basic " + geminiLogin },
     success: function (data) {
       alert('Success!');
@@ -217,7 +217,7 @@ var geminiData = {
 $.ajax({
     url: geminiUrl,
     type: "PUT",
-    data: geminiProject,
+    data: geminiData,
     headers: { "Authorization": "Basic " + geminiLogin },
     success: function (data) {
       alert('Success!');
