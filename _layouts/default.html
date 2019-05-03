@@ -95,12 +95,12 @@
 		    var entry = document.getElementsByTagName('script')[0];
 		    entry.parentNode.insertBefore(script, entry);
 	    }());
-
+var reload = true;
 		$(document).ready(function() {
 			$("#docs-index").dynatree({
 	            onActivate: function(node)
 	            {
-					if(node.getEventTargetType(event) != "icon")
+					if(reload && node.getEventTargetType(event) != "icon")
 					{
 		            	if (node.data.href) window.location.href = node.data.href;
 					}
@@ -118,7 +118,9 @@
 					path = path.replace("/","")
 
 		            var tree = $("#docs-index").dynatree("getTree");
+			    reload = false;
 		            tree.activateKey(path);
+			    relaod = true;
 		        },
 		        activeVisible: true,
 	            persist: true,
