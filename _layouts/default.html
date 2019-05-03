@@ -95,7 +95,7 @@
 		    var entry = document.getElementsByTagName('script')[0];
 		    entry.parentNode.insertBefore(script, entry);
 	    }());
-var reload = true;
+var reload = false;
 		$(document).ready(function() {
 			$("#docs-index").dynatree({
 	            onActivate: function(node)
@@ -118,7 +118,7 @@ var reload = true;
 					path = path.replace("/","")
 
 		            var tree = $("#docs-index").dynatree("getTree");
-			    reload = false;
+			   
 		            tree.activateKey(path);
 			    relaod = true;
 		        },
