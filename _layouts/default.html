@@ -95,12 +95,12 @@
 		    var entry = document.getElementsByTagName('script')[0];
 		    entry.parentNode.insertBefore(script, entry);
 	    }());
-var reload = false;
 		$(document).ready(function() {
 			$("#docs-index").dynatree({
 	            onActivate: function(node)
 	            {
-					if(reload && node.getEventTargetType(event) != "icon")
+			    if(event.type !='DOMContentLoaded') {
+					if(node.getEventTargetType(event) != "icon")
 					{
 		            	if (node.data.href) window.location.href = node.data.href;
 					}
@@ -108,6 +108,7 @@ var reload = false;
 					{
 						return false;
 					}
+			    }
 	            },
 	            onPostInit: function(isReloading, isError) {
 	            	//set tree to show current page
@@ -120,7 +121,6 @@ var reload = false;
 		            var tree = $("#docs-index").dynatree("getTree");
 			   
 		            tree.activateKey(path);
-			    relaod = true;
 		        },
 		        activeVisible: true,
 	            persist: true,
