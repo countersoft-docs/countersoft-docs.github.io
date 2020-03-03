@@ -1,11 +1,14 @@
 ---
 layout: default
-title: Upgrading From 5.x/6.0
+title: Upgrading From 5.x or 6.x
 
 ---
 <h1>Upgrading From 5.x/6.x</h1>
 <p>A <a href="/using-the-zip-file">zip file</a> download is available containing both the Gemini web application and the SQL database scripts required for the upgrade process.</p>
 <p><span class="label label-important">Note</span>&nbsp;We recommend that you perform this upgrade on a test instance. However, if you are using Ticketing and Exchange that we recommend archiving all messages in the inbox before upgrading.</p>
+
+<p><span class="label label-important">Note</span>&nbsp;If you are upgrading, please do not manually execute upgrade SQL scripts - install the new release, browse to the site, and Gemini will auto upgrade for you.</p>
+<br></br>
 
 
 <h2>Step 1 - Check Pre-requisites</h2>
@@ -40,7 +43,11 @@ title: Upgrading From 5.x/6.0
 </ul>
 
 <h2>Step 6 - Using SQL Upgrade Scripts</h2>
-<p>If the SQL user does not have the appropriate user permissions to upgrade Gemini automatically, you will need to run the appropriate SQL scripts provided.</p>
+
+<p><span class="label label-important">Note</span>&nbsp;If you are upgrading Gemini 6, DO NOT manually execute upgrade SQL scripts - install the new release, browse to the site, and Gemini will auto upgrade for you. If the SQL user does not have the appropriate user permissions to upgrade Gemini automatically, you will need to grant the appropriate permissions.</p>
+<br></br>
+
+<p>If you are upgrading Gemini 5 and the SQL user does not have the appropriate user permissions to upgrade Gemini automatically, you must execute the scripts manually. To do so:</p>
 <ul>
 	<li>Locate your Gemini installation folder.</li>
 	<li>Open the folder named "SQL".</li>
