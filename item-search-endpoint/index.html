@@ -4,12 +4,12 @@ title: Item Search Endpoint
 ---
 <h1>Item Search Endpoint</h1>
 
-<h2>Get</h2>
+<h2>Post</h2>
 <p>This method returns a filtered list of Items.</p>
 
 <p><span class="label label-warning">Get</span><strong>/api/items/filtered</strong></p>
 
-<p>The request body must contain an IssueFilter entity. It returns a list of IssueDto's.</p>
+<p>The request body must contain an IssueFilter entity in JSON e.g. {IncludeClosed: "false",Projects: "18"}. It returns a list of IssueDto's.</p>
 
 <p>Microsoft.NET example:</p>
 <pre>
