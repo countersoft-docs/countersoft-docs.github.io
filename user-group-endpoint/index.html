@@ -164,3 +164,111 @@ $.ajax({
     }
 });
 </pre>
+
+<h2>Add User to a Group</h2>
+<p>This method adds a user to a specifc group for a specific porject</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/groups/{id}/join/{userId}/{projectId}</strong></p>
+
+<p>The URL must contain the Group Id, User Id and Project Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Groups.JoinProjectGroup(12, 192, 18);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/groups/12/join/192/18";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Add User to a Group</h2>
+<p>This method adds a user to a specifc group for a all porjects</p>
+
+<p><span class="label label-warning">POST</span><strong>/api/groups/{id}/join/{userId}</strong></p>
+
+<p>The URL must contain the Group Id and User Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Groups.JoinProjectGroup(12, 192);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/groups/12/join/192";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "POST",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Remove User from a Group</h2>
+<p>This method removes a user from a specifc group and specific project</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/groups/{id}/join/{userId}/{projectId}</strong></p>
+
+<p>The URL must contain the Group Id, User Id and Project Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Groups.LeaveProjectGroup(12, 192, 18);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/groups/12/leave/192/18";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>
+
+<h2>Remove User from a Group</h2>
+<p>This method removes a user from a specifc group for all projects</p>
+
+<p><span class="label label-warning">DELETE</span><strong>/api/groups/{id}/join/{userId}</strong></p>
+
+<p>The URL must contain the Group Id and User Id.</p>
+
+<p>Microsoft.NET example:</p>
+<pre>
+serviceManager.Groups.LeaveProjectGroup(12, 192);
+</pre>
+
+<p>JavaScript example:</p>
+<pre>
+var geminiUrl = "http://localhost/gemini/api/groups/12/leave/192";
+var geminiUsername = Base64.encode("manager:xvitjc5bmm"); // user : apikey
+
+$.ajax({
+    url: geminiUrl,
+    type: "DELETE",
+    headers: { "Authorization": "Basic " + geminiUsername },
+    success: function () {
+        alert('Success!');
+    }
+});
+</pre>
