@@ -6,22 +6,18 @@ title: GitHub
 
 <h2>Setup</h2>
 <p>Open your Github repository and navigate to Settings.</p>
+<p><img src='github_settings.png'/></p>
 
-<p>Click 'Service Hooks', search for 'Gemini' and complete the details.</p>
-<p><img src='service-hooks.png' /></p>
+<p>Click 'on Webhooks' and then on the Webhooks page, Add webhook.</p>
+<p><img src='webhooks.png' /></p>
 
-<p>Within GitHub.com, navigate to  'Account settings' -> 'Applications' -> 'Register new application'. Complete the new application form.</p>
-<p><img src='application.png' /></p>
+<p>In the payload url specify: https://your gemini url/api/github/commit?token=YOUR API KEY (from web.config).</p>
 
-<p>Ensure you specify the  callback URL like below.</p>
+<p>Set content type to: application/json</p>
 
-<pre>http://YOUR GEMINI URL/apps/saucery/github/authenticate</pre>
+<p>Select the option to: just push event</p>
 
-<p>Once the application is registered you can click on it and you will find the Client ID/Client Secret (make a note of these as you will require them the first time you access commited files from within the Code Review section).</p>
-<p><img src='sauceryview.png' /></p>
-<p>You will be prompted to allow Gemini access to your GitHub account.</p>
-<p><img src='appauth.png' /></p>
-
+<p>Click Add Webhook</p>
 
 <h2>Usage</h2>
 

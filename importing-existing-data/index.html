@@ -4,13 +4,14 @@ title: Importing Existing Data
 ---
 <h1>Importing Existing Data</h1>
 
-<p>Data from other systems can be imported using the Import Wizard.</p>
-<p><span class="label label-warning">Note</span>User permissions may prevent you from importing data.</p>
+<p>Data from external sources can be imported using Gemini's Import Wizard.</p>
+<p><span class="label label-warning">Note</span>You must be in a User Group with "Can Perform Bulk Operations" permission to use the Import Wizard.</p>
+<p><span class="label label-warning">Note</span>Your file should have column headings and the rows of data to be imported should NOT have gaps.</p>
 <p><img src="grid.png" /></p>
 
 <p>You can choose to import from Microsoft Excel and CSV file formats (PIPE, COMMA or TAB delimited).</p>
 
-<p>You choose which fields to import and what they map to. Optionally, you can also ignore certain fields and prevent them from being imported.</p>
+<p>You choose which fields to import and what they map to. Optionally, you can also ignore fields in the source file.</p>
 <p><img src="wizard-step1.png" /></p>
 
 <p>For every field value found in your import file you can map it to an existing value or add it during the import process.</p>
@@ -18,6 +19,6 @@ title: Importing Existing Data
 
 <p>Imported items will appear in the Items Grid.</p>
 
-<p><span class="label label-important">Note</span>&nbsp;The wizard import multiple comments for one issue by using the delimiter <b>#!#</b> but they have to be in one record with the item.</p>
-<p><span class="label label-important">Note</span>&nbsp;You can also import dependencies by mapping a column to the Dependency field and entering either an existing item id or the row number in Rx format. R2 will be the item imported in the 2nd row of the file (1st row when you have headers).</p>
-<p><span class="label label-important">Note</span>&nbsp;In some cases you might receive an error message about folder permssions not setup. Please check that and the system log for more error details.</p>
+<p><span class="label label-important">Note</span>&nbsp;The wizard can import multiple comments for one item by using the delimiter <b>#!#</b> but they have to be in one record with the item.</p>
+<p><span class="label label-important">Note</span>&nbsp;You can import dependencies by mapping a column to the Dependency field and entering either an existing item id or the row number in Rx format. R2 will be the item imported in the 2nd row of the file (1st data row when you have headers).</p>
+<p><span class="label label-important">Note</span>&nbsp;In some cases you might receive an error message about folder permssions. If this happens, please check that you have set folder permissions on the web server as specified in Gemini installation and upgrade instructions.</p>
