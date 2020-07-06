@@ -4,17 +4,17 @@ title: Creating Items
 ---
 <h1>Creating Items</h1>
 
-<p>Depending on your permissions, you can create new items in two ways. The first and most obvious method is to click on the plus sign located top right of every screen.</p>
+<p>Depending on your permissions, you can create new items in different ways. The first and most obvious method is to click on the plus sign located top right of every screen.</p>
 <p><img src="plus.png" /></p>
 
 <p>You will be presented with a data entry form that requires completion. Selecting the Project or the Type can dynamically change the fields you are required to provide.</p>
 <p>If on the Project Template the Screens definition of the item type you are creating makes a field mandatory, it will appear on the form in bold</p>
-<p>Default values, set in Project Settings, will appear on the form. Gemini can do things like default Start Dates using the meta value "TODAY" and Due Date using "TODAY+14" etc.</p>
 <p><img src="single.png" /></p>
 
-<h2>Missing Fields</h2>
-<p>Any missing, mandatory fields will be highlighted and will require input before the item can be created.</p>
-<p><img src="missing-field.png" /></p>
+<p>If you use Gemini's Organizations feature, every item you create will belong to an Organization. If you belong to a single Organization you will not see the field or be prompted for a value. Users who belong to multiple Organizations must select the Organization they want to create an item for.</p>
+<p><img src="organizations.png" /></p>
+<p>Users who belong to multiple Organizations will be able to set their default Organization on their User Profile.</p>
+<p><img src="organizations_2.png" /></p>
 
 <h2>Rich Text Fields</h2>
 <p>Certain fields allow for rich text content, and Gemini has a Rich Text Editor. Gemini's Rich Text Editor can use "Canned Comments" for rapid entry of replies and descriptions</p>
@@ -24,10 +24,27 @@ title: Creating Items
 <p>Date fields have calendar controls to make selecting dates simple.</p>
 <p><img src="date-picker.png" /></p>
 
+<h2>Missing Fields</h2>
+<p>Any missing, mandatory fields will be highlighted and will require input before the item can be created.</p>
+<p><img src="missing-field.png" /></p>
+
+<h2>Smart Data Capture and Management</h2>
+<p>Default values, set in Project Settings, will appear on the form. Gemini can do things like default Start Dates using the meta value "TODAY" and Due Date using "TODAY+14" etc.</p>
+<p>Gemini lets you create sophisticated data entry rules that must be met for an item to be created. If your conditions aren't met (e.g High Priority but no Resource Assigned) you can veto creation with a message to the user.</p>
+<p>Gemini's Rules & Actions can also run after data entry, on edit events. Gemini's SLA functionality continually assesses items. It can change data values, escalating status/priotity etc. and send out emails and alerts.</p>
+
+<h2>Alternative Methods</h2>
+<p>If you want a quick way to enter basic details of items that have a hierarchical dependency (say during a planning meeting) you can use Gemini's Quick Entry.</p>
+<p>You can use Gemini's Excel Import functionality to bulk upload a number of items, particularly items from external sources.</p>
+
 <div class="well well-small related-box">
     <span class="title">Related</span>
     <ul>
-        <li><a href="/setting-project-defaults">Setting Project Defaults</a></li>
+        <li><a href="/organization-permissions">Using Organizations</a></li>
+        <li><a href="/rules-actions-sla">Smart Data - Rules and Actions</a></li>
+        <li><a href="/setting-project-defaults">Smart Data - Defaulting values</a></li>
+        <li><a href="/quick-entry">Alternative methods - Quick Entry</a></li>
+        <li><a href="/importing-existing-data">Alternative methods - Excel Import</a></li>
         <li><a href="/setting-up-canned-responses">Setting up Canned Responses</a></li>
         <li><a href="/editing-items">Editing Items</a></li>
         <li><a href="/deleting-items">Deleting Items</a></li>
