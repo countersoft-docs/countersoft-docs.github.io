@@ -1,16 +1,18 @@
 ---
 layout: default
-title: Upgrading From 5.x or 6.x
+title: Upgrading From Gemini 5.x or Gemini 6.x
 
 ---
-<h1>Upgrading From 5.x/6.x</h1>
+<h1>Upgrading From Gemini 5 or Gemini 6</h1>
+<p><span class="label label-important">Note</span>&nbsp;If you are upgrading to <b>Gemini 7</b> you MUST recompile custom apps against the dlls that ship with Gemini 7. Apps built using libraries from previous versions of Gemini will NOT work with version 7.</p>
+<p><span class="label label-important">Note</span>&nbsp;If you are upgrading to <b>Gemini 7</b> and have built custom apps, you must remove allow partially trusted callers ([assembly: AllowPartiallyTrustedCallers]) if it is in your <b>AssemblyInfo.cs</b></p>
+
 <p>A <a href="/using-the-zip-file">zip file</a> download is available containing both the Gemini web application and scripts needed for the upgrade process.</p>
 <p><span class="label label-important">Note</span>&nbsp;We strongly recommend that on-premise customers upgrade a test instance and perform full regression testing before upgrading production. 
 If you are using Breeze Email Ticketing, we recommend archiving all messages in any Gemini mailboxes to another folder before upgrading.</p>
 
 <p><span class="label label-important">Note</span>&nbsp;Please do not manually execute upgrade SQL scripts - install the new release, browse to the site, and Gemini will auto upgrade the database for you.</p>
 
-<p><span class="label label-important">Note</span>&nbsp;If you are upgrading to Gemini 7 you MUST recompile custom apps against the dlls that ship with Gemini 7. Apps built using libraries from previous versions of Gemini will NOT work with version 7.</p>
 <br></br>
 
 
