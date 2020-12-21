@@ -20,27 +20,40 @@ title: Cascading Custom Field Lookups
 	<li><b>Show with Attributes</b>: if selected then the field value(s) will be shown on the left hand side in the List and View Item screens</li>
 </ul>
 
-<p>Example:</p>
+<p>Worked Example:</p>
 <ul>
-	<li><b>tariff (SQL table)</b>
+	<li><b>Tariff (created as SQL table 'Tariffs')</b>
 		<ul>
-			<li>tariffid</li>
-			<li>description</li>
+			<li>TariffId</li>
+			<li>Description</li>
 		</ul>
 	</li>
-	<li><b>device (SQL table)</b>
+	<li><b>Device (created as SQL table 'Devices')</b>
 		<ul>
-			<li>deviceid</li>
-			<li>tariffid</li>
-			<li>description</li>
+			<li>DeviceiId</li>
+			<li>TariffId</li>
+			<li>Description</li>
 		</ul>
 	</li>
 </ul>
 
-<p>In the above example when defining a cascading lookup for devices, you would be expected to already have selected a Cascading Lookup field for tariff from the tariff table. If you call this field 'tariff' the <b>Cascading Parent Field</b> for devices would be 'tariff' and the Lookup Field Name would be 'tariffid', the foreign key to the tariff table in the device table.</p>
+<p>In the above example, Tariff is Custom Field of type <b>Dropdown List</b> and is defined as NOT cascading. Tariff is the <b>Parent Field</b> for Device.</p>
+<p>Device is a Custom Field of type <b>Dropdown List</b> and is defined as CASCADING from Tariff and the Cascading Lookup field is therefore TarrifId.
 <p><img src="cascading-custom-fields.png" /></p>
 
-<p><span class="label label-important">Note</span>The Custom Field screen will only create simple Field/Description tables in SQL. A table like 'devices' in the example above is a complex table because of the 'tariffid' field. Child tables in Cascading Custom Fields must be created using a SQL tool such as SQL Management Studio.</p>
+<p>Data Entry of Tariff values will look as below:</p>
+<p><img src="tariff_entries.png" /></p>
+
+<p>Date Entry of Device values will look as below, with Gemini requesting the Tariff qualifier with a dropdown of Tariff descriptions.</p>
+<p><img src="device_entries.png" /></p>
+
+<p><span class="label label-important">Note</span>When placing the fields on the data entry screen, be sure to prompt for the parent before the child.</p>
+<p><img src="cascading_fields_on_screen.png" /></p>
+
+<p>To get the following result</p>
+<p><img src="cascading_fields_on_add.png" /></p>
+
+<p><span class="label label-important">Note</span>The Custom Field screen (and Gemini's logic) relates only to simple Field Id/Description matching - simple tables like 'Tariffs' and 'Devices'. More complex tables must be created using a SQL tool such as SQL Management Studio.</p>
 
 <div class="well well-small related-box">
     <span class="title">Related</span>
