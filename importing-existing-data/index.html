@@ -11,14 +11,18 @@ title: Importing Existing Data
 
 <p>You can choose to import from Microsoft Excel and CSV file formats (PIPE, COMMA or TAB delimited).</p>
 
-<p>You choose which fields to import and what they map to. You may ignore fields in the source file that you do not need to upload.</p>
+<p>You choose which fields to import and what they map to. You may ignore fields in the source file that you do not wish to upload (see also restrictions on Custom Fields below).</p>
 <p><img src="wizard-step1.png" /></p>
 
-<p>You map fields in the import file to fields on your Gemini Project Template. Field values that exist in the source file but not in Gemini can be added during the import.</p>
+<p>You map fields in the import file to fields on your Gemini Project Template. Field values that exist in the source file but not in Gemini can be added dynamically during the import.</p>
 <p><img src="wizard-step2.png" /></p>
-
-<p>Imported items will appear in the Items Grid.</p>
 
 <p><span class="label label-important">Note</span>&nbsp;The wizard can import multiple comments for one item by using the delimiter <b>#!#</b> but they have to be in one record with the item.</p>
 <p><span class="label label-important">Note</span>&nbsp;You can import dependencies by mapping a column to the Dependency field and entering either an existing item id or the row number in Rx format. R2 will be the item imported in the 2nd row of the file (1st data row when you have headers).</p>
-<p><span class="label label-important">Note</span>&nbsp;In some cases you might receive an error message about folder permssions. If this happens, please check that you have set folder permissions on the web server as specified in Gemini installation and upgrade instructions.</p>
+<p><span class="label label-important">Note</span>&nbsp;If you receive an error related to folder permssions, please check that you have set <b>Folder Permissions</b> on the web server as specified in Gemini installation and upgrade instructions.</p>
+
+<p><b>The following restrictions apply to Custom Fields when using the wizard</b></p>
+<p><span class="label label-important">Note</span>&nbsp;The wizard cannot be used to import Custom Fields that are <b>Filtered by Project</b></p>
+<p><span class="label label-important">Note</span>&nbsp;The wizard can import, <b>but will not validate</b>, Cascading Custom Fields (for example it cannot check that Post Code correctly matches City)</p>
+
+<p>Imported items will appear in the Items Grid.</p>
