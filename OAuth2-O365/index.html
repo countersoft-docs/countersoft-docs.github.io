@@ -42,7 +42,7 @@ title: OAuth Setup for Micosoft Services
 
 <p>Enter the Redirect URI. This will be in the format https://yourServer.com/Admin/OAuthCallback, where yourServer.com is the url of your Gemini instance.</p>
 <p><img src="AZPortal10.png" /></p>
-<p><span class="label label-warning">Note</span>Your Gemini site must be hosted on an SSL connection (https) as http redirects are not permitted.</p>
+<p><span class="label label-important">Note</span>Your Gemini site must be hosted on an SSL connection (https) as http redirects are not permitted.</p>
 
 <p>Click Configure</p>
 <p><img src="AZPortal11.png" /></p>
@@ -51,7 +51,7 @@ title: OAuth Setup for Micosoft Services
 <p><img src="AZPortal12.png" /></p>
 <p>Create a new client secret</p>
 <p><img src="AZPortal13.png" /></p>
-<p><span class="label label-important">Note</span>If you wish to use a certificate instead, please refer to the Microsoft documentation on the subject.</p>
+<p><span class="label label-warning">Note</span>If you wish to use a certificate instead, please refer to the Microsoft documentation on the subject.</p>
 <p><img src="AZPortal14.png" /></p>
 <p>Enter a secret that will be encoded when you click "Add"</p>
 <p><span class="label label-warning">Note</span>We recommend you do not set your secrets to expire, so Gemini does not suddenly stop working with email.</p>
@@ -84,9 +84,9 @@ title: OAuth Setup for Micosoft Services
 </ul>
 
 <p>Save your configuration when you have provided the mandatory details. You will be redirected and required to authenticate with your OAuth provider</p>
-<p><img src="OAuth_provider1.png" /></p>
+<p><img src="oauth_provider1.png" /></p>
 <p>Confirm the access permissions and you'll be returned to Gemini, where you should see a success message</p>
-<p><img src="OAuth_provider2.png" /></p>
+<p><img src="oauth_provider2.png" /></p>
 
 <h2>Gemini SMTP Configuration</h2>
 <p>OAuth configuration is the same for both the generic system mailbox in System Email Options, and the SMTP mailbox(es) for Breeze Ticketing</p>
