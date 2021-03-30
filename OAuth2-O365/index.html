@@ -1,0 +1,108 @@
+---
+layout: default
+title: OAuth Setup for Micosoft Services
+---
+<h1>OAuth Setup for Microsoft Services - This is a Gemini 7.1 Pre-release document</h1> 
+
+<p>Configuring OAuth is a two-step process. First you configure Microsoft Services to know about Gemini. Then you configure Gemini to use these services.</p>
+<h2>Microsoft 365 Configuration</h2>
+<h3>Create an application in Azure</h3>
+
+<p>Navigate to the Azure Portal and login (at the time of writing, this was Portal.Azure dotcom).</p>
+<p>On the menu of services, select Azure Active Directory.</p>
+<p><img src="AZPortal1.png" /></p>
+
+<p>Select Azure App Registrations</p>
+<p><img src="AZPortal2.png" /></p>
+
+<p>If this is the first time you are setting this up, add a new application registration.</p>
+<p><img src="AZPortal3.png" /></p>
+
+<p>Give your application a name e.g. Gemini Email Connector. Choose the access level (defaults will suffice for 99% of users). Do not specify a Redirect URI.</p>
+<p><img src="AZPortal4.png" /></p>
+
+<p>Click Register<p>
+<p><img src="AZPortal5.png" /></p>
+
+<h3>Configure your application</h3>
+<p>On registering your application there are 2 values that are applied to it that are essential.</p>
+<ul>
+	<li>The Application(Client) ID</li>
+	<li>The Tenant(Directory) ID</li>
+</ul>
+<p>Note these, you will use them to configure Gemini later.</p>
+<p><img src="AZPortal6.png" /></p>
+
+<p>Select authentication from the menu</p>
+<p><img src="AZPortal7.png" /></p>
+
+<p>Add a platform and select Web application from the list of choices.</p>
+<p><img src="AZPortal8.png" /></p>
+<p><img src="AZPortal9.png" /></p>
+
+<p>Enter the Redirect URI. This will be in the format https://yourServer.com/Admin/OAuthCallback, where yourServer.com is the url of your Gemini instance.</p>
+<p><img src="AZPortal10.png" /></p>
+<p><span class="label label-warning">Note</span>Your Gemini site must be hosted on an SSL connection (https) as http redirects are not permitted.</p>
+
+<p>Click Configure</p>
+<p><img src="AZPortal11.png" /></p>
+
+<p>Select Certificates & secrets</p>
+<p><img src="AZPortal12.png" /></p>
+<p>Create a new client secret</p>
+<p><img src="AZPortal13.png" /></p>
+<p><span class="label label-important">Note</span>If you wish to use a certificate instead, please refer to the Microsoft documentation on the subject.</p>
+<p><img src="AZPortal14.png" /></p>
+<p>Enter a secret that will be encoded when you click "Add"</p>
+<p><span class="label label-warning">Note</span>We recommend you do not set your secrets to expire, so Gemini does not suddenly stop working with email.</p>
+<p><span class="label label-important">Note</span>Copy the encoded secret immediately! It cannot be seen again anywhere in the portal.</p>
+
+<h2>Gemini Mailbox Configuration</h2>
+<p>To use OAuth with Gemini mailboxes, you can choose to configure the connection as Exchange(EWS) or IMAP<p>
+
+<h3>IMAP Configuration</h3>
+<p><img src="gemini_mailbox1.png" /></p>
+<p>Specify OAuth2 as the Authentication Mode</p>
+<p><img src="gemini_mailbox2.png" /></p>
+<p>When you do this you will be prompted for an OAuth Provider. At present, only Microsoft is available, but others will soon be added.</p>
+<p>You must use SSL and we recommend you leave the SSL protocol as Auto so Gemini can select the most modern.</p>
+<p><img src="gemini_mailbox3.png" /></p>
+
+<h3>Exchange(EWS) Configuration</h3>
+<p><img src="gemini_mailbox5.png" /></p>
+<p>Selecting Exchange will require you to select the Exchange version. Select Office365_OAuth.</p>
+<p><img src="gemini_mailbox6.png" /></p>
+<p>The Exchange Web Server URL will be defaulted for you. The domain is likely to remain empty for O365 and OAuth</p>
+
+<h3>Generic OAuth Configuration</h3>
+<p>4 new fields have been added to Gemini's Mailbox/SMTP configuration</p>
+<ul>
+	<li>Tenant ID - the Tenant ID from your Azure application</li>
+	<li>Client ID - the Client ID from your Azure application</li>
+	<li>Client Secret - the Client Secret from your Azure application</li>
+	<li>Scopes - A field that will auto-populate for you</li>
+</ul>
+
+<p>Save your configuration when you have provided the mandatory details. You will be redirected and required to authenticate with your OAuth provider</p>
+<p><img src="OAuth_provider1.png" /></p>
+<p>Confirm the access permissions and you'll be returned to Gemini, where you should see a success message</p>
+<p><img src="OAuth_provider2.png" /></p>
+
+<h2>Gemini SMTP Configuration</h2>
+<p>OAuth configuration is the same for both the generic system mailbox in System Email Options, and the SMTP mailbox(es) for Breeze Ticketing</p>
+<p>Navigate to Ticketing...SMTP Servers and edit or add a new SMTP connection</p>
+<p><img src="SMTP1.png" /></p>
+<p>Provide a name for your SMTP Server. For Microsoft OAuth, the server and port should be as shown above.</p>
+<p>Select OAuth2 from the Authentication Modes drop down. You will see the form present new fields.</p>
+<p><img src="SMTP2.png" /></p>
+<p>The scopes will be automatically populated, but complete the rest of the fields as per the Azure AD Application details created earlier.</p>
+<p>Save the configuration. On Ticketing SMTP servers you should get a simple success message. On System Email Options, you will get a verbose trail of Gemini testing the SMTP connection.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li><a href="/email-alerts">SMTP Server Configuration</a></li>
+		<li><a href="/listening-to-mailboxes">Listening To Mailboxes</a></li>
+		<li><a href="/using-outbound-smtp">Using Outbound SMTP</a></li>
+	</ul>
+</div>
