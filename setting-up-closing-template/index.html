@@ -9,9 +9,9 @@ title: Customer Self-Service
 <p>To implement this functionality, navigate to Configure Gemini...Ticketing...Close Ticket Template, and set the template up as shown below.</p>
 <p><img src="closingtemplate2.png" /></p>
 <h3>Injecting Data</h3>
-<p>Note the use of <code>@(Model.TheItem.Title)</code> in the image above, which will inject the ticket title into the template. For more information on fields that can be included in an email template click the link to "Email Templates" in the "Related" section below.</p>
-<p>To include a link that will take your customer/user to the Close Ticket page, you need to include an HTML anchor and a reference to Model.CloseTicketUrl - <code><a href="@(Model.CloseTicketUrl)"></a></code> - into your standard email templates</p>
-<p>The most obvious email template to put this in is "Email Reply (Breeze)", but it can be injected into any of Gemini's email templates</p>
+<p>Note the use of <code>@(Model.TheItem.Title)</code> in the image above, which will inject the ticket title into the template. For more information on fields that can be included in an email template see <a href="/email-templates">Email Templates</a>.</p>
+<p>To include a link that will take your customer/user to the Close Ticket page, you need to include an HTML anchor and a reference to Model.CloseTicketUrl into your standard email templates (see image below).</p>
+<p>The most obvious email template to put this in is "Email Reply (Breeze)", but it can be injected into any of Gemini's email templates.</p>
 <p><img src="closingtemplate3.png" /></p>
 
 <h3>Optional Use of the Template</h3>
