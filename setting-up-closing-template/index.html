@@ -1,0 +1,37 @@
+---
+layout: default
+title: Customer Self-Service
+---
+<h1>Customer Closing Template - This is a Gemini 7.1 Pre-release document</h1> 
+<p><p><img src="closingtemplate1.png" /></p>
+<p>Gemini's Close Template functionality lets you define a page with a message to your customer/user and the option for the customer/user to set the status of the ticket and provide a closing remark.</p>
+<p>On this template you define the message, provide links if you wish, define the status the customer can set (does not have to be 'Closed', it could be 'Replied' or any other), choose the Call to Action button text, and decide if the customer can provide feedback, which will be added to the ticket as commentary.</p>
+<p>To implement this functionality, navigate to Configure Gemini...Ticketing...Close Ticket Template, and set the template up as shown below.</p>
+<p><img src="closingtemplate2.png" /></p>
+<h3>Injecting Data</h3>
+<p>Note the use of <code>@(Model.TheItem.Title)</code> in the image above, which will inject the ticket title into the template. For more information on fields that can be included in an email template click the link to "Email Templates" in the "Related" section below.</p>
+<p>To include a link that will take your customer/user to the Close Ticket page, you need to include an HTML anchor and a reference to Model.CloseTicketUrl - <code><a href="@(Model.CloseTicketUrl)"></a></code> - into your standard email templates</p>
+<p>The most obvious email template to put this in is "Email Reply (Breeze)", but it can be injected into any of Gemini's email templates</p>
+<p><img src="closingtemplate3.png" /></p>
+
+<h3>Optional Use of the Template</h3>
+<p>There is a simple technique to allow Gemini users, using Breeze Reply, to decide on a reply-by-reply basis whether or not the Close Ticket link should be inserted.</p>
+	<ul>
+		<li id="create-canned-comment"><a href="/setting-up-canned-responses">Create a Canned Comment with a special token in white text on a white background, as shown below</a></li>
+		<p><img src="cannedcommenttoken.png" /></p>
+		<li id="if-canned-comment"><a href="/email-templates">In the Email Reply (Breeze) Template, wrap the injection of the Closed Ticket link inside an if-code-block</a></li>
+		<p><img src="cannedcommenttest.png" /></p>
+		<li id="replying-to-customer">When replying, add the invisible token you created as a Canned Comment to the bottom of the email</li>
+		<p><img src="hiddentoken.png" /></p>
+	</ul>
+
+<p><span class="label label-important">Note</span>The customer can only click the button on a ticket once. After the status has been set, the link to the page, though valid, will have no effect on the ticket.</p>
+
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li id="email-templates"><a href="/email-templates">Email Templates</a></li>
+		<li id="setting-up-canned-responses"><a href="/setting-up-canned-responses">Create and Manage Standard Responses</a></li>
+	</ul>
+</div>

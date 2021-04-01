@@ -5,10 +5,20 @@ title: Setting up Canned Responses
 <h1>Setting up Canned Responses</h1> 
 <p><p><img src="grid.png" /></p>
 
-<p>You can create pre-defined responses to common ticket queries. So when such queries arrive you can respond quickly.</p>
-
-<p>Add any canned reply as required. You have access to the item and user you are responding to and the user who is posting the response.</p>
+<p>You can create standard responses to common queries so that when such queries arrive you can respond in a quick and consistent manner.</p>
+<p>Create as many 'canned' replies as you need, and even create them on the fly. You can choose to use these responses for email replies only, as manual comments only, or for both purposes.</p>
+<p>When you create a standard response for use as a manual comment, you can also determine if it may be used in either the description or the comment field, or in both.<p>
+<p>For comments, you can restrict the availability of these standard responses to certain User Groups, meaning customers can see one set of comments and the internal team another set.<p>
+<p>You can also create project-specific standard responses; particularly useful if you separate your customers into different projects as opposed to keeping them in a single project, separated by User Group and Permissions, or by Organizations.<p>
 <p><img src="breeze-from.png" /></p>
+<p><span class="label label-warning">Note</span>If you are creating Canned Comments in the Ticketing section, you will not see the "Associated Areas" or User Group selections in the image above as the associated area is pre-defined as exclusively 'Breeze' (email reply).</p>
+<p>To create a canned comment that can be used as a manual comment or description, edit a description in the View Item screen, or add a Comment (you can simply right-click any item on the Grid), and select the Canned Comment drop-down</p>
+<p><img src="gridcomment.png" /></p>
+<p><p><img src="ViewItemEdit.png" /></p>
+<p>The Rich Text Editor that pops up has the Canned Comment control. If there are existing responses linked to the area of the application and project(s) you are in, they will be available for selection. There will always be the option to add a new standard response on the fly.</p>
+<p><img src="control.png" /></p>
+
+
 <p>The following table shows the valid properties of the canned response model:</p>
 <table class="table table-bordered table-striped">
     <thead>
@@ -224,20 +234,23 @@ title: Setting up Canned Responses
         </tr>
     </tbody>
 </table>
-<p>The Email Reply editor allows you to select from a list of canned response.</p>
+<p>The Email Reply editor allows you to select from a list of canned responses that are specific to Breeze, and, if you have made your responses project-specific, to the project the ticket belongs to.</p>
 <p><img src="breeze-reply.png" /></p>
 
-<p>If you do not see the Email Reply section, please ensure your Screens are configured correctly.</p>
+<p><span class="label label-important">Note</span>If you do not see the Email Reply section in the View Item page, please ensure your Screens are configured correctly to allow Email Reply.</p>
 <p><img src="breeze-reply-in-screen.png" /></p>
 
-<p>In order to create a new canned response on the fly, users must have the "Can Set Project Default Values" permission.</p>
+<p><span class="label label-important">Note</span>In order to create a new standard response on the fly, users must have the "Can Set Project Default Values" role in the permission set for the project the ticket/item is in.</p>
 
 <div class="well well-small related-box">
     <span class="title">Related</span>
 	<ul>
-		<li><a href="/establishing-inbound-queues">Establishing Inbound Queues</a></li>
-		<li><a href="/using-outbound-smtp">Using Outbound SMTP</a></li>
-		<li><a href="/listening-to-mailboxes">Listening To Mailboxes</a></li>
-		<li><a href="/using-match-expressions">Using Match Expressions</a></li>
+		<li id="establishing-inbound-queues"><a href="/establishing-inbound-queues">Establishing Inbound Email Queues</a></li>
+		<li id="using-outbound-smtp"><a href="/using-outbound-smtp">Configure SMTP For Customer Responses</a></li>
+		<li id="listening-to-mailboxes"><a href="/listening-to-mailboxes">Turn Emails Into Tickets</a></li>
+		<li id="OAuth-for-Microsoft Services"><a href="/OAuth-O365">OAuth Setup For Microsoft</a></li>
+		<li id="using-match-expressions"><a href="/using-match-expressions">Filter Email With Match Expressions</a></li>
+		<li id="using-closing-template"><a href="/setting-up-closing-template">Let Customers Close Tickets</a></li>
+		<li id="setting-up-reply-from-addresses"><a href="/setting-up-reply-from-addresses">Setup Reply From Addresses</a></li>
 	</ul>
 </div>
