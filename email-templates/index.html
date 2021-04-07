@@ -4,12 +4,11 @@ title: Alert Templates
 ---
 <h1>Alert Templates</h1> 
 
-<p>Create different outbound email templates for different projects.</p>
-<p>You can add, edit, delete and find existing email templates.</p>
+<p>You can have common or project-specific outbound email templates.</p>
 <p><img src="templates.png" /></p>
 
 <h2>Template Types</h2>
-<p>Email templates are used upon one of the following actions:</p>
+<p>If configured to do so, Gemini can fire an email in response to any of the following:</p>
 
 <ul>
 	<li>When new items are created (When Created)</li>
@@ -21,35 +20,35 @@ title: Alert Templates
 	<li>To reply from Gemini to an email-to-ticket initiator(Email Reply - Breeze only)</li>
 	<li>Generic - not used by the Gemini alerts engine</li>
 </ul>
-
-<p><span class="label label-important">Note</span>The last two of these are only available to users of Breeze (email ticketing)</p>
+<p>For each action, there is an Email Template that you can use and customize</p>
 
 <h2>Defining Templates</h2>
-<p>Creating or editing templates will enable you to select the type of template and to provide a meaningful name.</p>
+<p>You may change the names when creating or editing templates to make them more meaningful, particularly if you have project-specific Templates.</p>
 <p><img src="alert-types.png" /></p>
 
 <ul>
-	<li><b>Name:</b> meaniingful descriptor for the template
-	<li><b>Alert Type:</b> type email template
+	<li><b>Name:</b> meaningful descriptor for the template
+	<li><b>Alert Type:</b> type of email template
 	<li><b>Subject:</b> the email subject line
-	<li><b>Associated Project(s):</b> leave blank for all projects or select the projects your template
-	<li><b>Content:</b> the HTML for the template
+	<li><b>Associated Project(s):</b> leave blank for all projects, or select projects your template will be used on
+	<li><b>Content:</b> the HTML of the template
 </ul>
 
 <p>Pay special attention to the associated projects for the template. Leave this field blank to use the template across all projects.</p>
 <p><img src="project-selection.png" /></p>
 
 <h2>Template HTML Editor</h2>
-<p>When you add a Template the appropriate default HTML based on the event type is selected for you. </p>
+<p>You may edit any existing Template. When you add a new Template, the appropriate default HTML based on the event type is pre-filled for you. </p>
 <p><img src="template-HTML.png" /></p>
 
 <h3>Injecting Data</h3>
-<p>Note the use of <code>@(Model.TheItem.Type)</code> for injecting item data into the email template. You can inject any of the below item fields - including custom fields.</p>
+<p>Note the use in the image above of <code>@(Model.TheItem.Type)</code> for injecting item data into the email template. You can inject any of the below item fields - including custom fields.</p>
 
 <p>The syntax for including the fields is <code>@(Model.TheItem.<b>FieldName</b>)</code> where the <code>FieldName</code> represents one of the below fields.</p>
+<p>If a field might contain special characters (a description/name for example), or HTML (a link for example), use <code>@Html.Raw(Model.TheItem.<your field)</code> to have it represented raw</p>
 
 <h3>Available Fields</h3>
-<p>The following table lists all fields available from <code>@(Model.TheItem)</code> object.</p>
+<p>The following table lists fields available from <code>@(Model.TheItem)</code> object.</p>
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr>
@@ -277,7 +276,7 @@ title: Alert Templates
 	</tbody>
 </table>
 
-<p>The following table lists all fields available from <code>@(Model)</code> object (this is only associated to "<b>Email Reply (Breeze)</b>" alert template).</p>
+<p>The following table lists fields available from <code>@(Model)</code> object associated with the "<b>Email Reply (Breeze)</b>" alert template).</p>
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr>
@@ -288,24 +287,61 @@ title: Alert Templates
 	<tbody>
 		<tr>
 			<td>Model.Sender.Fullname</td>
-			<td>The fullname of the user who send the email reply from Gemini</td>
+			<td>The fullname of the user sending the email reply from Gemini</td>
+		</tr>
+		<tr>
+			<td>Model.Sender.Entity.Language</td>
+			<td>The language code e.g. En-US of the user sending the email reply from Gemini</td>
 		</tr>
 		<tr>
 			<td>Model.Sender.Entity.Email</td>
-			<td>The email address of the user who send the email reply from Gemini</td>
+			<td>The email address of the user sending the email reply from Gemini</td>
 		</tr>
 		<tr>
 			<td>Model.Sender.Entity.Firstname</td>
-			<td>The firstname of the user who send the email reply from Gemini</td>
+			<td>The firstname of the user sending the email reply from Gemini</td>
 		</tr>
 		<tr>
 			<td>Model.Sender.Entity.Surname</td>
-			<td>The surname of the user who send the email reply from Gemini </td>
+			<td>The surname of the user sending the email reply from Gemini </td>
+		</tr>
+		<tr>
+			<td>Model.TheRecipient.Fullname</td>
+			<td>The fullname of the email recipient</td>
+		</tr>
+		<tr>
+			<td>Model.TheRecipient.Entity.Language</td>
+			<td>The language code e.g. En-US of the email recipient</td>
+		</tr>
+		<tr>
+			<td>Model.TheRecipient.Entity.Email</td>
+			<td>The email address of the email recipient</td>
+		</tr>
+		<tr>
+			<td>Model.TheRecipient.Entity.Firstname</td>
+			<td>The firstname of the email recipient</td>
+		</tr>
+		<tr>
+			<td>Model.TheRecipient.Entity.Surname</td>
+			<td>The surname of the email recipient</td>
 		</tr>
 	</tbody>
 </table>
+<p>For standard messages e.g. <i>Confirmation to Customer That Ticket Has Been logged</i>, you might interrogate the language code of the recipient and based on the result change the message text</p>
+<p>For example</p>
+<p><code>@if(Model.TheRecipient.Entity.Language=="nl-NL"){
+  <p>Dear @Model.TheRecipient.Fullname,</p>
+  <p>
+    Dutch language message
+  </p>
+} else {
+  <p>Dear @Model.TheRecipient.Fullname,</p>
+    Default language message
+  <p>
+</p>
+}</code></p>
 
-<p>The following table lists all fields available from <code>@(Model)</code> object (this is only associated to "<b>Acknowledge Email (Breeze)</b>" alert template).</p>
+<p>The following table lists fields available from <code>@(Model)</code> object associated with the "<b>Acknowledge Email (Breeze)</b>" alert template only.</p>
 <table class="table table-bordered table-striped">
 	<thead>
 		<tr>
@@ -316,7 +352,7 @@ title: Alert Templates
 	<tbody>
 		<tr>
 			<td>Model.NewUserAdded</td>
-			<td>Check if the user just been created by Breeze, the property is a boolean (true/false)</td>
+			<td>Check if the user has just been created by the process of emailing a Gemini mailbox that is set to create new users. The property is a boolean (true/false)</td>
 		</tr>
 		<tr>
 			<td>Model.NewUserName</td>
@@ -329,16 +365,13 @@ title: Alert Templates
 	</tbody>
 </table>
 
-<p>You can also change the system default tempate HTML located in the <code>App Data\Notifications</code> folder.</p>
+<p>You will find base HTML files for the default Email Templates in the <code>App Data\Notifications</code> folder.</p>
 
 <div class="well well-small related-box">
     <span class="title">Related</span>
 	<ul>
 		<li><a href="/global-options">Global Options</a></li>
-		<li><a href="/email-alerts">Email & Alerts</a>
-		<li><a href="/system-log">System Log</a></li>
-		<li><a href="/licensing">Licensing</a></li>
-		<li><a href="/active-directory-setup">Active Directory Setup</a></li>
-		<li><a href="/windows-authentication">Windows Authentication</a></li>
+		<li><a href="/email-alerts">Email & Alerts</a></li>
+		<li><a href="/rules-actions-sla">Rules and Actions</a></li>
 	</ul>
 </div>
