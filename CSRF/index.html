@@ -1,0 +1,10 @@
+---
+layout: default
+title: Cross-site Request Forgery
+---
+<h1>Enable CSRF check in Gemini</h1>
+
+<p><span class="label label-important">Note</span>&nbsp;This setting only exists in Gemini 7.2 or later versions. If you do not find the setting in the web.config, you do not have this functionality and must upgrade</p>
+
+<p>Gemini's web.config already contains the setting for CSRF. By default it is set to false. To enable CSRF checking, search for the word "CSRF", set it to "true", and recycle the App Pool in IIS </p>
+<p><img src="CSRF.png" /></p>
