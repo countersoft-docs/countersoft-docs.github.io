@@ -1,0 +1,57 @@
+---
+layout: default
+title: OAuth Setup for GMail
+---
+<h1>OAuth Setup for GMail</h1> 
+
+<p><span class="label label-important">Note</span>This feature is not available in versions of Gemini prior to 7.2.0</p>
+<p><span class="label label-important">Note</span>Google has a much simpler option - simply generate an App Password (search online for details) - you then use the App Password in place of the User Password.</p>
+<p><span class="label label-important">Note</span>For OAuth you must have a paid GMail account. For both OAuth and App Passwords you should enable 2FA on the account for verification.</p>
+
+<p>Configuring OAuth is a two-step process. First you configure GMail Services to know about Gemini. Then you configure Gemini to use these services.</p>
+<h2>GMail Configuration</h2>
+<h3>Navigate to the Google API Console</h3>
+<p>On the menu of services, select OAuth Consent Screen. The settings are very simple to understand and Google provides detailed documentation on all of them.</p>
+<p><img src="homepage.png" /></p>
+
+<h2>Gemini Mailbox Configuration</h2>
+<p>To use OAuth with Gemini mailboxes, you should configure the connection as IMAP<p>
+
+<h3>IMAP Configuration</h3>
+<p><img src="geminimailbox.png" /></p>
+<p>Specify OAuth2 as the Authentication Mode</p>
+<p>When you do this you will be prompted for an OAuth Provider. Select Google.</p>
+<p>You must use SSL and we recommend you leave the SSL protocol as Auto so Gemini can select the most modern.</p>
+
+<h3>Generic OAuth Configuration</h3>
+<p>4 new fields have been added to Gemini's Mailbox/SMTP configuration</p>
+<ul>
+	<li>Client ID - the Client ID from your Google application</li>
+	<li>Client Secret - the Client Secret from your Google application</li>
+	<li>Scopes - A field that will auto-populate for you, but which for Google is "https://mail.google.com/"</li>
+</ul>
+
+<p>Save your configuration when you have provided the mandatory details. You will be redirected and required to authenticate with your OAuth provider</p>
+<p>Confirm the access permissions and you'll be returned to Gemini, where you should see a success message</p>
+
+<h2>Gemini SMTP Configuration</h2>
+<p>OAuth configuration is the same for both the generic system mailbox in System Email Options, and the SMTP mailbox(es) for Breeze Ticketing</p>
+<p>Navigate to Ticketing...SMTP Servers and edit or add a new SMTP connection</p>
+<p><img src="SMTP1.png" /></p>
+<p>Provide a name for your SMTP Server. For GMail OAuth, the server and port should be as shown above.</p>
+<p>Select OAuth2 from the Authentication Modes drop down. You will see the form present new fields.</p>
+<p>The scopes will be automatically populated, but complete the rest of the fields as per the GMail Application details created earlier.</p>
+<p>Save the configuration. On Ticketing SMTP servers you should get a simple success message. On System Email Options, you will get a verbose trail of Gemini testing the SMTP connection.</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li id="using-outbound-smtp"><a href="/using-outbound-smtp">Configure SMTP For Customer Responses</a></li>
+		<li id="listening-to-mailboxes"><a href="/listening-to-mailboxes">Turn Emails Into Tickets</a></li>
+		<li id="establishing-inbound-queues"><a href="/establishing-inbound-queues">Establishing Inbound Email Queues</a></li>
+		<li id="using-match-expressions"><a href="/using-match-expressions">Filter Email With Match Expressions</a></li>
+		<li id="setting-up-canned-responses"><a href="/setting-up-canned-responses">Create and Manage Standard Responses</a></li>
+		<li id="using-closing-template"><a href="/setting-up-closing-template">Let Customers Close Tickets</a></li>
+		<li id="setting-up-reply-from-addresses"><a href="/setting-up-reply-from-addresses">Setup Reply From Addresses</a></li>
+	</ul>
+</div>
