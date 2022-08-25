@@ -13,6 +13,7 @@ title: Permission Roles
 <h2>Roles</h2>
 <p>Select which user groups receive which permissions.</p>
 <p><img src="roles.png" /></p>
+<p>Roles in red are restrictive, and where users are in groups with conflicting roles, Gemini will apply the most restrictive role.</p> 
 
 <p>The following table details all available roles.</p>
 
@@ -85,8 +86,12 @@ title: Permission Roles
 			<td>User can only delete items they have created provided the action does not break data integrity rules</td>
 		</tr>
 		<tr>
-			<td>Read Only Access</td>
+			<td>Read Only Access (No Comments)</td>
 			<td>Users can only view items, all creation and editing permissions are revoked. This restrictive permission overrides all other permissions</td>
+		</tr>
+		<tr>
+			<td>Read Only Access (Comments Allowed)</td>
+			<td>Users can only view and comment on items (introduced in Gemini 7.2). All creation and editing permissions are revoked. This restrictive permission overrides all other permissions</td>
 		</tr>
 	</tbody>
 </table>
