@@ -4,15 +4,16 @@ title: Upgrading Gemini 5, 6, or 7
 
 ---
 <h1>Upgrading</h1>
-<p>A <a href="/using-the-zip-file">zip file</a> download is available containing both the Gemini web application and scripts needed for the upgrade process.</p>
+<p>The <a href="/using-the-zip-file">zip file</a> download contains the Gemini web application and scripts needed for the upgrade.</p>
 
 <p><span class="label label-important">Note</span>&nbsp;If you are upgrading from Gemini 5 or 6 to <b>Gemini 7</b> you MUST recompile custom apps against the dlls that ship with Gemini 7. Apps built using libraries from previous versions of Gemini will NOT work with version 7.</p>
 <p><span class="label label-important">Note</span>&nbsp;If you are upgrading from Gemini 5 or 6 to <b>Gemini 7</b> and have built custom apps, you must remove allow partially trusted callers ([assembly: AllowPartiallyTrustedCallers]) if it is in your <b>AssemblyInfo.cs</b></p>
+<p><span class="label label-important">Note</span>&nbsp;To upgrade from Gemini 4 contact support@countersoft.com</p>
 
 <p><span class="label label-important">Note</span>&nbsp;We strongly recommend that on-premise customers upgrade a test instance and perform full regression testing before upgrading production. 
 If you are using Breeze Email Ticketing, we recommend archiving all messages in any Gemini mailboxes to another folder before upgrading.</p>
 
-<p><span class="label label-important">Note</span>&nbsp;Please do not manually execute upgrade SQL scripts - install the new release, browse to the site, and Gemini will auto upgrade the database for you.</p>
+<p><span class="label label-important">Note</span>&nbsp;Please do not manually execute upgrade SQL scripts - install the new release, browse to the site, and Gemini will execute scripts and logic to upgrade the database for you.</p>
 
 <br></br>
 
@@ -24,7 +25,7 @@ If you are using Breeze Email Ticketing, we recommend archiving all messages in 
 <p><span class="label label-important">Note</span>&nbsp;Right click on the file then select Properties and click Unblock.</p>
 <p>Open the zip file that was downloaded, and open the folder labeled "2. Web App Manual Install". Unzip the Gemini zip file within the folder, and you should see the contents as follows:</p>
 <p><img src="step2.png" /></p>
-<p><span class="label label-important">Note</span>&nbsp;Stop the application pool for Gemini site in IIS Manager.</p>
+<p><span class="label label-important">Note</span>&nbsp;Stop the application pool for your Gemini site in IIS Manager.</p>
 
 <h2>Step 3 - Copy Web Application</h2>
 <p><span class="label label-important">Note</span>&nbsp;Please remove all previous files - do not overwrite! Remember to backup your current web app directory. If you have custom templates, copy the contents of App_Data\templates and assets\images\meta folders from your backup folder to the Gemini Web Application folder.</p>
