@@ -11,8 +11,8 @@ title: Using the Zip File
 <p>The following must be present on your Windows Server. You can choose to have your IIS Web Server and SQL Server on the same machine or each running on different machines.</p>
 
 <ul>
-    <li>Microsoft .NET Framework v4.0</li>
-    <li>SQL Server 2005, 2008, 2008 Express or 2012 </li>
+    <li>Microsoft .NET Framework v4.7.2 or above</li>
+    <li>SQL Server</li>
     <li>SMTP Service/Server (optionally required for email notifications)</li>
 </ul>
 
@@ -48,7 +48,7 @@ title: Using the Zip File
 
 <h2>Step 5 - Create SQL Database</h2>
 <p>Create a SQL Server database that will be used by Gemini.</p>
-<p>It is advisable to use SQL Server 2005/2008/2012 Web, Standard or Enterprise edition. Gemini will also run with SQL Express but it is not recommended for mission critical deployments.</p>
+<p>It is advisable to use SQL Server Standard or Enterprise editions. Gemini will run with SQL Express but it is not recommended and not supported for production instances.</p>
 <p>Where possible use SQL authentication and make a note of your SQL Server user credentials (required for next step). Ensure your SQL user has DBO permissions in the new database.</p>
 
 <h2>Step 6 - Edit Web.config</h2>
@@ -79,9 +79,6 @@ title: Using the Zip File
     <span class="title">Related</span>
     <ul>
         <li><a href="/pre-requisites">Pre-requisites</a></li>
-        <li><a href="/using-the-installer">Using the Installer</a></li>
-        <li><a href="/upgrading-from-4.x">Upgrading From 4.2</a></li>
-        <li><a href="/upgrading-from-5.x">Upgrading From 5.x, 6.x, or 7.x</a></li>
         <li><a href="/installation-faq">Installation FAQ</a></li>
     </ul>
 </div>
