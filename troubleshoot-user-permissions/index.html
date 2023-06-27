@@ -8,11 +8,9 @@ title: GEMINAI - Little Language Machine Learning
 <h1>User Permissions</h1> 
 
 <h3>Some background information</h3>
-<p><b>Restricting actions to Projects and to Roles in Projects </b>is the domain of Permission Sets. If you have not read the documentation and this type of permission is an issue or query, please <a href="https://docs.countersoft.com/permissions/">read the docs first</a>, and drill down to.</p>
-<p><a href="https://docs.countersoft.com/permission-roles/">Permission Roles</a> to understand the granular controls.</p>
+<p><b>Restricting actions to Projects and to Roles in Projects </b>is the domain of Permission Sets. If you have not read the documentation and this type of permission is an issue or query, please <a href="https://docs.countersoft.com/permissions/">read the docs first</a>, and drill down to <a href="https://docs.countersoft.com/permission-roles/">Permission Roles</a> to understand the granular controls.</p>
 <br/>
-<p><b>Restricting access to Fields and to Field-level Functionality</b> is the domain of Screens. If you have not read the documentation and this type of permission is an issue, please <a href="https://docs.countersoft.com/concept-screens/">read the docs first</a>, and drill down to.</p>
-<p><a href="https://docs.countersoft.com/concept-templates/">Project Templates</a> to understand the links from screens to Process Types (e.g. Tickets, Bugs, Change Requests, Tests etc.)</p>
+<p><b>Restricting access to Fields and to Field-level Functionality</b> is the domain of Screens. If you have not read the documentation and this type of permission is an issue, please <a href="https://docs.countersoft.com/concept-screens/">read the docs first</a>, and drill down to <a href="https://docs.countersoft.com/concept-templates/">Project Templates</a> to understand the links from screens to Process Types (e.g. Tickets, Bugs, Change Requests, Tests etc.)</p>
 
 <h2> Troubleshooting </h2>
 <h3>Users aren't receiving notifications</h3>
@@ -24,7 +22,7 @@ title: GEMINAI - Little Language Machine Learning
 	<li>If the notifications are Workspace alerts from a shared Workspace check that the user doesn't have a personal copy of the Workspace. Workspaces can share a name without being connected.
 		<ul>
 			<li>If you share a Workspace without "Lock and Synch" the user has their own copy.</li>
-			<li>Shared Workspaces have an arrow in their icon in G7 <img src="g7-share-icon.png" width="16" height="16"> and a arrow to the left in G6 <img src="g6-share-icon.png" width="16" height="16">"</li>
+			<li>Shared Workspaces have an arrow in their icon in G7 <img src="g7-share-icon.png" width="16" height="16"> and a arrow to the left in G6 <img src="g6-share-icon.png" width="16" height="16"></li>
 		</ul>
 	</li>
 </ul>
@@ -37,7 +35,7 @@ title: GEMINAI - Little Language Machine Learning
 			<li>Field level access is controlled on <a href="https://docs.countersoft.com/concept-screens/">Screens</a>. This extends to things like Comments, Dependencies, Attachments. If anyone can't see a field, check the Screens.</li>
 			<li>Screen permissions are configured per Process Type. Please check the Screen for the specific Type and remember that Screens can be shared by different Types.</li>
 			<li>Gemini Administrator is a role that grants access to the admin section of the site. It does not confer any rights to view data. If you make a field visible to a group and exclude Gemini Administrators, they won't see it.</li>
-			<li>By default, all fields are assigned to the User Group "Everyone", but you can change that. Click on the icon next to the field to see which User Group(s) have access to it when Creating, Editing, or Viewing</li>
+			<li>By default, all fields are assigned to the User Group "Everyone", but you can change that. Click on the icon next to the field to see which User Group(s) have access to it when Creating, Editing, or Viewing.</li>
 			<li>Links, Dependencies, Attachments, Comments, Time, Email Reply etc. are controlled by Screens.
 		</ul>
 	</li>
@@ -52,22 +50,26 @@ title: GEMINAI - Little Language Machine Learning
 			<li>Fields that are controlled with logic - Comments, Dependencies, Related Items (link), Email Reply - are controlled by Screens in the Content area at the bottom of the page. See Scenario 1.</li>
 			<li>Users in the Portal User Group can only see the Grid View and in that view they can only see items they create (or that have been created on their behalf) and items they are assigned to using the Resource field.</li>
 			<li>Apps like Docstore, Roadmap, Changelog etc. must be enabled in every Workspace where a user wishes to use that functionality. Apps have their own Permissions in the admin section and can be restricted to specific users.</li>
-			<li>Builtin Apps like the Planning Board, Calendar View etc. are not restricted by App Permissions but they too must be enabled on a Workspace-by-Workspace basis to appear in the menu.</li>
-			<li>Like Apps, Reports can be restricted to User Groups. If a user cannot see a report, check it is not because of User Group restrictions.</li>
+			<li>Builtin Apps like the Planning Board, Calendar View etc. are not restricted by App Permissions, but they too must be enabled on a Workspace-by-Workspace basis to appear in the menu.</li>
+			<li>Like Apps, Reports can be restricted to User Groups. If a user cannot see a report, check Report Permissions in the admin section to see it is not because of User Group restrictions.</li>
 		</ul>
 	</li>
 	<li><b>Scenario 4. User(s) can't add a new item</b>
 		<ul>
 			<li>If a user is in the Read Only or Read Only with Comments Role, the "Add" item button is removed. Gemini will apply the MOST restrictive permission from all User Groups a  user is in.</li>
-			<li>If this is a general system problem, and all users are affected, contact Countersoft and let us know the last messages in the System Log following an attempt to add a new record. It is likely you have a database or network problem</li>
+			<li>If this is a general system problem, and all users are affected, contact Countersoft and let us know the last messages in the System Log following an attempt to add a new record. It is likely you have a database or network problem.</li>
 		</ul>
 	</li>
 	<li><b>Scenario 5. User(s) can't use Breeze (email) Reply</b>
 		<ul>
 			<li>If the user can't see the Email Reply option at all, the problem is that they don't have access through Screens. See Scenarios 1 & 3.</li>
-			<li>User gets error sending email using Breeze Reply. Check the Screens and ensure that the user can add a comment. Email replies are stored as Comments, so a user must be able to add a comment to send an email reply.</p>
-			<li>User can add comments but there is still an error. Ask the user to reply, and immediately check the System Log (Configure Gemini...System...System Log) for errors. Notify Countersoft support if you find an error in the log and the solution is not self-evident.</p>
-			<li>Note: If you purge the Breeze Enquiry table you may not be able to use the Reply function because Gemini knows when messages come from email, and it can generate non-fatal errors looking for mail To and CC lists on the original email.</p>
+			<li>User gets error sending email using Breeze Reply.
+				<ul>
+					<li>Check the Screens and ensure that the user can add a comment. Email replies are stored as Comments, so a user must be able to add a comment to send an email reply.</li>
+				</ul>
+			</li>
+			<li>User can add comments but there is still an error. Ask the user to reply, and immediately check the System Log (Configure Gemini...System...System Log) for errors. Notify Countersoft support if you find an error in the log and the solution is not self-evident.</li>
+			<li>Note: If you purge the Breeze Enquiry table you may not be able to use the Reply function because Gemini knows when messages come from email, and it can generate non-fatal errors looking for mail To and CC lists on the original email.</li>
 		</ul>
 	</li>
 	<li><b>Scenario 6. User(s) not appearing in Resources list</b>
@@ -82,12 +84,10 @@ title: GEMINAI - Little Language Machine Learning
 <p>As explained above, in Gemini - Projects, Fields, and Functionality, are all securable. Please check your Permission Sets, Screens, and Workflow settings. If you can't figure it out, contact Countersoft.</p>
 
 <h3>User can't change/set Status</h3>
-<p>Statuses are listed on the Project Template, and all Process Types on the same Project Template share the same total set of Status values. Work types having different statuses is one very good indicator of the need for a different Project Template.</p>
-<p>Statuses are controlled by the Workflow functionality, which is very similar to Screens in that the default is for the User Group "Everyone" to be able to make a status change, but if you click on the arrow that defines the transition, you can</p>
-<p>secure any status change and make it available only to specific groups. As Gemini allows you to secure every Workflow transition, if a given Status is not available it means one of two things:</p>
+<p>Statuses are controlled by the Workflow functionality, which is very similar to Screens in that the default is for the User Group "Everyone" to be able to make a status change, but if you click on the arrow that defines the transition, you can secure any status change and make it available only to specific groups. As Gemini allows you to secure every Workflow transition, if a given Status is not available it means one of two things:</p>
 <ol>
-	<li>The Workflow transition from the status the item is on to the Status you want it to be for has not been defined.</li>
+	<li>The Workflow transition from the status the item is on, to the Status you want it to be for, has not been defined.</li>
 	<li>The Workflow transition exists, but the user is not in a User Group that is permitted to make the change. Click on the arrow in the Workflow and see which User Groups are allowed to make it.</li>
 <ol>
-<li>If your configuration and permission appear to be correct, it is highly likely that you are not checking the Workflow for the <i>specific Process Type</i> in the Project. Workflow is <i>per</i> Process Type</li>
-<p><i>Before you log a Workflow 'bug' with Countersoft, you should know that in over 100,000 helpdesk tickets there is not one instance of Gemini Workflow not working for a reason that could not be explained by the configuration of the system.</i>
+<p><img src="workflow.png" width="600" height="500"></p>
+<li>If your configuration and permission appear to be correct, it is likely that you are not checking the Workflow for the <i>specific Process Type</i> in the Project. Workflow is <i>per</i> Process Type</li>
