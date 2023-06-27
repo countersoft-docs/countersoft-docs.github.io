@@ -1,0 +1,62 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="https://www.countersoft.com/img/geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<hr>
+<h1>Troubleshooting Email Errors</h1> 
+
+<h3>Users aren't receiving notifications</h3>
+
+<p><b>Note:</b> the email account associated with notifications is NOT configured where ticketing mailboxes are configured. It is located at: <b>Configure Gemini...System...Email & Alerts</b>.</p>
+<ul>
+	<li>The System SMTP server is configured separately from Ticketing SMTP definitions. This SMTP config is responsible for Resource Assignment, Follower, and Workspace notifications.</li>
+	<li>When you save the configuration of the SMTP definition, Gemini immediately tries to use it to send you a test message. Any errors in usage will be thrown to the page.</li>
+	<li>If your notifications aren't working, save the configuration. If you don't understand the error message on the configuration page, look in the System Log for a more complete log to check up on.</li>
+</ul>
+
+<h3>Errors using Microsoft OAuth</h3>
+<p>If you are using Microsoft OAuth and you get an error, please search for the error online. Most Azure error messages give you accurate hyperlinks to documentation that can help you resolve the problem.</p>
+<p>Please note the following:</p>
+<ul>
+	<li>You cannot use POP with OAuth, you can only use IMAP and Exchange Web Services. If you use IMAP you MUST specify the SSL Protocol as TLS 1.2/TLS Auto, since TLS 1.1 is deprecated. EWS will automatically use TLS 1.2.</li>
+	<li>Don't specify a domain. Don't specify a password. If you have a password in your definition then you have a contradictory config, but because you specified OAuth, Gemini will (rightly) hide the password's existence.</p>
+	<li>You can only use http with localhost for testing. For any other site you MUST use https, and a self-signed certificate may not work.</li>
+	<li>You can configure an App Registration for a Gemini site that is not publicly available.</li>
+	<li>You cannot use a virtual email account (usually a shared account). You MUST use a standard, paid for email account. Microsoft don't give you OAuth for free and the error messages can be cryptic.
+	<li>If you reply to email from Gemini you must enable the O365 email account for SMTP. You MUST use the same email account for the mailbox and the mailbox SMTP or messages and replies can't be threaded.</li>
+	<li>OAuth is not Graph. Forget configuring Graph and configure OAuth exactly as specified in the <a href="https://docs.countersoft.com/OAuth-O365/">online documentation</a></li>
+</ul>
+
+<h3>Token/Secret expiry using Microsoft O365</h3>
+<p>Tokens and Secrets do expire. At the time of writing, Microsoft does not allow tokens/secrets to be used indefinitely. That said, if you get a message saying that a token has expired because it hasn't been used</p>
+<p>in 90 days, and you are not on Gemini 7.3 or above, then please <a href="https://docs.countersoft.com/upgrading/">upgrade</a> as this is a known problem in early G7. Gemini 7.3 is Gemini 7.2 compiled against a later </p>
+<p>version of Microsoft's Client Identity Library to address this specific error. There are no 7.3 Release Notes as it is a patch release of 7.2.</p>
+
+<h3>URI Error using MS OAuth</h3>
+<p>There is a problem with MS OAuth that we have seen a number of times and our customers have reported it too - it will not let go of an invalid redirect URI for a long time. If you get a message that says your URI is wrong</p>
+<p>and the URI in the error message doesn't match your configuration in Azure, you can either create a new App Registration, or you can contact Microsoft. GeminAI knows which of those two options is quicker and easier to </p>
+<p>pursue, but is too polite to say.</p>
+
+<h3>Error - string exceeds length of mapping parameter</h3>
+<p>This is caused by a malformed email. It could be the result of new logic in Office 365 that results in a massively long set of referrers in the header. GeminAI currently has this logged as possibly a 'feature' of </p>
+<p>O365/Exchange that the MailBee component used by Gemini has not caught up with. At this time, the recommended solution is to move all unprocessed emails out of the inbox and move them back in batches in a binary chop method</p>
+<p>to quickly identify and remove the problem email.</p>
+
+<h3>Email processing is going slowly</h3>
+<p>If your email processing is taking a lot of time, look at the number of emails in the inbox. If you don't enable the checkbox "Limit to Unread" in your mailbox(es) then Gemini must read all messages to determine what it has and</p>
+<p>processed, because anything could have marked the email as read. Lots of emails are therefore a direct cause of poor performance. If your mailbox isn't large, please check the System Log to see if you are getting errors in </p>
+<p>processing (such as the known error above) or timeout errors that indicate something else is slowing down the system.</p>
+
+<h3>System reports aborted connections</h3>
+<p>The system isn't lying, the remote host aborted the connection. Networks fail. You need to get a sysadmin/network engineer/IT to look into the connection between your Gemini application server and whatever system it is you are trying to reach.</p>
+
+<h3>OAuth Unauthorised error</h3>
+<p>Please check your OAuth configuration. You should save the mailbox/SMTP definition to see if it is still valid. Gemini will test the given configuration immediately, so any errors or genuine misconfiguration (say an expired</p>
+<p> password/misspelt mailbox) can be caught by doing this one simple thing.</p>
+
+<h3>Gmail Unauthorised error</h3>
+<p>Like Microsoft, Google no longer support Basic (Username/Password) Authentication. You can <a href="https://docs.countersoft.com/OAuth-GMail/">set up OAuth for GMail</a> or take the easier option of creating an App Password for GMail, which will</p>
+<p>work just like a normal password in that you enter it into the password field in your mailbox/SMTP configuration alongside the email address of your mailbox. Please note that in order to set up an App Password in GMail</p> 
+<p>your email account MUST be configured for 2FA. You will also get unauthorised errors if your password has expired.</p>
+

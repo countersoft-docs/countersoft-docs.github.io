@@ -1,0 +1,40 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="https://www.countersoft.com/img/geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<h1>Troubleshooting Rules, Actions & SLA</h1> 
+
+<h3>Setting values and sending emails based on Rules</h3>
+<p>If you're not sure about this functionality, or you're unsure but have not read the docs, please read the documentation on Rules, Actions and SLA <a href="https://docs.countersoft.com/rules-actions-sla/">here</a></p>
+<p>You can also watch videos of <a href="https://www.countersoft.com/videos/?video=22">Rules and Actions</a> or <a href="https://www.countersoft.com/videos/?video=23">SLA</a> being configured</p>
+<br/>
+
+<h3>Setting values based on the passage of time</h3>
+<p>Rules and Actions are event driven. This means that you cannot create a simple rule that says test these conditions and after X amount of time do Y. Rules only fire when a record is created or updated.</p>
+<p>A Rule like - <i>If Status is still unassigned after 2 days notify the PM</i> cannot be made with simple Rules and Actions. After all, what 2 days? Do they include the weekend, or holidays?</p>
+<p>To have rules that work over time, you must <b>start a clock</b>, and to start a clock running in Gemini you use <b>SLA</b> functionality. You don't have to have a commercial SLA, just start a clock!</p>
+<p>When an SLA clock is running, you can use a Working Day Calendar, you can test how much time has passed and/or how much time has left, and on that basis you can perform all the actions Rules permit, even more.</p>
+<p>You extend the actions you want the SLA to take by simply adding your Actions to the default "Stop Clock", "Start Clock", "Pause Clock" and "Resume Clock".
+<p><b>Note:</b> You can only send ONE email per record using Rules, Actions and SLA. If this were not the case then it would be possible for Gemini to spam email recipients, and that cannot be allowed.</p>
+
+<h3>We chose the SLA based on certain conditions, but what if the conditions change?</h3>
+<p>This is really easy. Unlike simple Rules and Actions, SLA actions include one to switch from one SLA to another. You should configure Gemini with a default SLA. SLAs that you switch to should not have any Start</p>
+<p>conditions. Items should only find their way onto such SLAs as a result ofbeing switched. When you switch to another SLA you have the option to reset the clock as if no time had passed, or to keep it running.</p>
+
+<h3>My rules aren't doing what they're supposed to do</h3>
+<p>If you think your Rules aren't firing and don't know why, go to the System Log and switch on diagnostics. You must be in the Gemini Administrator role to get to the System Log.</p>
+<p>Wth diagnostics enabled, set the conditions for your rule to fire. Immediately afterwards, look in the System log and you will see a verbose trail of Rules firing, conditions being tested, and results.</p>
+<p>You are almost certain to find the reason your rule isn't working in the diagnostic log.</p> 
+
+<h3>A known Rules & Actions gotcha</p>
+<p>Sometimes Rules appear not to work but all that is happening is that the rules are contradictory and actions are cancelling one another out. A classic case of this is if you have the Auto-Open Closed Items app</p>
+<p>enabled and you have a rule to close items based on set conditions. Here's what can happen. You do something to trigger your condition, the record is closed, the Auto-Open event app fires, it detects the change</p>
+<p>and it promptly reopens the record. IT looks like nothing has happened, but in fact 2 things happened. So, if your Rules don't appear to work, please check that there are no contradictory Rules or apps at work.</p>
+
+<h3>I need a complex multi-stage rule</h3>
+<p>Rules execute their actions sequentially. you can sort Rules with drag-drop handles, which you will see on the left of the Rule name. You can therefore have a Rule that sets Field A = X, followed by a rule that </p>
+<p>tests if Field A = X and then does something on the basis of that condition.</p>
+
+<h3>How do I notify generic user roles like the ticket owner or resource(s)?</h3>
+<p>Rules and Actions (and SLA) use tokens like {resource}, {reporter} etc. See the list in the documentation referenced at the top of the page.</p>
