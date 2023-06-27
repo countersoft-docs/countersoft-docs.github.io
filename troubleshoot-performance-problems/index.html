@@ -1,0 +1,63 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="https://www.countersoft.com/img/geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<hr>
+<h1>Troubleshooting Performance Problems</h1> 
+
+<h3>Perception is that the system is slow</h3>
+
+<p>If Gemini suddenly and dramatically slows to a crawl, in a way it has never done before, it is likely that you have a specific technical problem. You should look in the system log, and if Gemin iis not reporting errors, check the network and Windows Event logs. If you are a hosted customer, contact Countersoft Support and they will investigate.</p>
+<p>If there is just a growing perception that Gemini is slower than it used to be, it may just a perception problem, but there are simple ways in which Gemini's performance can be restored or enhanced. Here are a few areas to explore:
+
+<h3>Tune your Workspaces</h3>
+<ul>
+	<li><b>Workspaces with the page size set to the maximum.</b>
+	<ul>
+		<li>Nobody can absorb more than 100 lines on a single page. Page sizes should be set to 50 for speed and readability, and dynamically increased to 75/100 for specific reasons. Thankfully, Gemini 7 will not let a user grab more than 100 lines at a time, but earlier versions had no limits and this can cause spikes if Gemini has to fetch 10s and even 100s of thousands of records for a page.</li>
+	</ul>
+	<li><b>Low usage / Memory & CPU intensive Workspaces</b>
+	<ul>
+		<li>Workspace processes can cause performance spikes. Every Workspace filters data and is capable of generating traffic on the network.
+			<ul>
+				<li>Try to restrict Workspaces that filter Closed Items. You might have a milion closed items one day, so why create the 'Workspace Filter from Hell'?</li>
+				<li>Educate users on the filter, so they can dynamically change their view of items without having to create multiple, permanent Workspaces that fall into disuse, but which Gemini still has to process
+					<ul>
+						<li>Countersoft employees use Gemini daily, and nobody is allowed more than three Workspaces. It is faster to change the filter than it is to pick a Workspace out of a long list. Delete all low-use Workspaces.</li>
+					</ul>
+				</li>
+			</ul>
+		<li>Don't use Lock & Synch unless you must. Gemini has to do more work with synchronised Workspaces than it does with individual Workspaces. By all means share Workspaces, but give users their own copy if you can.</li>
+		<li>Don't use badge counts if you don't need them. 
+			<ul>
+				<li>If users have a list of Workspaces consistently showing 5+, they should switch off the Workspace Badge Counts so Gemini doesn't have to cycle through them, updating them needlessly.</li>
+				<li>Taking the point above - if you have shared workspaces in a large community and Gemini is going around updating each user's Workspace with changes no users are interested in, the system is bound to be slower than it otherwise would be.</li>				
+			</ul>
+		</li>
+	</ul>
+	<li><b>Inappropriate Workspace filters for Excel Reports</b></li>
+	<ul>
+		<li>If you use produce Excel reports from Gemini don't let your Workspace filter select large (1000+) numbers of rows. If you have more than a page of records, Gemini always shows the total record count in the page control.
+		<ul>
+			<li>Excel is no substitute for a dedicated report writer, and Excel is very slow dealing with very large data sets.</li>
+			<li>Gemini respects the Workspace filter, not the page size. Your page may only show 25 records, but if 100,000 records match the filter then 100,000 records will be sent to Excel.</li>
+			<li>For reports that process large volumes of data, use a report writer, the REST Api, or commission Countersoft Professional Services to build you an export or report.</li>
+		</ul>
+	</ul>
+</ul>
+<h3>Address Email Processing Volumes</h3>
+<p>This is discussed in more detail in the <a href="https://docs.countersoft.com/troubleshoot-email-errors/">Email Troubleshooting document</a>. However, in a nutshell, if you enable "Limit to Unread" in your Gemini mailbox(es), Gemini will only process records marked as unread. If you don't enable this checkbox, and you don't archive your emails, you will at some point have a performance problem.</p>
+<p>If not restricted to unread emails, Gemini must always read the entire mailbox and check each email to see if it has processed it already. Breeze mailbox processing will become incrementally slower until Dele's Law of Performance strikes. Dele's 'law' states that performance does not gracefully decline, it gets a little bit worse and then it falls off a cliff and dies!</p>
+<p>The solution to efficient email processing is either to enable "Limit to Unread", or to periodically move all processed emails out of the inbox Gemini reads into another folder. If you move the emails we recommend that the other folder not be a sub-folder of the inbox.</p>
+
+<h3>Check you Data Volumes</h3>
+<p>If you add enough data to a database, eventually it will become slow. It is important to note however that not all data is equal. You can add a million transactions to Gemini with no discernable degredataion in many aspects of its performance. If however you add several gigabytes of attachments..."</p>
+<p>Because data is not equal - comments, attachments, and emails are much more expensive in performance terms than simple transactions - you should consider an archiving strategy. It is highly unlikely if your attachments table - gemini_attachments - is one of the largest in your database, that you will not see a degredataion of performance over time simply because of your data volume.</p>
+
+<h3>Check the System Log</h3>
+<p>The System Log is not only where you can find problems, it can be a problem itself, especially if you enable diagnostics. It is highly recommended that you do NOT enable dianostics unless you are diagnosing a particular problem, like a Rule that you think is not firing, and that you switch off diagnostics as soon as you are done.</p>
+<p>You should delete the contents of the System Log monthly through the UI, or in the database with the statement <i>truncate table gemini_systemlog</i>. The contents of the System Log are also written to the "logs" folder on the web server, so it is safe to delete the contents of this table.</p>
+
+<h3>What else?</h3>
+<p>If your system is as efficient as you can make it, but usage over time has grown to such a level that Gemini needs a boost, you should know that unless usage stats are telling you otherwise, more memory is the No.1 external component for better performance with Gemini, followed by faster disk speed.</p>

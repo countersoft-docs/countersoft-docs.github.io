@@ -27,7 +27,7 @@ title: GEMINAI - Little Language Machine Learning
 <p>Wth diagnostics enabled, set the conditions for your rule to fire. Immediately afterwards, look in the System log and you will see a verbose trail of Rules firing, conditions being tested, and results.</p>
 <p>You are almost certain to find the reason your rule isn't working in the diagnostic log.</p> 
 
-<h3>A known Rules & Actions gotcha</p>
+<h3>A known Rules & Actions gotcha</h3>
 <p>Sometimes Rules appear not to work but all that is happening is that the rules are contradictory and actions are cancelling one another out. A classic case of this is if you have the Auto-Open Closed Items app</p>
 <p>enabled and you have a rule to close items based on set conditions. Here's what can happen. You do something to trigger your condition, the record is closed, the Auto-Open event app fires, it detects the change</p>
 <p>and it promptly reopens the record. IT looks like nothing has happened, but in fact 2 things happened. So, if your Rules don't appear to work, please check that there are no contradictory Rules or apps at work.</p>
