@@ -27,13 +27,15 @@ title: GEMINAI - Little Language Machine Learning
 <p>If you are using Microsoft OAuth and you get an error, please search for the error online. Most Azure error messages give you accurate hyperlinks to documentation that can help you resolve the problem.</p>
 <p>Please note the following:</p>
 <ul>
+	<li>Them most common configuration error is that when taken to log into MS EMail to confirm the OAuth credentials, users log in as themselves or an admin instead of the email account that is authorizing Gemini access. You must login as the email account e.g. support@company.com with the password for <i>that</i> email account.
+	<li>When setting up SMTP admins forget to enabled SMTP on the email account in the Office365 Portal.</li>
+	<li>You reconfigure your existing mailbox and leave the password in it. Gemini has no idea what to do - it passes the password, and MS returns an error because it has no idea what to do with it either. OAuth does not require a password but if one exists on your account, when you select OAuth as the connection method, Gemini will (correctly) hide the password field but keep its value. We recommend you disable the Queue for your current mailbox, and create a new Queue and Mailbox for OAuth. The overhead in time is tiny and the config is clean.</li>
 	<li>You cannot use POP with OAuth, you can only use IMAP and Exchange Web Services. If you use IMAP you MUST specify the SSL Protocol as TLS 1.2/TLS Auto, since TLS 1.1 is deprecated. EWS will automatically use TLS 1.2.</li>
-	<li>Don't specify a domain. Don't specify a password. If you have a password in your definition then you have a contradictory config, but because you specified OAuth, Gemini will (rightly) hide the password's existence.</li>
 	<li>You can only use "http" with "localhost" for testing e.g. http://localhost/... For any other site you MUST use "https", and a self-signed SSL certificate may not work.</li>
 	<li>You can configure an App Registration in Azure for a Gemini site that is not publicly available.</li>
 	<li>You cannot use a virtual email account (usually a shared account). You MUST use a standard, <b>paid</b> email account. We strongly recommend that any mailbox Gemini processes is not shared with any other application or user.</li>
-	<li>If you reply to email from Gemini you must enable the O365 email account for SMTP. You should use the same email account for the ticketing mailbox and its associated SMTP, or messages and replies will not be threaded.</li>
-	<li>OAuth is not Graph. Some users have wasted a lot of time looking at Graph settings. Forget Graph, just configure OAuth <i>exactly</i> as specified in the <a href="https://docs.countersoft.com/OAuth-O365/">online documentation</a>.</li>
+	<li>If you reply to email from Gemini, use the same email account for the ticketing mailbox as its associated SMTP.If you don't do this, messages and replies cannot be threaded.</li>
+	<li>OAuth is not Graph. Some admins have wasted a lot of time looking at Graph settings. Forget Graph, just configure OAuth <i>exactly</i> as specified in the <a href="https://docs.countersoft.com/OAuth-O365/">online documentation</a>.</li>
 </ul>
 
 <h3>Token/Secret expiry using Microsoft O365</h3>

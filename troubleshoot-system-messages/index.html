@@ -5,6 +5,145 @@ title: GEMINAI - Little Language Machine Learning
 <p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
 <h1>Troubleshooting System Messages</h1> 
 
-<h3>Sorry, I'm still writing this page, but I'll soon be done...</h3>
+<p>The following are substrings from a list of messages you might find in Gemini's System Log (Configure Gemini...System...System Log) if you have unexplained errors or system issues.</p>
+
+<h3>Execution timeout Expired</h3>
+<p>This should not happen unless the system is under exceptional load. It simply means a query is taking too long to complete, so unless it is happening on a regular basis it is usually safe to ignore. However, if it happens on search then you need to check that you have the SQL Server optional component "Full Text Search" installed. You can check this with the following SQL Query:"</p>
+<pre>
+SELECT 
+    CASE 
+         WHEN 
+             FULLTEXTSERVICEPROPERTY('IsFullTextInstalled') = 1 
+         THEN 
+              'INSTALLED' 
+         ELSE 
+              'NOT INSTALLED' 
+    END IsFullTextInstalled
+</pre>
+<p>If FTS is not installed you can expect Timeouts not only in search, but elsewhere, because users who are searching will take up resources forcing other queries to run for longer, sometimes exceeding the Timeout Interval.</p>
+<p>SQL Server Full Text Search is on the media that your SQL Server came on. Ask a DBA to install it. Once installed you need to configure Gemini to use it. To do so, execute the following commands in SQL Server:</p>
+<pre>
+CREATE FULLTEXT CATALOG Gemini
+WITH ACCENT_SENSITIVITY = ON
+GO
+
+CREATE FULLTEXT INDEX ON [dbo].[gemini_customfielddata] (
+fielddata Language 1033
+)
+KEY INDEX gemini_customfielddata_customfielddataid_pk
+ON Gemini
+WITH CHANGE_TRACKING AUTO
+GO
+
+CREATE FULLTEXT INDEX ON [dbo].[gemini_issuecomments] (
+comment Language 1033
+)
+KEY INDEX gemini_issuecomments_commentid_pk
+ON Gemini
+WITH CHANGE_TRACKING AUTO
+GO
+
+CREATE FULLTEXT INDEX ON [dbo].[gemini_issues] (
+summary Language 1033
+,longdesc Language 1033
+)
+KEY INDEX gemini_issues_issueid_pk
+ON Gemini
+WITH CHANGE_TRACKING AUTO
+GO
+</pre>
+<p>The last step is to tell the Gemini application to use the FTS catalog you've just created. To do that, edit web.config and add an app setting with the key gemini.fulltextsearch and value of true</p>
+<pre>
+&ltappSettings&gt
+    &ltadd key="gemini.fulltextsearch" value="true"/&gt
+	
+	...more app settings
+	
+	
+&lt/appSettings&gt
+</pre>
+
+<h3>System.Web.Mvc - A public action 'FetchCards' was not found on controller...</h3>
+<img src="message1.png"/>
+<p>The error message is correct - there is no such public method on the controller. The question is why is IIS trying to invoke it. The system log will identify the user, and if the user is Anonymous you have some kind of explanation in a question - how can an Anonymous (unknown) user be trying to get data and execute actions in your Gemini instance? It suggests that your IIS authentication is wrong in some way.</p>
+<p>Please check that:
+<ul>
+<li>if you are using Windows Authentication, Anonymous Authentication is disabled.</li>
+<li>if you are using Forms Authentication, Windows Authentication is disabled but Anonymous authentication is enabled.</li>
+<li>Above all, check that authentication in web.config is the same as your IIS authentication. If not, the type of error shown above can occur.</li>
+<li>Remember to recycle Gemini's App Pool in IIS after making any changes.</li>
+</ul>
+
+<p>If the user is not Anonymous, but is a named user, check the user's Workspace filters do not filter on a Custom Field that no longer exists. It is easier than going through all the user's Workspaces. As the image shows, the Workspace is shown in the URL. Hovering over a Workspace will give you its URL, and you can always find a Workspace by its id using the SQL:</p>
+<pre>
+select * from gemini_navigationcard where cardid=<the id from the url>
+
+For example https://getmini/workspace/9091 is a Workspace with a cardid of 9091.
+</pre>
+<p><i>If you cannot identify a problem with the Workspace listed in a system error message, we recommend you delete and recreate it as an alternative to spending hours trying to investigate what is wrong with it.</i></p>
+
+<h3>Object reference not set to an instance of an object. SLA at SLA.Helpers.RuleCompiler.Compile...</h3>
+
+<p>This error occurs if you do not have a specific trigger in your database. First you need to correct the cause of the message by executing the following SQL statement in your database:</p>
+<pre>
+update gemini_users set username='-2system' where userid=-2
+</pre>
+
+<p>Then you need to create the trigger in your database so the error does not occur again. The SQL for this is:</p>
+<pre>
+IF EXISTS (SELECT * FROM sys.triggers WHERE object_id = OBJECT_ID(N'gemini_tr_users_update'))
+DROP TRIGGER gemini_tr_users_update
+GO
+
+CREATE TRIGGER gemini_tr_users_update
+ON gemini_users
+AFTER UPDATE
+AS
+BEGIN
+
+SET NOCOUNT ON
+
+IF EXISTS (SELECT * FROM inserted i JOIN deleted d ON i.userid = d.userid WHERE i.userid=-2 AND i.username!=d.username)
+BEGIN
+-- Revert the username to -2system and throw!
+UPDATE gemini_users SET username='-2system' WHERE userid=-2
+RAISERROR ('Cannot update the system user name.', -- Message text.
+16, -- Severity.
+1 -- State.
+);
+END
+</pre>
+
+<h3>Batch Update returned unexpected row count</h3>
+<p>You have a deadlock. Process A has a record locked that Process B needs, and Process B has a record locked that Process A needs. One process will be killed to release the lock. This is a standard, multi-user database scenario and is not a problem unless it happens frequently, in which case it is likely that you have a long-running query causing a performance bottleneck that needs a DBA to investigate. Check that you are not getting Timeouts as described above.</p>
+
+<br\>
+
+<h3>Various Azure error messages you might see</h3>
+<h4>AADSTS1002016</h4>
+<p>You are not specifying TLS 1.2. If your mailbox uses EWS then it uses 1.2 by default. If your IMAP and SMTP have TLS 1.2 specified then follow the link from Microsoft because there are O/S implications to TLS 1.2.</p>
+<h4>AADSTS16003</h4>
+<p>Indicates that your email user hasn't been explicitly added to the tenant.</p>
+<h4>AADSTS28002</h4>
+<p>Your Scope settings on your mailbox or SMTP is incorrect. Please specify the Scope settings exactly as shown in our documentation. Gemini will always default the correct Scope, but if you change settings (say from IMAP to EWS) it will not change what it has defaulted.</p>
+<h4>AADSTS50012</h4>
+<p>There's a problem with your SSL Certificate.</p>
+<h4>AADSTS50029</h4>
+<p>Your redirect URI is invalid. Login to Azure Portal and check it.</p>
+<h4>AADSTS50055 or 56 or 57</h4>
+<p>Invalid or expired password, or the user account is disabled.</p>
+<h4>AADSTS50126</h4>
+<p>Invalid credentials.</p>
+<h4>AADSTS70002</h4>
+<p>InvalidClient - Error validating the credentials. The specified client_secret does not match the expected value for this client. Correct the client_secret and try again.</p>
+<h4>AADSTS70004</h4>
+<p>InvalidRedirectUri - The app returned an invalid redirect URI.</p>
+<h4>AADSTS70043</h4>
+<p>The refresh token has expired or is invalid due to sign-in frequency checks by conditional access. The token was issued on {issueDate} and the maximum allowed lifetime for this request is {time}.</p>
+<br\>
+<p>There are many more AADS errors that Azure can generate. Whatever you get, don't take our word for the cause of the problem, follow the link to the Microsoft documentation and see what Azure is objecting to. If in doubt, ask Countersoft AND Microsoft.</p>
+
+
+<h3>It's a labor of love so I'm still working on this page, but I hope to soon be done...</h3>
 
 <img src="under-construction.png" alt = "This page is under construction"/>
