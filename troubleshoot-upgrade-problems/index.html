@@ -50,7 +50,8 @@ title: GEMINAI - Little Language Machine Learning
  <h3>We moved Gemini (or a bit of it) to a different server/cloud and it's not working</h3>
  <ul>
 	<li><a href="https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed">Check that the .Net version</a> on the web server meets the <a href="https://docs.countersoft.com/pre-requisites/">pre-requisite minimum</a>.</p>
-	<li>Check that you have all the other pre-requisites for your website - Windows Auth etc. may not be installed. In the Control panel, select "Turn Windows Features On or Off" having searched online for the heading associated with Internet services for your version of Windows.</li>
+	<li>Check that you have all the IIS pre-requisites for your website In the Control panel, select "Turn Windows Features On or Off" and check out which World Wide Web/Internet services have been installed.</li>
+	<img src="windows-features"/>
 	<li>Check the connectivity between the web server and the DB server. If this is failing it should be shown on the page if you switch off custom errors in web.config.</li>
 	<li>Unless you are seeing a Gemini page, <i>any</i> login challenge that you get is being thrown up by your network and is an internal connectivity problem, not a Gemini problem.</li>
 </ul>
