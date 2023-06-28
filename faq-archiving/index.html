@@ -8,11 +8,11 @@ title: GEMINAI - Little Language Machine Learning
 
 
 <h3>The archive story</h3>
-<p>You're a DBA and you can see that your Gemini database has got bigger and bigger. It used to take 10 minutes to back up, now it takes an hour. Then again, it is several hudred times bigger than it used to be. What can you do?</p>
+<p>You're a DBA and you can see that your Gemini database has got bigger and bigger. It used to take 10 minutes to back up, now it takes 3 hours. Then again, it is several hundred times bigger than it used to be. What can you do?</p>
 
 <h3>Investigate the problem</h3>
 <p>Sql Server Management Studio is your friend. Simply right-click your database, select Reports...Standard Reports, and run the "Disk Usage By Top Tables" report.</p>
-<img src="sql-table-sizes.png"/>
+<img src="sql-table-sizes.png" width="600" height="600"/>
 <p>Without even looking at your report, we can tell you what the biggest tables will be.
 	<ul>
 		<li>If you use Breeze, then breeze_enquiry will be right up there.</li>
@@ -69,3 +69,39 @@ select a.* from gemini_issuecomments a where a.issueid in
 );
 
 </pre>
+<p>You see the pattern? It's easy, we just need to join our big table on the IssueId to the Issue Status table (gemini_issuestatus) testing that the item is in a 'final' state (isfinal=1). Final=1 is the same as Closed. We use the revised date not the created date because we want to know when the record was last worked on, not just how old it is.</p>
+
+<p>Why are these select statements? Well it's because we wanted to show the principle, and also you really should read our valuable tips below because it will all become much clearer. If you did change 'select' to 'delete' then you'd delete the data that the select statements select. Don't do that yet! Read on!</p>
+
+<p>What you might want to do is to create an empty database, with a name that matches the cut-off date of your deletion, and before deleting any data use a statement like:</p>
+<pre>
+
+<p>-- SAMPLE ARCHIVE STATEMENTS - replace XYZ with the name of your archive database </p>
+
+select * into XYZ.dbo.archive_breeze_enquiry from breeze_enquiry a where a.issueid in 
+(
+	select b.issueid from gemini_issues b where b.revised < DATEADD(DD, -365, CAST(CURRENT_TIMESTAMP AS DATE)) 
+	and b.issuestatusid in (
+		select c.statusid from gemini_issuestatus c where c.isfinal = 1 and c.statusid = b.issuestatusid
+	)
+);
+</pre>
+
+<p>A "select * into ... from ..." SQL statement into an empty database will create the table and populate it with the data. When we're done using the same technique on all the tables we wish to archive, we can backup the archive database and take it offline. NOW we can <i>might</i> change those original selects into deletes knowing that there is a copy of the data in an archive database. But hold on, read the tips below!</p>
+
+<h3>Some valuable tips for you</h3>
+<p>Deletion is a heavy-duty process. Apart from anything else you might have to do something about some pesky foreign key constraints. So why delete when you can update and avoid that kind of problem? For example, rather than delete the attachments, set the field filecontent = ''. You will find that sorts the attachment size out almost as well as if you deleted the record, and you've maintained data integrity <i>and</i> a record in Gemini to show that there <i>is</i> an attachment so that if it is needed it can be retrieved. You can do the same thing with all the large tables by looking at their structure and setting the varbinary(max) and nvarchar(max) fields to ''.</p>
+<p>If instead of 'delete' you perform the 'update' suggested above, then your restore script from the archive database is also really easy. You don't need to worry about setting IDENTITY_INSERT off and blah, just update the deleted data with the data from the archive database <i>using the matching issueid key value</i></p>
+<br/>
+<p>Another thing you might wish to do is <b>download attachments to file storage</b> and then set the binary field to nothing in the database. There's more than one way to do this, but the simplest is to write a small C# program with the selection criteria and the following code for writing out the attachments:</p>
+<pre>
+var sqlConnection = new SqlConnection(connString);
+var sqlCommand = new SqlCommand("select filecontent from gemini_issueattachments where <your where conditions>", sqlConnection);
+sqlConnection.Open();
+var reader = sqlCommand.ExecuteReader();
+reader.Read();
+var content = reader[0] as byte[];
+File.WriteAllBytes("<filename from the table>", content);
+</pre>
+
+<p>We hope this has been helpful. If you get stuck you can always commission Countersoft's professional services to do this for you, and we promise not to use cheat sheet SQL.</p>
