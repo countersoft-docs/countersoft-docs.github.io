@@ -2,9 +2,66 @@
 layout: default
 title: GEMINAI - Little Language Machine Learning 
 ---
-<p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
-<h1>Migrating from On-premise to On-demand FAQ</h1> 
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="migrating-to-cloud.png" alt="Gemini AI logo" width="180" height="200"/></a></p>
+<hr>
+<h1>FAQ - from on-premise to the cloud</h1> 
 
-<h3>Sorry, I'm still writing this page, but I'll soon be done...</h3>
+<h3>Is it possible to migrate any version of Gemini?</h3>
+<p>The good news is we can migrate any version of Gemini into our hosting environment. However, the next point deals with the proviso.</p>
 
-<img src="under-construction.png" alt = "This page is under construction"/>
+<h3>Can I remain on my current version of Gemini?</h3>
+<p>We no longer offer technical support for Gemini 4 or Gemini 5 in our hosting environment. If we migrate these versions they must be upgraded to the <i>latest</i> release and there will be a professional services charge for the work. Countersoft Sales will need to provide an estimate on the cost. This cost is separate from the monthly/annual hosting charge calculated on a per user base.</p>
+
+<h3>Apart from the hosting cost, do I have to pay for services to migrate my instance</h3>
+<p>Yes, there is a charge for the time and resources to move your site into our hosting environment. Normally we charge for 1 day's work to take your site as-is, 1.5 days if we need to upgrade a version 6/7 site to the latest release, and a calculated fee if we have to upgrade a version 4/5 site.</p>
+
+<h3>I have a lot of inactive users in my on-premise site. Will I have to pay for them?</h3>
+<p>In a word, no. Gemini licensing for both on-premise and on-demand counts only active users.</p>
+
+<h3>I have a lot of users with whom we only communicate by email, they don't need to log in. Will I have to pay for them?</h3>
+<p>Users who only communicate by email can be covered by a Portal license, which is 10% of a normal user cost. You cannot have more than 100 Portal users in our hosting environment. See the <a href="https://docs.countersoft.com/security-options/#sts=Portal%20Group">docs and video</a> for more on Portal users.</p>
+
+<h3>Can I use Active Directory or Windows Authentication in your hosted environment?</h3>
+<p>At present, the answer to that is No. You are restricted to Username/Password authentication only. If you are on Gemini 7.4, you will be able to implement 2FA with QR code authenticators in your login process.</p>
+
+<h3>Can I clone and separate my instance by projects?</h3>
+<p>This is not strictly a migration question, but it has been asked often enough to warrant a spot in the FAQs. Yes, Countersoft can clone your existing site and split it into new sites (databases) by project. Contact Countersoft Sales for a professional services estimate if you have this need.</p>
+
+<h3>Can I still have direct access to my database?</h3>
+<p>No. If you want to access your database you must do it through the Gemini UI or with the <a href="https://docs.countersoft.com/rest-api/">REST Api</a>.</p>
+
+<h3>What is the process I have to go through to migrate?</h3>
+
+<p><b>The following applies to Gemini 6.x and 7.x sites only. Customers on Gemini 4 and 5 should contact Countersoft Sales for their migration process</b>.</p>
+
+<p><b>Your steps</b></p>
+<ol>
+	<li>Export your Project Templates. This will create zip files that are needed to recreate your configuration.</li>
+	<li>Zip up the Gemini website from the root.</li>
+	<li>In a shared folder/ftp location give us:
+		<ul>
+			<li>A recent SQL backup file of your database as a .bck file</li>
+			<li>The zipped website</li>
+			<li>The zipped templates</li>
+		<ul>
+	</li>
+</ol>
+
+<p><b>Countersoft's steps</b></p>
+<ol>
+	<li>When we have your files we will restore the database and recreate your site in our environment. We will setup the DNS so you and your customers can reach it from anywhere.</li>
+	<li>If you are on versions 4 or 5, or we have agreed to upgrade your site, you will be upgraded to the latest version</li>
+	<li>We will apply a SSL certificate and automatically redirect http requestst to https.</li>
+	<li>Your new site will have a .ongemini.com domain, so https://&ltcustomer name&gt.ongemini.com. You can pick the customer name provided it is not already taken, but this is the naming convention we shall follow.</li>
+	<li>When you site is ready, you will be invited to log in, check your configuration, and test the application.</li>
+	<li>You may need to whitelist the new site if your SMTP server is behind a firewall. Or, you can start using one of the public SMTP servers, like office.smtp.com or gmail.smtp.com, which is common practice.</li>
+	<li>When you are satisfied that all is as expected, we request another, golive backup of your database. We don't need the website or templates second time round as the site will be inplace and only the data needs to be refreshed. You can login, replicate any email and other changes you might have made to the test instance, and from that point you are live in our hosted environment.</li>
+</ol>
+
+<h3>How are payments made for on-demand</h3>
+<p>We require payment of the devops fee and the first month of hosting between the first and second cuts of your database i.e. you pay when you know you have a working environment.</p>
+
+<p>If you pay monthly, it will be by credit card, and that card used will continue to be charged until it expires or you terminate the hosting agreement. You may cancel at any time and you only pay for the month you are in. You can pay annually in advance, in which case we give a 12% discount on the total, but you don't get a refund if you decide to leave our service before the year is up.</p>
+
+<h3>What are the terms of usage of my site in your hosting environmemt?</h3>
+<p>Unless you negotiate a bespoke Hosting Agreement with us, you will be covered by the terms of our standard <a href="https://countersoft.com/EULA.pdf">End User Licensing Agreement</a>.</p>

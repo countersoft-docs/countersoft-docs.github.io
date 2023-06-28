@@ -2,9 +2,25 @@
 layout: default
 title: GEMINAI - Little Language Machine Learning 
 ---
-<p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
-<h1>Migrating from On-demand to On-premise FAQ</h1> 
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="migrating-on-premise.png" alt="Gemini AI logo" width="180" height="200"/></a></p>
+<hr>
+<h1>FAQ - from on-demand to your cloud</h1> 
 
-<h3>Sorry, I'm still writing this page, but I'll soon be done...</h3>
+<h3>Is it possible to migrate my hosted database and website to my servers?</h3>
+<p>Yes, in fact over the years many customers have decided for reasons of technical integration and/or scale to go on-premise. Many customers also start with an on-demand site as a POC and then move to on-premise, in the process they wish to keep the configuration they have set up rather than start again from scratch, so they take the database with them.</p>
 
-<img src="under-construction.png" alt = "This page is under construction"/>
+<h3>What does the process entail?</h3>
+<ol>
+	<li>You give Countersoft Sales an exact cut-off date when you will stop working with your database.</li>
+	<li>You download and install a version of Gemini onto your servers and validate that it is correctly configured in your environment using the sample SQL Server database that every Gemini release will create if you point its connection string to an empty database.</li>
+	<li>On the agreed cut-off date (usually a weekend), Countersoft will shut down your hosted site and give you a password protected zip file containing your database backup as a SQL Server .bck file. You are responsible for providing a secure file transfer mechanism.</li>
+	<li>You restore the database in your environment and change the connection string in your on-premise web.config file to point at it.</li>
+	<li>If you have downloaded a version of Gemini that is a later release than the hosted database, Gemini will simply upgrade the database when it starts.</li>
+</ol>
+
+<h3>Is there a fee for transferring from on-demand to on-premise?</h3>
+<p>There is no professional services fee unless you involve us in more than transferring a backup file. However, you must have an unexpired on-premise license or you will not be able to access your database through the Gemini UI. This means you may have to purchase a new license, as on-demand and on-premise licensing are fundamentally different and your backup will arrive without a working Gemini license.</p>
+<p>If you have paid an annual fee for your hosting, Countersoft will deduct the pro-rated amount left of the term from the purchase price of any on-premise license.</p>
+
+<h3>Can I clone and separate my instance by projects?</h3>
+<p>This is not strictly a migration question, but it has been asked often enough to warrant a spot in the FAQs. Yes, Countersoft can clone your existing site and split it into new sites (databases) by project. Contact Countersoft Sales for a professional services estimate if you have this need.</p>
