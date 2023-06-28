@@ -1,0 +1,60 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<h1>Troubleshooting Upgrades</h1> 
+
+<h2>Before you start</h2>
+<h3>Before you begin a Gemini upgrade you should follow these steps</h3>
+<ol>
+	<li>Do a <i>Full</i> backup of your database. The upgrade can change table structures, modify and insert data, and drop redundant elements. It is not something to be manually undone.</li> 
+	<li>Make a copy of your website. You will need the connection string and httperrors section from it after the upgrade.
+		<ul>
+			<li>The connection string has the database username/password, name and physical location. HttpErrors has the SSL redirect from http to https if you have implemented this (and you probably should have).</li>
+			<li>Do not forget that if you use Windows Auth you need to edit web.config after the upgrade and set &ltauthentication="Windows"&gt. This setting is cAsE sensitive!</li>
+			<li>Do NOT just copy your old web.config back over the one the upgrade will install. The contents of web.config can also change and if you undo some of its settings Gemini will not work.</li>
+		</ul>
+	</li>
+	<li>Stop the App Pool for Gemini in IIS. 
+		<ul>
+			<li>You <i>cannot</i> have users in the system if the database structure is being changed and data is being modified. The consequences of a conflict are unknown and unknowable!</li>
+			<li>While the App Pool is running, so too are Gemini background Apps. They too must be stopped, and stopping the App Pool is the way to kill them all.</li>
+			<li>While the App Pool is running, IIS worker processes will have files open that the upgrade will try to overwrite. If this is the case, the overwriting will fail and the upgrade will fail.</li>
+		</ul>
+	</li>
+	<li>Delete all entries in the System Log. You can do this through the UI, or if you are on-premise with DB access you can execute <i>truncate table gemini_systemlog;</i></li>
+	<li>If you can, ensure that there are no unread emails in any mailbox(es) Gemini processes. Ideally, the mailboxes should be empty. We accept that this is not always possible.</li>
+	<li>The standard upgrade instructions does not list this, but GEMINAI recommends it:
+		<ul>
+			<li>Once the App Pool is stopped, on the web server navigate to \App_Data\Apps where you should find folders with names like Item_Repeater-CEF9D547-5106-49D6-8B08-F753AE1E23BF.</li>
+			<li>Delete all these GUID-named folders. Do NOT delete the zip files. The zip files contain Apps that Gemini will deploy and you may have Apps that are not in the base Gemini set.</li>			
+		</ul>
+	</li>
+</ol>
+<br>
+<p>The latest version of Gemini is 7.3 (sadly GEMINAI is not yet ready for release), and you can find full upgrade instructions <a href="https://docs.countersoft.com/upgrading/">here</a>. 
+
+<h2>Typical Problems</h2>
+<h3>After the upgrade, apps are missing or the App tab in the admin section is missing.</h3>
+<p> This is because your apps have failed to deploy. The reason for this is almost certainly File System permissions and you have not followed <a href="https://docs.countersoft.com/upgrading-gemini/">Step 5 of the Upgrade Instructions - Set Folder Permissions</a>.</p>
+
+<h3>We created a new website and now we get errors</h3>
+<p>It is quite likely that your new website in IIS has subtly different settings from your old website. Please check the following:
+<ul>
+	<li>The you have either Forms Authentication or Windows Authentication enabled in IIS and this must match what you have set in the &ltauthentication&gt section of web.config.</li>
+	<li>If you are using Forms Authentication then in IIS you MUST have Anonymous Authentication enabled in IIS. Until your user enters a username/password, they <i>are</i> 'Anonymous'.</li>
+</ul>
+<p>If the above does not resolve the problem, edit web.config, and switch off custom errors like this: &ltcustomErrors mode="Off" defaultRedirect="~/500"&gt. This is cAsE sensitive. Errors will now be thrown to the page to help you diagnose the problem.</li>
+
+ <h3>We moved Gemini (or a bit of it) to a different server/cloud and it's not working</h3>
+ <ul>
+	<li><a href="https://learn.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed">Check that the .Net version</a> on the web server meets the <a href="https://docs.countersoft.com/pre-requisites/">pre-requisite minimum</a>.</p>
+	<li>Check that you have all the other pre-requisites for your website - Windows Auth etc. may not be installed. In the Control panel, select "Turn Windows Features On or Off" having searched online for the heading associated with Internet services for your version of Windows.</li>
+	<li>Check the connectivity between the web server and the DB server. If this is failing it should be shown on the page if you switch off custom errors in web.config.</li>
+	<li>Unless you are seeing a Gemini page, <i>any</i> login challenge that you get is being thrown up by your network and is an internal connectivity problem, not a Gemini problem.</li>
+</ul>
+
+<h3>There is more to come, I'm still writing this page, but I'll soon be done...</h3>
+
+<img src="under-construction.png" alt = "This page is under construction"/>
