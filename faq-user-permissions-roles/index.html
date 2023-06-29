@@ -1,0 +1,48 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<hr>
+<h1>FAQ - User Permissions & Roles</h1> 
+
+<h3>I'm a Gemini Administator why can't I see Project <b>X</b>, Field <b>Y</b>, Functionality <b>Z</b>?</h3>
+<p>Membership of the Gemini Administrator User Group gives access the Gemini site's admin section, nothing else. For members of this group to see projects then they must be in the "Can View Project" role on that project's permission set. If Gemini Administrators are in the "Can Only View Own Items" role, they will only see items they create or items where they are the assigned resource. Etc.</p>
+
+<h3>I'm a Gemini Administator and the explanation above still doesn't explain why I can't Field <b>Y</b> or Functionality <b>Z</b>?</h3>
+<p>Gemini applies <i>the most restrictive permission from <b>all</b> the User Groups a person is in</i>. Run the Report for a user on the User Maintenance screen. The most restricted role they have on any given project is the one that will apply.</p>
+<img src="user-report.png" height="400" width = "600"/>
+
+<h3>What is the User Group "Everyone" and why can't I find it in User Groups Maintenance?</h3>
+<p>"Everyone" is a system group, like "Gemini Administrators" and "Everyone Authenticated". Unlike Gemini Administrators you don't get to designate who is in Everyone, the group is exactly what is says it is. The difference between Everyone and Everyone Authenticated is that the latter refers only to people who log in, but since very few customers allow anonymous browsing of their Gemini sites, the two are equivalent."</p>
+
+<h3>Why is there an "Everyone" Group, why not let everyone have access where no group is specified?"</h3>
+<p>For consistency. Gemini secures everything - fields, functionality, projects, workflow. You may not be aware of it but if you add a field to a screen, save it, and go back and look at the User Groups associated with it, you will see that because you didn't specify User Groups with access to that field, Gemini added "Everyone" to it. There is therefore no such thing as an unsecured field or workflow, and only one logic path to determine who has access.</p>
+
+<h3>What is the Portal User Group?</h3>
+<p>Portal users are members of a group that is defined on the "People...Options" tab of the admin section. These users have a different login welcome message, can only see the Grid View, and they are either in "Can Only View Own Items" or "Can Only View Own Organization Items" roles on a project.</p>
+<img src="portal-group.png" height="400" width="600"/>
+ 
+<h3>How can I have a customer see all the tickets for their organization?</h3>
+<p>You have to create an <a href="https://docs.countersoft.com/organization-permissions/">Organization</a> for your customer and define the users that are its members. Normal members of the company will be in a User Group associated with "Can Only View Own Items", but the user(s) who should see all the tickets for the organization should be in a separate User Group that is associated with the role "Can Only View Own Organization Items". This latter role 'grants access to the items for all the members of an organization.</p> 
+
+<h3>I need to free up a seat on my license, can I delete a user?</h3>
+<p>Yes, if the user has no records associated with them. No, if they have records associated with them. Gemini will not let you 'break' connections and data integrity but you can disable the user. Disabled users are not included in your license count.</p>
+
+<h3>I've added a user but they're not showing up in the system</h3>
+<p>Gemini caches data for performance, and users and roles are cached. You may have to wait for the cache to refresh, or you can force it by having the App Pool in IIS recycled.</p>
+
+<h3>Users in AD are not coming across. Why?</h3>
+<p>There are a number of possible reasons</p>
+<ul>
+	<li>You have not specified the right options in the Active Directory configuration.</li>
+	<img src="ad-user-options.png"/>
+	<li>Your AD User Group is not mapped to any User Group in Gemini.</li>
+	<img src="ad-group-mapping.png"/>
+	<li>Your AD User group is a sub-group in AD. Gemini does not iterate through levels importing sub-groups, only users in a group.</li>
+</ul>
+<br\>
+
+<h3>It's a labor of love so I'm still adding to this page, but I hope to soon be done...</h3>
+
+<img src="under-construction.png" alt = "This page is under construction"/>
