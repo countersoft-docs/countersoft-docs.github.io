@@ -1,0 +1,62 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<hr>
+<h1>FAQ - Workspaces</h1> 
+
+<h3>Why does my Workspace look like it does?</h3>
+<p>Each Workspace stores <b>5 view parameters</b>. What you see is based on what the Workspace has stored. For every Workspace the parameters are:</p>
+<ol>
+	<li>The <b>Columns</b> you wish to see. From the Grid these are identified by the column selector, in the Planning Board by the Group By or Axis selector.</li>
+	<img src="grid-board-column-selectors.png" height="300" width="600"/>
+	<li>The <b>Base View</b> - typically the <a href="https://docs.countersoft.com/concept-items-grid/">Grid</a>, <a href="https://docs.countersoft.com/agile-board/">Planning Board</a>, <a href="https://docs.countersoft.com/concept-calendar/">Calendar</a>, <a href="https://docs.countersoft.com/concept-timeline/">Timeline</a>, or <a href="https://docs.countersoft.com/progress-work-chart/">Progress</a> views, but any UI view can be saved as the base view of a Workspace. Once saved, whenever you go to that Workspace, that functional view is what you will see by default.</i>
+	<li>The <b>Columns and Sort Order</b> on the Grid. You can drag-drop columns into position and sort ascending/descending, using ctrl to sort on multiple columns, and if you save your Workspace that will be its default view.</li>
+	<li>The <b>Display Options</b> - this controls whether your view includes <b>Closed items</b>, <b>SLA</b> information, <b>Manual Sequence Zones</b>, and whether you wish to view <b>Dependencies</b> (parent/child items) in a collapsed state or as a flat list.</li>
+	<li>Finally, and most importantly, the <b>Filter</b>, which determines which project(s) data is included in your Workspace and what additional data selection criteria you wish to apply. On the Grid, Board, Calendar, Timeline, and Progress views, the filter is consistent and cumulative, and you add new fields to filter on just by clicking in the next available filter box. The filter runs immediately, there is no "apply my selection" button. With Gemini you see what you selected instantly! On other screens, the filter is designed to match the functionality behind that specific view.</li>
+	<img src="filter.png"/>
+</ol>
+
+<h3>Why does my Workspace keep losing one or more of the 5 view parameter selections?</h3>
+<p>You haven't saved the Workspace after changing it. If you don't save your changes, the Workspace will revert back to its last saved view as soon as it refreshes. This means you can dynamically select whatever you want by changing the filter, or changing the way that you see it by changing your view, without ever worrying that you need to keep track of multiple Workspaces. Only save the Workspace if you have made a change to its view or filter that you wish to make permanent, otherwise treat your Workspace as a default view that can dynamically retrieve and present any data you have access to in any way you wish.</p>
+<img src="workspace-cog.png"/>
+
+<h3>Why do I keep losing my default Workspace?</h3>
+<p>If you have more than one Workspace, you need to set one of them as the default. If you drag-drop your Workspaces into order in G7, Gemini will set the top Workspace as 'Home', but if you have never done this, or explicitly used the "Set as Home" option then you have no default. <b>Please Note:</b> <i>for obvious reasons, you will not see the 'Set as Home' option on your Home/Default Workspace</i></p>
+<img src="set-as-home.png"/>
+<br\>
+<p><i>One other reason you may 'appear' to lose your home Workspace is that when other people share Workspaces with you, those shared Workspaces are shuffled to the top of your list, to ensure that you see them. They come into your list with a double-exclamation mark (!!). However, after a few seconds, they will lose the double exclamation and drop to the bottom of the list. In G7 you can identify shared Workspaces by the arrow in their icon, in G6 they have an arrow sticking out of the left-hand-side of the box</i>.</p>
+
+<h2>Sharing Workspaces</h2>
+<h3>If I manually sequence items, how do I stop other people from changing the order?</h3>
+<p>First, if you just share a Workspace without Lock & Synch then other people have <i>their own copy</i> of the Workspace, they are not looking at yours. Therefore they can do what they like with the sequencing.</p>
+<p>If you share with Lock & Synch you can also specify if the recipients are allowed to sequence items. If they can't then they have to view the items in the order you have specified and they cannot sort, filter or alter the order in any way. However, they can dynamically choose not to see the Sequence zone, but they cannot make that a permanent change to their view. As soon as the Workspace refreshes, the zone will be back.</p>
+<img src="lock-synch-sequence.png"/>
+
+<h3>I can't see the Groups and/or people I want to share my Workspace with</h3>
+<p>Gemini doesn't allow sharing across the board. For each User Group you must define which other groups its members <b>Can Share/Chat</b> with (though Chat is deprecated). You can simply share with the User Group "Everyone" if you have no restrictions, but that works best if subsequent sharing is with individuals. Once your sharing Groups are defined, you can share with those User Groups as groups, or with individuals <i>who are members of those groups</i>.</p>
+<p>Sharing groups are defined in User Group Maintenance</p>.
+<img src="workspace-share.png"/>
+
+<h3>I'm getting reports/alerts from a Shared Workspace, and I don't want them</h3>
+<p>Look in your User Profile on the Alerts tab. Any Workspaces that you are subscribed to by other people will appear here, and you can simply disable alerts and reports from those Workspaces.</p>
+<img src="shared-workspace-alerts.png"/>
+
+<h2>Managing Workspaces</h3>
+<h3>A user who shared a Workspace has left, can I take over the Workspace?</h3>
+<p>Yes, if you are a Gemini Administrator, go to Configure Gemini...System...Workspaces, and select Workspace Ownership. Select the leaver's username, select the Workspace(s), and then select yourself or another user as the new owner of the Workspace(s). Click Move Workspaces and Gemini will change the ownership. The new owner can do what they want wit hthe Workspace.</p>
+
+<h3>Can I add a 'Dummy Workspace' to send users to external links?</h3>
+<p>Yes, if you are a Gemini Administrator, go to Configure Gemini...System...Workspaces, and select Custom Cards (the name comes from a time when Workspaces were represented as cards). Click on Add and the functionality is self-evident.</p>
+<img src="custom-cards.png"/>
+
+<h3>Can I stop external users from managing Workspaces?</h3>
+<p>Yes, but this is a 2-stage process. First, in Configure Gemini...System...Workspaces you select one of your Workspaces that your external users will use. Don't worry if it filters All Projects and All Items, provided they are in the Can Only View Own Items role in the Project Permission Set(s) they will only see items they create or have been assigned to in the Resource field.</p>
+<img src="default-workspace.png"/>
+<p>Step 2 is to go to Configure Gemini...People...Options and check the box to disable Workspace management for Portal users.</p>
+<img src="disable-portal-workspaces.png"/>
+
+<h3>What happens if I delete a shared Workspace?</h3>
+<p>If you shared it without Lock & Synch, nothing, your copy of the Workspace will just be deleted. If you shared it with Lock and Synch, Gemini will give you the option to pass ownership of the Workspace to one of the people it is shared with. If you decline this option, the Workspace will be deleted for all users who have it.</p>
+<img src="delete-shared-workspace.png"/>
