@@ -93,7 +93,7 @@ select * into XYZ.dbo.archive_breeze_enquiry from breeze_enquiry a where a.issue
 <p>Data deletion is a heavy-duty process. Apart from anything else you might have to do something about some foreign key constraints. If you updated the tables instead, you would avoid that kind of problem. For example, rather than deleting attachments, you could set the field filecontent = ''. You'll find that updating the fields that hold the large data volumes to be nothing/empty reduces table size almost as well as deleting the record. It avoids any risk to data integrity <i>and</i> a record in Gemini remains to show that there <i>was</i> an attachment, so that if it is needed later it can be retrieved. You can do the same thing with all the large tables by looking at their structure and setting varbinary(max) and nvarchar(max) fields to ''.</p>
 <p>There's an added bonus if you use 'update' instead of 'delete'. Any restore script from the archive database will be simpler. You don't need to worry about setting IDENTITY_INSERT off and more of those foreign key constraints, just update the deleted data with the data from the archive database <i>using the matching Issueid key value</i></p>
 <br/>
-<p>Another (slightly different) thing you might wish to do is <b>download attachments to file storage</b> and then set the binary field to nothing in the database. There's more than one way to do this, but the simplest is to write a small C# program with the selection criteria and the following code for writing out the attachments:</p>
+<p>Another (slightly different) thing you might wish to do is <b>download attachments to file storage</b> and then set the binary field to nothing in the database. There's more than one way to do this, but the simplest is to write a small C# program with your selection criteria and something like the following code for writing out the attachments:</p>
 <pre>
 var sqlConnection = new SqlConnection(connString);
 var sqlCommand = new SqlCommand("select filecontent from gemini_issueattachments where <your where conditions>", sqlConnection);
@@ -103,5 +103,6 @@ reader.Read();
 var content = reader[0] as byte[];
 File.WriteAllBytes("<filename from the table>", content);
 </pre>
-
+<p>We'll leave you to write the logic to iterate through the data, on the basis that the ability to write such logic is the minimum qualification for being allowed to execute the code.</p>
+<br\>
 <p>We hope this has been helpful. If you get stuck you can always commission Countersoft's professional services to do this for you, and we promise not to use cheat sheet SQL.</p>
