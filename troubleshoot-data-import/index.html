@@ -1,0 +1,33 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<hr>
+<h1>Troubleshooting Data Import</h1> 
+
+<h3>Why can't I see the Import Wizard in the menu?</h3>
+<p>The import option is restricted to members of the Permission Set Role "Can Perform Bulk Operations". If you are not in a User Group that is in this role in a project's Permission Set then you will not see the option in your menu.</p>
+<img src="bulk-operations.png"/>
+
+<h3>How do I get a template for importing data using Excel?</h3>
+<p>All you have to do is set the Items Grid to  display the columns you want to import, use the Export to Excel option that is also on the grid, and you have a template. Edit the downloaded spreadsheet, delete all the data bar the header row <b><i>and</i></b> the Item Key (Gemini will generate a key for every imported item so you should not specify it in your template), and then put your data to be uploaded in its place.</p>
+<img src="export-button.png"/>
+<p>We recommend you import a small batch of data (5-10 records) first, to test out the data and familiarize yourself with the process.</p>
+<p>Documentation on Gemini's Excel Import can be found <a href="https://docs.countersoft.com/importing-existing-data/">here<a>.</p>
+
+<h3>Can I import parent/child relationships?</i>
+<p>You can import dependencies by mapping a column to the Dependency field, and entering either an existing item id if the parent is already in Gemini, or the row number in Rx format to designate the parent. R2 will be the 1st data row when you have headers.</p>
+
+<h3>Can I import attachments?</h3>
+<p>You cannot import attachments using the Import Wizard. For that type of operation you need to use the REST API, which has an <a href="https://docs.countersoft.com/item-attachments-endpoint/">Item Attachment Endpoint</a>.</p>
+
+<h3>I get an error about a problem accessing the 'app_data/imports' folder"
+<p>Gemini needs acces to that folder. On the web server, right click on %Gemini%/App_data/imports folder, select properties...security, and add the User Group "Everyone" with full control.</p>
+
+<h3>I get the error - Arithmetic overflow error converting float to data type numeric</h3>
+<p>The most likely cause of this is that you are trying to put text into a number, probably in a Custom Field. Make sure your import file has a header, and make sure the numeric fields in each column have valid numeric data. Numbers should not be initialized to high values, they should be initialized to zero.</p>
+
+<h4>It's a labor of love so I'm still working on this page, but I hope to soon be done...</h4>
+
+<img src="under-construction.png"/>

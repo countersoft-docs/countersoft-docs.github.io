@@ -25,7 +25,7 @@ title: GEMINAI - Little Language Machine Learning
 <p>Read the documentation on <a href="https://docs.countersoft.com/creating-your-own-reports/">Creating Your Own Reports</a> and note the tokens for {ParentItemId}, {estimatedtimewithkids}, and {loggedtimewithkids}.</p>
 
 <h3>Do I need a permanent Workspace to run my report?</h3>
-<p>The answer to this is 'yes' and 'no'. If you need to report on closed items you should have a non-shared Workspace that filters the data you wish to report. The reason it shouldn't be shared is that even if there are very few closed items at present, it will eventually contain a lot of items. The more items a Workspace has, the harder the system has to work to track its data.</p>
+<p>The answer to this is 'yes' and 'no'. If you need to report on closed items you should have a non-shared Workspace that filters the data you wish to report. The reason it shouldn't be shared is that even if there are very few closed items at present, it will eventually contain a lot of items. The more items a Workspace has, the harder the system has to work to track its data. Sharing 'heavy-duty' Workspaces is not something you should be doing in the interests of optimal performance. Most people only rarely want to see closed items and they can always do so on an ad-hoc basis.</p>
 <p>When setting up your Workspaces, remember that Gemini's Filter can use meta dates that shift in time e.g. 'Today', 'Start-Month' etc. If you wish to schedule your reports you also need a dedicated Workspace. However, Gemini will export whatever your Workspace filter is <i>at the time you run the export/report</i> so you do not need a permanent Workspace just for dynamic or ad-hoc reporting. Just change the filter of the current Workspace to match the data you want, run the export/report, and refresh the Workspace to go back to its original filter settings.</p>
 
 <h3>How much data can I export?</h3>
@@ -33,3 +33,4 @@ title: GEMINAI - Little Language Machine Learning
 
 <h3>I'd like to change or build a report. How do reports work?</h3>
 <p>The best way to understand how reports work, and to see how easy they are to build, is to <a href="https://www.countersoft.com/videos/?video=7">watch a video of a report being built</a>. A good working knowledge of Excel and an understanding of Pivot Tables is a pre-requisite for building reports.</p>
+<img src="excel-reports.png"/>
