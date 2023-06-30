@@ -22,11 +22,11 @@ title: GEMINAI - Little Language Machine Learning
 
 <h3>What can you do about these big tables?</h3>
 <p>The first thing to do is to get the business to agree that what is really old and closed should be archived. That, in most archiving exercises, is the hardest part.</p>
-<p>The technical aspects of archiving are simple once you establish a cut-off date, because all you need to know now are the tables and the joins in SQL to find old, closed records and archive them.</p>
-<p>We are not going to attempt to be your DBA. For a DBA the tasks will be simple. We're not even going to write grown-up SQL with "Join x on y...", we're going to us cheat sheet SQL, but the example below will show any competent DBA what tables are involved and what they need to do.</p> 
+<p>The technical aspects of archiving are simple once you establish a cut-off date, because what you need to know are the tables and the basic joins in SQL to find old, closed records, and the basic SQL to archive them.</p>
+<p>We are not going to attempt to be your DBA. For a DBA, the tasks will be straightforward (even if they're not simple). We're not going to write grown-up SQL with "Join x on y...", or inserts into temp tables and rejoins, which your DBA may have to do in order to cope with large volumes of data. Instead, we're going to us cheat sheet SQL, but the example below will show any competent DBA what tables are involved and what they need to do.</p> 
 
 <pre>
-<p>-- SAMPLE SELECT STATEMENTS - You can hard-code a date if you wish. The example below looks at items in a closed state (isfinal = 1) that have not been touched in 1095 days</p>
+<p>-- SAMPLE SELECT STATEMENTS - You can hard-code a date if the business has agreed to a cut-off date as opposed to an age calculation. The example below looks at items in a closed state (isfinal = 1) that have not been touched in 1095 days</p>
 
 select a.* from breeze_enquiry a where a.issueid in 
 (
@@ -69,11 +69,11 @@ select a.* from gemini_issuecomments a where a.issueid in
 );
 
 </pre>
-<p>You see the pattern? It's easy, we just need to join our big table on the IssueId to the Issue Status table (gemini_issuestatus) testing that the item is in a 'final' state (isfinal=1). Final=1 is the same as Closed. We use the revised date not the created date because we want to know when the record was last worked on, not just how old it is.</p>
+<p>You see the pattern? We join our big table on the field 'IssueId' to the Issue Status table (gemini_issuestatus) testing that the item is in a 'final' state (isfinal=1). Final=1 is the same as Closed. We use the revised date not the created date because we want to know when the record was last worked on, not just how old it is relative to its creation date.</p>
 
-<p>Why are these select statements? Well it's because we wanted to show the principle, and also you really should read our valuable tips below because it will all become much clearer. If you did change 'select' to 'delete' then you'd delete the data that the select statements select. Don't do that yet! Read on!</p>
+<p>Why are these select statements? Well it's because the example is just to show the principle (and the table names). In all likelihood you will need to write more sophisticated selection criteria, and also you really should read our tip below because it will all become clearer. Suffice to say that if you did change 'select' to 'delete', you'd delete the data that the select statements retrieve, but don't do that yet! Read on!</p>
 
-<p>What you might want to do is to create an empty database, with a name that matches the cut-off date of your deletion, and before deleting any data use a statement like:</p>
+<p>To store the archived data, you might want to create an empty database, with a name that matches the cut-off date of your deletion. Before deleting any data you could use a statement like:</p>
 <pre>
 
 <p>-- SAMPLE ARCHIVE STATEMENTS - replace XYZ with the name of your archive database </p>
@@ -87,13 +87,13 @@ select * into XYZ.dbo.archive_breeze_enquiry from breeze_enquiry a where a.issue
 );
 </pre>
 
-<p>A "select * into ... from ..." SQL statement into an empty database will create the table and populate it with the data. When we're done using the same technique on all the tables we wish to archive, we can backup the archive database and take it offline. NOW we can <i>might</i> change those original selects into deletes knowing that there is a copy of the data in an archive database. But hold on, read the tips below!</p>
+<p>A "select * into ... from ..." SQL statement into an empty database will create the table and populate it with the data. When we're done using the same technique on all the tables we wish to archive, we can backup the archive database and take it offline. NOW we can <i>might</i> change those original selects into deletes, knowing that there is a copy of the data in an archive database. But hold on, read the tip below!</p>
 
-<h3>Some valuable tips for you</h3>
-<p>Deletion is a heavy-duty process. Apart from anything else you might have to do something about some pesky foreign key constraints. So why delete when you can update and avoid that kind of problem? For example, rather than delete the attachments, set the field filecontent = ''. You will find that sorts the attachment size out almost as well as if you deleted the record, and you've maintained data integrity <i>and</i> a record in Gemini to show that there <i>is</i> an attachment so that if it is needed it can be retrieved. You can do the same thing with all the large tables by looking at their structure and setting the varbinary(max) and nvarchar(max) fields to ''.</p>
-<p>If instead of 'delete' you perform the 'update' suggested above, then your restore script from the archive database is also really easy. You don't need to worry about setting IDENTITY_INSERT off and blah, just update the deleted data with the data from the archive database <i>using the matching issueid key value</i></p>
+<h3>A tip for you</h3>
+<p>Data deletion is a heavy-duty process. Apart from anything else you might have to do something about some foreign key constraints. If you updated the tables instead, you would avoid that kind of problem. For example, rather than deleting attachments, you could set the field filecontent = ''. You'll find that updating the fields that hold the large data volumes to be nothing/empty reduces table size almost as well as deleting the record. It avoids any risk to data integrity <i>and</i> a record in Gemini remains to show that there <i>was</i> an attachment, so that if it is needed later it can be retrieved. You can do the same thing with all the large tables by looking at their structure and setting varbinary(max) and nvarchar(max) fields to ''.</p>
+<p>There's an added bonus if you use 'update' instead of 'delete'. Any restore script from the archive database will be simpler. You don't need to worry about setting IDENTITY_INSERT off and more of those foreign key constraints, just update the deleted data with the data from the archive database <i>using the matching Issueid key value</i></p>
 <br/>
-<p>Another thing you might wish to do is <b>download attachments to file storage</b> and then set the binary field to nothing in the database. There's more than one way to do this, but the simplest is to write a small C# program with the selection criteria and the following code for writing out the attachments:</p>
+<p>Another (slightly different) thing you might wish to do is <b>download attachments to file storage</b> and then set the binary field to nothing in the database. There's more than one way to do this, but the simplest is to write a small C# program with the selection criteria and the following code for writing out the attachments:</p>
 <pre>
 var sqlConnection = new SqlConnection(connString);
 var sqlCommand = new SqlCommand("select filecontent from gemini_issueattachments where <your where conditions>", sqlConnection);
