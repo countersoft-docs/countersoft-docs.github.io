@@ -1,0 +1,46 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<hr>
+<h1>FAQ - Gemini Fields with Special Behaviour</h1> 
+
+<h2>Builtin Fields</h2>
+
+<h3>Resource</h3>
+<p>Gemini's Resource field has functionality connected to work items. Anyone in the Resource field will receive an automatic Resource Assignment Notification if Send Email Alerts is enabled at a System level and Auto-email Assigned Resource is also enabled. Resource is a field that can be dynamically intepreted by Rules and Actions as a condition to test e.g "Resource = person X", or "Resource <> ''". Also in Rules, Resource can be retrieved dynamically for the purpose of sending emails using the token {resource}. People in the Resource field of an item can always see the item in Gemini regardless of who owns it, after all you can't ask people to work on something they can't see.</p>
+<img src="assigned-resource.png"/i>
+<p>There are some special features of Resource that catch users out</p>
+<ul>
+	<li>Whether you can assign one or more people as resources to a single work item is a per-project setting. Edit the project and you will see the option to enable multiple resources per item.</p>
+	<li>Resources are not Followers and they have more privileges regarding the items they are assigned to. Followers are peole who receive email notifications on changes to items they are 'following'. Often they are external users/clients, and as such they are in the Portal User Group. Members of this group have a restricted view of items and can only see items they create or are assigned to (and 'assignment' is the key). Making a Portal user a follower won't work to show the Portal User the item or changes to the item; that person must be a 'Resource' to override the normal Portal User restrictions.</li>
+</ul>
+
+<h3>Reporter</h3>
+<p>You might think the Creator field in Gemini holds the 'owner' of a work item. That is not the case. The owner of an item in Gemini is the Reporter. What happens is that if the Reporter is not specified, the Creator is defaulted into that field. This subtle distinction is what allows one user to create an item in Gemini <i>on another user's behalf</i>, where the 'Reporter' is the owner and the Creator is just the intermediary. Many Gemini users don't have the scenario where one user creates items for other users, and so the Reporter field is often disables on Screens, but if you did have such a scenario then you would enable the Reported By field and the data inputter would see a list of users in that field to select as the item's true owner. <i>Gemini does not test the Created By field for permissions, it checks Reported By</i>.</p>
+
+<h3>Status</h3>
+<p>Gemini is designed to take work from Open to Closed. Status is the only way you define a work item as closed in Gemini, the system does not use words; naming a Status 'Closed' means nothing in Gemini. If you define a Status as 'Final', then Gemini regards any item in that Status as Closed, and by default will remove it from view (though you can easily ask to see it).</p>
+<p>Status is tied to Workflow, and Workflow has security around it. Make sure you read about <a href="https://docs.countersoft.com/concept-workflow/">Workflow</a> and check the existence of status transitions and the User Groups permistted to make them if you have issues with taking an item from one Status to another.</p>
+<p>Status is tied to dependencies (parent/child relationships). Gemini will not let you set a Final Status (closed) for any parent item unless <i>all of its children are closed</i>. If you do not want this forced relationship through status, use 'Related Items' instead, where Gemini simply marks items as related for a reason and build hyperlinks between them.</p>
+
+<h3>Comments</h3>
+<p>If you cannot create a comment on an item because you do not have the permissions to do so, you cannot use the Email Reply feature, because replies are stored as comments.</p>
+<p>Comments are affected by Gemini's Visibilty settings. In Gemini Visibility exists at 2 levels - at the level of the item itself, and at the level of the Comment. When you set Visibility, you set it for ONE User Group only, and all others are exclded.</p>
+
+<h2>Custom Fields</h2>
+<p>All Custom Fields are special - they are fields that you create that Gemini treats  as if they came out of the box. The easiest way to understand all of Gemini's Custom Fields is to navigate to a Project Template, and begin to create one.</p>
+<img src="custom-field-types.png"/>
+<p>As the image above shows, Gemini will let you create a Custom Field of every type that it possesses for its builtin fields - dates, rich text, user pickers, lists etc. The functionality behind most of these is self-evident, but let's review two that have special behaviour that goes beyond the simple description of their type.</p>
+<ul>
+	<li>Dropdown lists can contain static data that a user can choose from, or can pull a list of data from a database table. Gemini will even create the table for you at the time the Custom Field is defined (you cannot create a table afterwards). If the data comes from a table, Gemini will let you maintain its values, but a table can pre-exist, it can be a SQL View, it can even be a SQL View into a table in a different database!</p>
+	<li>Multi-select lists are like Dropdown lists but they let you choose <i>multiple values</i>. Both Multi-Select and Dropdown lists also have 'cascading' functionality, which is where the selection of one field determines the values that are available in another - like a list of zip codes, which cascade from the selection of a city. You can read all about this <a href="https://docs.countersoft.com/cascading-custom-field-lookups/">here</a>.</li>
+</ul>
+<p>Questions have been asked a few times about Gemini's ability to pick data for Dropdown and Multi-select lists from a view, so let us cover that in a bit moe depth. A View is a SQL query that is dynamically intepreted. It can join data from multiple tables, it can select only distinct values, it can be sorted etc. You can enter a view as a table - Gemini does not care - it simply executes the select query against the view instead of a table, so you can do whatever SQL Server views will allow you to do to retrieve your data.</p>
+
+<h3>The problem with static lists</h3>
+<p>The simplest list you can create is a static list - just type in some values. You can add to the list at any time. The problem is - you can't change a static list or delete its members without affecting the items that hold those static values.</p>
+<p>Say you have a Dropdown list of locations, one of which is "Home", and you have selected Home as a value on some items. If you change Home to House, or you delete Home, Gemini will remove the value on those items. You said 'static', and static means 'non-changing'; change the item and it's no longer static. Gemini could no longer find the Custom Field value in the list, so data integrity would be broken if it allowed the value to persist on the item(s). You will be warned that you're about to wipe out the value on all existing records, and if you persist, Gemini will do just that.</p>
+<p>This behaviour of wiping out existing static values does not happen if you use a SQL table to store your list. In that case, Gemini holds the <i>key</i> to your value, and you can change what that key points to. Data integrity is not compromised because Gemini does not hold something that does not exist, it holds a pointer to something that does.</p>
+<p>The technique for changing a static list item and updating Gemini with the change is to: a)Create a new static item value, b)filter the items with the old value onto the grid, c)use Bulk Update on the grid to change the value on the items,and then d)delete the old Custom Field value.</p>
