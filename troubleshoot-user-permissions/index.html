@@ -16,10 +16,10 @@ title: GEMINAI - Little Language Machine Learning
 <h3>Users aren't receiving notifications</h3>
 <p>There are a number of things to check, and investigative steps to take if your users aren't receiving notifications.</p>
 <ul>
-	<li>Can anyone receive notifications that other users cannot? If no, check your <a href="https://docs.countersoft.com/email-alerts/#sts=SMTP%20Server%20Configuration">System Email & ALerts</a>. If yes, you have a problem with permissions</li>
+	<li>Can anyone receive notifications that other users cannot? If no, check your <a href="https://docs.countersoft.com/email-alerts/#sts=SMTP%20Server%20Configuration">System Email & Alerts</a>. If yes, you have a problem with permissions.</li>
 	<li>Are you expecting Follower alerts for users in the Portal User Group? Portal Users must be Owners or Resources to receive Follower notifications about items, if they are not, they will not receive emails on changes.</li>
 	<li>Check the Alerts tab on the user profile. Users can disable email notifications, unsubscribe from Workspace alerts, and switch off email notifications about changes they have made themselves.</li>
-	<li>If the notifications are Workspace alerts from a shared Workspace check that the user doesn't have a personal copy of the Workspace. Workspaces can share a name without being connected.
+	<li>If the notifications are Workspace Alerts from a shared Workspace check that the user doesn't have a personal copy of the Workspace. Workspaces can share a name without being connected.
 		<ul>
 			<li>If you share a Workspace without "Lock and Synch" the user has their own copy.</li>
 			<li>Shared Workspaces have an arrow in their icon in G7 <img src="g7-share-icon.png" width="16" height="16"> and a arrow to the left in G6 <img src="g6-share-icon.png" width="16" height="16"></li>
@@ -34,22 +34,22 @@ title: GEMINAI - Little Language Machine Learning
 		<ul>
 			<li>Field level access is controlled on <a href="https://docs.countersoft.com/concept-screens/">Screens</a>. This extends to things like Comments, Dependencies, Attachments. If anyone can't see a field, check the Screens.</li>
 			<li>Screen permissions are configured per Process Type. Please check the Screen for the specific Type and remember that Screens can be shared by different Types.</li>
-			<li>Gemini Administrator is a role that grants access to the admin section of the site. It does not confer any rights to view data. If you make a field visible to a group and exclude Gemini Administrators, they won't see it.</li>
+			<li>Gemini Administrator is a role that grants access to the admin section of the site. It does not confer any rights to view data. Don't assume because you are in the Gemini Administrator role that as a result you will be able to see everything and do anything.</li>
 			<li>By default, all fields are assigned to the User Group "Everyone", but you can change that. Click on the icon next to the field to see which User Group(s) have access to it when Creating, Editing, or Viewing.</li>
-			<li>Links, Dependencies, Attachments, Comments, Time, Email Reply etc. are controlled by Screens.
+			<li>Links, Dependencies, Attachments, Comments, Time, Email Reply etc. are all controlled by Screens. If anyone can't 'see' any of that type of functionality, check the Screens <i>for the Project</i> and for <i>the specific Process Type</i>. Never accept 'I can't see...' or 'I can't do...' without demanding to know in which project and for what Type of thing that statement is true.</li>
 		</ul>
 	</li>
 	<li><b>Scenario 2. User(s) can't see a project</b>
 		<ul>
 			<li>Check the project belongs to the Permission Set that you think it belongs to. It is often the problem that the project isn't in <i>any</i> Permission Set.</li>
-			<li>Run the Report on the User Maintenance screen for the user concerned, which will show you the role the user has on every project. Make sure they are in Can View Project role.</li>
+			<li>Run the Report on the User Maintenance screen for the user concerned, which will show you the role the user has on every project. Make sure they are in Can View Project role for the project concerned.</li>
 		</ul>
 	</li>
 	<li><b>Scenario 3. User(s) can't access some functionality</b>
 		<ul>
 			<li>Fields that are controlled with logic - Comments, Dependencies, Related Items (link), Email Reply - are controlled by Screens in the Content area at the bottom of the page. See Scenario 1.</li>
-			<li>Users in the Portal User Group can only see the Grid View and in that view they can only see items they create (or that have been created on their behalf) and items they are assigned to using the Resource field.</li>
-			<li>Apps like Docstore, Roadmap, Changelog etc. must be enabled in every Workspace where a user wishes to use that functionality. Apps have their own Permissions in the admin section and can be restricted to specific users.</li>
+			<li>Users in the Portal User Group can only see the Grid View and in that view they can only see items they create (or that have been created on their behalf) and items they are assigned to using the Resource field. User in the Portal User Group cannot see or run Reports.</li>
+			<li>Apps like Docstore, Roadmap, Changelog etc. must be enabled in every Workspace where a user wishes to use that functionality. Apps have their own Permissions in the admin section and can be restricted to specific User Groups.</li>
 			<li>Builtin Apps like the Planning Board, Calendar View etc. are not restricted by App Permissions, but they too must be enabled on a Workspace-by-Workspace basis to appear in the menu.</li>
 			<li>Like Apps, Reports can be restricted to User Groups. If a user cannot see a report, check Report Permissions in the admin section to see it is not because of User Group restrictions.</li>
 		</ul>
@@ -68,26 +68,28 @@ title: GEMINAI - Little Language Machine Learning
 					<li>Check the Screens and ensure that the user can add a comment. Email replies are stored as Comments, so a user must be able to add a comment to send an email reply.</li>
 				</ul>
 			</li>
-			<li>User can add comments but there is still an error. Ask the user to reply, and immediately check the System Log (Configure Gemini...System...System Log) for errors. Notify Countersoft support if you find an error in the log and the solution is not self-evident.</li>
-			<li>Note: If you purge the Breeze Enquiry table you may not be able to use the Reply function because Gemini knows when messages come from email, and it can generate non-fatal errors looking for mail To and CC lists on the original email.</li>
+			<li>User can add comments but there is still an error. Ask the user to reply, and immediately check the System Log (Configure Gemini...System...System Log) for errors. Notify Countersoft support if you find an error in the log and the solution is not self-evident. To check for solutions, see the <a href="https://docs.countersoft.com/troubleshoot-email-errors/">troubleshooting email guide</a>.</li>
+			<li>Note: If you purge the Breeze Enquiry table you may not be able to use the Reply function because Gemini knows when messages come from email, and it can generate non-fatal errors looking for mail To and CC lists in the original email data that no longer exists.</li>
 		</ul>
 	</li>
 	<li><b>Scenario 6. User(s) not appearing in Resources list</b>
 		<ul>
 			<li>Can Be Assigned Work (Resource) is a specific Project Role. The user is not in a User Group associated with this role on the project concerned.</li>
 			<li>Please be sure you are not referring to a Custom Field that is of type "User Picker" (or any other type) that you use to hold "resources", as opposed to Gemini's Resource field, which has unique functionality.</li>
+			<li>In the event that the user is in the right role and you still cannot see the user as a Resource, recycle the App Pool in IIS (or ask Countersoft to do it if you are hosted), as this could be a rare caching problem.</li>
 		</ul>
 	</li>
 </ul>
 
 <h3>User <b><i>can</i></b> see ______ (fill in the blanks) - but they shouldn't!</h3>
-<p>As explained above, in Gemini - Projects, Fields, and Functionality, are all securable. Please check your Permission Sets, Screens, and Workflow settings. If you can't figure it out, contact Countersoft.</p>
+<p>As explained above, in Gemini, Projects, Fields, and Functionality, are all securable. Please check your Permission Sets, Screens, and Workflow settings. If you can't figure it out, contact Countersoft.</p>
 
 <h3>User can't change/set Status</h3>
-<p>Statuses are controlled by the Workflow functionality, which is very similar to Screens in that the default is for the User Group "Everyone" to be able to make a status change, but if you click on the arrow that defines the transition, you can secure any status change and make it available only to specific groups. As Gemini allows you to secure every Workflow transition, if a given Status is not available it means one of two things:</p>
+<p>Statuses are controlled by Workflow functionality, which has similarities with Screens in that the default is for the User Group "Everyone" to be able to make a status change, but if you click on the arrow that defines the transition, you can secure any status change and make it available only to specific groups. As Gemini allows you to secure every Workflow transition, if a given Status is not available it means one of 3 things:</p>
 <ol>
-	<li>The Workflow transition from the status the item is on, to the Status you want it to be for, has not been defined.</li>
+	<li>The item has dependencies and you are trying to close it, but one or more of its children aren't closed. Gemini will not let you close the parent item in a hierarchy unless all of its children are closed.</li>
+	<li>The Workflow transition from the status the item is on, to the Status you want it to be for, has not been defined. Please remember that you must define bi-directional workflows, they don't automatically exist. If you have a transition from A to B, you must explicitly create a transition back from B to A if you are ever going to want to do that.</li>
 	<li>The Workflow transition exists, but the user is not in a User Group that is permitted to make the change. Click on the arrow in the Workflow and see which User Groups are allowed to make it.</li>
 <ol>
 <p><img src="workflow.png" width="600" height="500"></p>
-<li>If your configuration and permission appear to be correct, it is likely that you are not checking the Workflow for the <i>specific Process Type</i> in the Project. Workflow is <i>per</i> Process Type</li>
+<li>If your configuration and permissions appear to be correct, it is likely that you are not checking the Workflow for the <i>specific</i> Process Type in the <i>specific</i> Project. Workflow is <i>per</i> Process Type.</li>
