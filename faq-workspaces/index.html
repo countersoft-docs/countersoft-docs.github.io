@@ -7,19 +7,26 @@ title: GEMINAI - Little Language Machine Learning
 <h1>FAQ - Workspaces</h1> 
 
 <h3>Why does my Workspace look like it does?</h3>
-<p>Each Workspace stores <b>5 view parameters</b>. What you see is based on what the Workspace has stored. For every Workspace the parameters are:</p>
+<p>Each Workspace has (and stores) <b>FIVE</b> view parameters. What you see is based on these parameters and if you change any one of them and intend to keep that change then you need to re-save the Workspace. For every Workspace the parameters are:</p>
 <ol>
 	<li>The <b>Columns</b> you wish to see. From the Grid these are identified by the column selector, in the Planning Board by the Group By or Axis selector.</li>
 	<img src="grid-board-column-selectors.png" height="300" width="600"/>
 	<li>The <b>Base View</b> - typically the <a href="https://docs.countersoft.com/concept-items-grid/">Grid</a>, <a href="https://docs.countersoft.com/agile-board/">Planning Board</a>, <a href="https://docs.countersoft.com/concept-calendar/">Calendar</a>, <a href="https://docs.countersoft.com/concept-timeline/">Timeline</a>, or <a href="https://docs.countersoft.com/progress-work-chart/">Progress</a> views, but any UI view can be saved as the base view of a Workspace. Once saved, whenever you go to that Workspace, that functional view is what you will see by default.</i>
 	<li>The <b>Columns and Sort Order</b> on the Grid. You can drag-drop columns into position and sort ascending/descending, using ctrl to sort on multiple columns, and if you save your Workspace that will be its default view.</li>
 	<li>The <b>Display Options</b> - this controls whether your view includes <b>Closed items</b>, <b>SLA</b> information, <b>Manual Sequence Zones</b>, and whether you wish to view <b>Dependencies</b> (parent/child items) in a collapsed state or as a flat list.</li>
+	<ul>
+		<li>If you enable the SLA Zone, Gemini will show you a running clock on work items in an SLA. You can have multiple SLA's and you'd need to add the SLA using the Column selector to see the specific SLA an item is on. The SLA Zone is only revealed when an SLA is breached. The zone is not the clock in the left-hand bar that shows time running down, it is an area above the normal rows that contains items that have breached, and those items CANNOT be removed from view by sorting or filtering.</i> 
+		<img src="sla-zone.png"/>
+	</ul>
 	<li>Finally, and most importantly, the <b>Filter</b>, which determines which project(s) data is included in your Workspace and what additional data selection criteria you wish to apply. On the Grid, Board, Calendar, Timeline, and Progress views, the filter is consistent and cumulative, and you add new fields to filter on just by clicking in the next available filter box. The filter runs immediately, there is no "apply my selection" button. With Gemini you see what you selected instantly! On other screens, the filter is designed to match the functionality behind that specific view.</li>
 	<img src="filter.png"/>
 </ol>
 
+<h3>I can't see the SLA Zone in my Display Options</h3>
+<p>You are either in a Portal User Group or the Screens of the Project Template that controls the project you are viewing does not have SLA enabled in the Viewing column.</p>
+
 <h3>Why does my Workspace keep losing one or more of the 5 view parameter selections?</h3>
-<p>You haven't saved the Workspace after changing it. If you don't save your changes, the Workspace will revert back to its last saved view as soon as it refreshes. This means you can dynamically select whatever you want by changing the filter, or changing the way that you see it by changing your view, without ever worrying that you need to keep track of multiple Workspaces. Only save the Workspace if you have made a change to its view or filter that you wish to make permanent, otherwise treat your Workspace as a default view that can dynamically retrieve and present any data you have access to in any way you wish.</p>
+<p>You haven't saved the Workspace after changing it. If you don't save your changes, the Workspace will revert back to its last saved view as soon as it refreshes. This means you can dynamically select whatever you want by changing the filter, or changing the way that you see it by changing your view, without ever worrying that you need to keep track of multiple Workspaces. Only save the Workspace if you have made a change to its view or filter that you wish to make permanent, otherwise treat your Workspace as a default view that can dynamically retrieve and present any data you can access in any way you wish.</p>
 <img src="workspace-cog.png"/>
 
 <h3>Why do I keep losing my default Workspace?</h3>
