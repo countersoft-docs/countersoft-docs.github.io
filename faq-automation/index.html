@@ -1,0 +1,47 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<hr>
+<h1>FAQ - Automation in Gemini</h1> 
+
+<p>Gemini has many methods of automation, which can be combined to produce amazing flexibility. Here we highlight some of the more obvious automation functionality.</p>
+
+<h2>Systems Integration</h2>
+
+<h3>Reading and writing from Gemini</h3>
+<ul>
+<li>Gemini has a comprehensive <a href="https://docs.countersoft.com/rest-api/">REST Api</a> that you can use to import and export data.</li>
+<li>For reading and writing low to medium volumes of data (without attachments) you can use Gemini's Excel Export from the Grid, its <a href="https://docs.countersoft.com/creating-your-own-reports/">Custom Reporting</a> capability, and its <a href="https://docs.countersoft.com/importing-existing-data/">Excel based Import Wizard</a>.</li>
+<li>Gemini supports <a href="https://docs.countersoft.com/webhooks/">WebHooks</a>.</li>
+<li>For absolute control over systems integration, you can purchase access to Gemini's Source Code. You must have a 100+ user license and prices start at $5k for single-developer access. Contact <a href="mailto:Sales@Countersoft.com">Sales@Countersoft.com</a> if you need complete control over the software you deploy in your enterprise.</li>
+<li>You can customize 20+ <a href="https://countersoft.github.io/">Open Source components of Gemini</a>, including the Roadmap, Changelog, DocStore, and Checklist Apps. You can also build <a href="https://docs.countersoft.com/developing-custom-apps/">custom UI Apps, Event Apps, and Timer Apps</a> using our Open Source apps as samples.</li>
+<li>One strategy employed by a number of customers is to use Gemini's ability to convert emails into transactions (usually helpdesk tickets, but they can be anything). Breeze email-to-ticket will ingest anything sent to a mailbox, and Gemini's mailboxes can auto-respond, letting a 3rd party system know not only that a ticket has been created, but what that Ticket Id in Gemini is. With Gemini's customizable <a href="https://docs.countersoft.com/email-templates/">Alert Templates</a>, you decide exactly what data appears in an email and what format it takes; you can even write conditional logic in our Alert Templates, which can be project <i>and</i> language specific. You can also use Rules and Actions to conditionally send emails to a third party system, but note that R&A will only ever send ONE email per transaction, so Gemini cannot spam a recipient. That said, if you have the need, Countersoft Support can tell you how that check is implemented and how you might bypass it in code.</li> 
+</ul>
+
+<h2>System Notifications</h2>
+<p>We strongly recommend you take heed of all the different ways Gemini can communicate with users, and be careful not to implement methods that overlap. For example, a Follower notification and a Workspace alert can send two emails to the same user that are related to the same change.</p>
+<details>
+<summary>Ways in which Gemini can send automated notifications</summary>
+<ol>
+	<li>Item creation notifications can be sent immediately to anyone creating a new work item, whether that is to the creator or it is to the person on whose behalf the work item was created.</li>
+	<li>Resource assignment notifications sent immediately to every user placed in the Resource field. The decision to allow multiple resources per item is a feature that is enabled on a project-by-project basis.</li>
+	<li>Workspace notifications - batched or sent immediately depending on the user preference, with a choice to receive notification is items are:
+		<ol>
+			<li>Created - their data matches the Workspace filter e.g. They are High Priority and as a result are filtered into a Workspace that selects High Priority items.</li>
+			<li>Updated - they are changed <i>by someone else</i>. There is a checkbox that is on the User Profile to be notified of changes made by oneself.</li>
+			<li>Commented on. This is self-explanatory; however it should be noted that Gemini has a project role "Read Only with Comments" designed specifically to allow customers/external user to comment on items but not to change their metadata.</li>
+		</ol>
+	</li>
+</ol>
+</details>
+
+<h2>Specific Automation Functionality</h2>
+<h3>Rules, Actions & SLA</h3>
+<p>Rules, Actions, and SLA provide user-driven automation. For simple trigger actions e.g. 'if status = x and resource is blank, raise the priority and send an email to y' - use <a href="https://docs.countersoft.com/rules-actions-sla/">Rules & Actions</a>. For anything that requires testing the passage of time, use <a href="https://www.countersoft.com/videos/?video=23">SLA</a>. The SLA functionality starts a clock that is either 24 x 7 or limited to working hours, and it can use a working day calendar to avoid the weekend and holidays. SLA does not have to be tied to a commercial contract with a customer, you can just use it to start a clock (as many as you need), so that you can take actions based on the passage of time and any other conditions you wish to test.</p>
+
+<h3>Event Apps</h3>
+<p>Event Apps are like triggers. They fire as soon as an item is created or updated. An example of this is the 'Auto Open Closed Items' Event App, which fires if it detects a change to a closed item and reopens it by setting it to the first non-final Status in the <a href="https://docs.countersoft.com/concept-workflow/">Workflow</a>.</p>
+<p>Countersoft have <a href="https://countersoft.github.io/">Open Sourced a number of Event Apps</a> (Auto Open Closed Items is one), so you can use them as a basis for creating your own apps, or modify one of the delivered apps to better suit your working environment. Apps are really easy to deploy - the build process places the app and its manifest in a zip file, you place the zip file in Gemini's apps folder, and when Gemini starts it deploys your app.</p>
+<img src="event-apps.png"/>
