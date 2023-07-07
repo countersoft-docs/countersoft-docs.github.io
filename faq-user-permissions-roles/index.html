@@ -11,31 +11,27 @@ title: GEMINAI - Little Language Machine Learning
 
 <h3>I'm a Gemini Administator and the explanation above still doesn't explain why I can't see Field <b>Y</b> or access Functionality <b>Z</b>?</h3>
 <p>Gemini applies <i>the most restrictive permission from <b>all</b> the User Groups a person is in</i>. Run the Report for a user on the User Maintenance screen. The most restricted role they have on any given project is the one that will apply.</p>
-<img src="user-report.png" height="400" width = "600"/>
+<img src="user-report.png"/>
 
-<h3>What is the User Group "Everyone" and why can't I find it in User Groups Maintenance?</h3>
-<p>"Everyone" is a system group, like "Gemini Administrators" and "Everyone Authenticated". Unlike Gemini Administrators you don't get to designate who is in Everyone, the group is exactly what is says it is. The difference between Everyone and Everyone Authenticated is that the latter refers only to people who log in, but since very few customers allow anonymous browsing of their Gemini sites, the two are equivalent."</p>
-<ul>
-	<li>Why is there an "Everyone" Group, why not let everyone have access where no group is specified?
-		<ul>
-			<li>For consistency. Gemini secures everything - fields, functionality, projects, workflow... You may not be aware of it but if you add a field to a screen, save it, and go back and look at the User Groups associated with it, you will see that because you didn't specify User Groups with access to that field, Gemini added "Everyone" to it. There is no such thing as an unsecured field or workflow, and only one logic path to determine who has access.</li>
-		</ul>
-	</li>
-</ul>
-
-<h3>What is the Portal User Group?</h3>
+<h3>What is the Portal User Group and how are its members treated differently from other User Groups?</h3>
 <p>Portal users are members of a group that is defined on the "People...Options" tab of the admin section. These users have a different login welcome message, can only see the Grid View, and they are either in "Can Only View Own Items" or "Can Only View Own Organization Items" roles on a project.</p>
-<img src="portal-group.png" height="400" width="600"/>
+<img src="portal-group.png"/>
  
-<h3>How can I have a customer see all the tickets for their organization and not just their own?</h3>
+<h3>How can I have a customer see all the tickets for their organization (only) and not just their own?</h3>
 <p>You have to create an <a href="https://docs.countersoft.com/organization-permissions/">Organization</a> for your customer and define the users that are its members. Normal members of the company will be in a User Group associated with "Can Only View Own Items", but the user(s) who should see all the tickets for the organization should be in a separate User Group that is associated with the role "Can Only View Own Organization Items". This latter role 'grants access to the items for all the members of an organization.</p> 
 
 <h3>I need to free up a seat on my license, can I delete a user?</h3>
 <p>Yes, if the user has no records associated with them. No, if they have records associated with them. Gemini will not let you 'break' connections and data integrity but you can disable the user. Disabled users are not included in your license count.</p>
 
+<h3>How do I stop a user from seeing specific projects?</h3>
+<p>Create different <a href="https://docs.countersoft.com/permission-roles/">Permission Sets</a> for your projects and don't put the users in the "Can View Project" role on projects you don't want them to see.</p>
+<img src="permission-sets.png"/>
+
 <h3>I've added a user but they're not showing up in the system</h3>
 <p>Gemini caches data for performance, and users and roles are cached. You may have to wait for the cache to refresh, or you can force it to refresh by having the App Pool in IIS recycled. If you are a hosted customer, you can email Countersoft Support who will do this for you.</p>
 
+<h3>I cannot login to Gemini</h3>
+<p>If you are faced with a Gemini login screen then you need to contact your Gemini Administrator - your account may be locked out. You also need to contact your Gemini Administrator if you don't use username/password to login to Gemini (you use Windows Authentication) and you get an error screen with the words "Stop! You cant do that". If you do not see a Gemini login screen, you have not got to Gemini and this is a network problem for your internal IT.</p>
 <h3>Why can't I share my Workspace?</h3>
 <p>Gemini doesn't allow sharing across the board. For each User Group you must define which other groups its members can share with. You can simply share with the User Group "Everyone" if you have no restrictions, but that works best if subsequent sharing is with individuals. Once your sharing Groups are defined, you can share with those User Groups as groups, or with individuals <i>who are members of those groups</i>.</p>
 <p>Sharing groups are defined in User Group Maintenance (see image of AD Group mapping below, which is configured in the same place).
@@ -49,6 +45,15 @@ title: GEMINAI - Little Language Machine Learning
 	<img src="ad-group-mapping.png"/>
 	<li>Your AD User group is a sub-group in AD. Gemini does not iterate through levels importing sub-groups, only users in a group.</li>
 </ul>
+<p>If you cannot see the user(s) from an AD synch that you would expect to see, take the following steps:</p>
+<ul>
+	<li>In System -> System Log, delete the log.</li>
+	<li>Enable Diagnostic mode with the checkbox.</li>
+	</li>Force AD Synch to run.</li>
+	<li>Disable Diagnostic mode (or the log will quickly become very large).</li>
+	<li>See if there are messages in the System Log (not the AD log) about the AD Group you have created, or any AD Groups.</li>
+	<li>See if there are any messageds in the AD Timer App log about the user(s) you would expect to be imported.</li>
+</ul>
 
 <h3>Users are getting an error message saying "No Permissions" when we try to add new items</h3>
 <p>This is probably because you have added one or more users and exceeded your license limits. We don't tell users that you have exceeded your license, it doesn't seem right. We tell admins on the License screen.</p>
@@ -56,7 +61,14 @@ title: GEMINAI - Little Language Machine Learning
 <p>We also tell admins on the User Maintenance screen, so it really should not come as a surprise.</p>
 <img src="users-exceeded.png"/>
 
-<hr>
+<h3>Is there a log of user actions to delete records or change the config?</h3>
+<p>There is, but you have to enable it. The App you need to enable is an Event App called 'Administrator Log'. Enable this, and actions like item deletion and configuration changes will be logged.</p>
+
+<h3>If I use the <a href="https://docs.countersoft.com/setting-up-closing-template/">Close Ticket Template</a>, so users can close items, does the email recipient need to login?</h3>
+<p>No. The page to close the ticket does not require the user to be logged in.</p>
+
+<h3>Can I make changes to what users see in their profile?</h3>
+<p>Yes, if you are technically skilled, however your change(s) are not supported and you are responsible for re-implementing/merging them when you upgrade. The user profile page is to be found on the web server in Views\Account\Profile\_Profile.cshtml</p>
 
 <h3>It's a labor of love so I'm still adding to this page, but I hope to soon be done...</h3>
 
