@@ -40,8 +40,10 @@ title: GEMINAI - Little Language Machine Learning
 </ul>
 
 <h2>Custom Fields</h2>
-<p>All Custom Fields are special - they are fields you can create which Gemini will treat as if they came out of the box. The easiest way to see all of Gemini's Custom Fields is to navigate to a Project Template, and begin to create one.</p>
+<p>All Custom Fields are special - they are fields you can create which Gemini will treat as if they came out of the box. The easiest way to see all of Gemini's Custom Field types is to navigate to a Project Template, and begin to create one.</p>
 <img src="custom-field-types.png"/>
+<p><i>For developers - Custom Field Definitions are stored in the table gemini_customfielddefinitions, and Custom Field Data is stored in the table gemini_customfielddata. The two are joined by <b>customfieldid</b>, and gemini_customfielddata joins to gemini_issues by <b>issueid</b>.</i></p>
+
 
 <p>As the image above shows, Gemini will let you create a Custom Field of every type that it possesses for its builtin fields - dates, rich text, user pickers, lists etc. The functionality behind most of these is self-evident, but let's review two that have special behaviour that goes beyond the simple description of their type.</p>
 <ul>
@@ -53,11 +55,24 @@ title: GEMINAI - Little Language Machine Learning
 	<li>Getting data from a table is a simple scenario. Views however can be far more sophisticated. A View is a SQL query that is dynamically intepreted and it can join data from multiple tables. Because Views are the implementation of a SQL Query they can do things like select distinct values in lists that contain duplicates, they can be sorted, functions can be applied to their results, like making text uppercase or lowercase, concatenating strings etc. If in your Custom Field lookup table definition you enter the name of a view, Gemini does not care - it simply executes the select query against the view instead of a table, so you can do whatever SQL Server views will allow you to do to your data. Gemini will just take whatever is passed back and put it in a list.</p>
 </ul>
 
-<h3>The problem with static lists</h3>
-<p>The simplest list you can create is a static list - just type in some values. You can add to the list at any time. The problem is - you can't change a static list or delete its members without affecting the items that hold those static values.</p>
-<p>Say you have a Dropdown list of locations, one of which is "Home", and you have selected Home as a value on some items. If you change Home to House, or you delete Home, Gemini will remove the value on those items. You said 'static', and static means 'non-changing'; change the item and it's no longer static. If Gemini can no longer find a Custom Field value in a supposedly static list, data integrity would be broken. You will be warned that you're about to wipe out the value on all existing records, and if you persist, Gemini will do just that.</p>
-<p>The clearing of existing static values in the event of changes to the list does not happen if you use a SQL table to store the values. In that case, Gemini holds the <i>key</i> to the value not the value itself, and you can change what that key points to. Data integrity is not compromised if Gemini still points to existing data.</p>
-<p>The technique for changing a static list item and updating Gemini with the change is to: a) create a new static value, b) filter the items with the old value onto the grid, c) use the ability to select and simultaneously update multiple items on the grid to change the values on the items, and then d) delete the old Custom Field value.</p>
+<h3>Static and Dynamic (SQL-based) Lists</h3>
+
+<h4>Static Lists - Good for simple things</h4>
+<p>The simplest list you can create is a static list - just type in the values you want. If your need is for a small, simple list of values, it can be perfect, but there are 2 things you should be aware of:</p>
+<ol>
+	<li>Each static list is specific to a Project Template. You cannot therefore use the same list on projects that are built from different templates. If you have a list say of regions or departments, this could result in annoying duplication across templates and increase the maintenance overhead of your system.</li>
+	<li>You can add to the list at any time, but you can't change a static list value without affecting the items that hold that static value.</li>
+	<ul>
+		<li>Say you have a Dropdown list of locations, one of which is "Home", and you have selected Home as a value on some items. If you change Home to House, Gemini will remove "Home" on any items where that value exists; <b>it will NOT replace Home with House</b>. You said 'static', and static means 'non-changing'; change the item and it's no longer static. If Gemini can no longer find a Custom Field value in a supposedly static list, data integrity would be broken. You will be warned that you're about to wipe out the value on all existing records, and if you persist, Gemini will do just that.</li>
+		<li>The technique for changing a static list item and updating Gemini with the change is to: a) create a new static value, b) filter the items with the old value onto the grid, c) use the ability to select and simultaneously update multiple items on the grid to change the values on the items, and then d) delete the old Custom Field value.</li>
+	</ul>
+</ol>
+
+<h4>Dynamic Lists - Good for large, changing lists, and hierarchical data</h4>
+<p>The great thing is that Gemini supports SQL lists that can select data from tables in the database. Gemini can generate a table for you to hold your values, you can generate a table yourself, you can use a view instead of a table, and your view can even be into another database.</p>
+<p>Sql lists get you over the problems listed above for static lists. A table of data can be used system-wide, and you can change values in the list. If you use a SQL list to store the values, Gemini holds the <i>key</i> to the value not the value itself, and you can change what that key points to. Data integrity is not compromised if Gemini still points to existing data. Customfield lookup values are only removed from items if the value is deleted, which means deletion of the key.</p>
+<p>As mentioned above, SQL lists can also be cascading, where the value of one field is inserted into the query to select the values of another.</p>
+
 
 <h3>What can't you do with a Custom Field that you can do with a builtin field?</h3>
 <p>The short answer is nothing. There is specific behaviour around builtin fields like Resource and Status, but no other field has their functionality and it makes no sense to have your own version of Resource or Status with duplicate functionality. One of Gemini's strengths is that you can do anything with Custom Fields that you can with builtin fields.</p>
@@ -65,11 +80,18 @@ title: GEMINAI - Little Language Machine Learning
 	<li>You can add Custom Fields to the filter if you enable the "Can Filter" checkbox</li>
 	<img src="can-filter.png"/>
 	<li>You can protect a Custom Field in Gemini's 3 modes - Creating, Editing and Viewing - once you add it to a Screen.</li>
-	<li>You can make a Custom Field mandatory once you add it to a Screen. Note that just like a normal field, users who do not have access to a field cannot be forced to provide a value. Mandatory fields are required only of users who can seen and edit them.</li> 
-	<li>You can display a Custom Field in the left-hand "Attributes" list or the central "Content" area of the View Item page. Just choose "Show with Attributes" in the Custom Field definition.</li>
+	<li>You can make a Custom Field mandatory once you add it to a Screen. Note that just like a normal field, users who do not have access to a field cannot be forced to provide a value. Mandatory fields values are required only from users who can provide them.</li> 
+	<li>You can display a Custom Field in the left-hand "Attributes" list or the central "Content" area of the View Item page. Just choose "Show with Attributes" in the Custom Field definition, or leave the checkbox blank to have the Custom Field added to the Content area.</li>
 	<li>There is one thing you can do with a Custom Field that you can't do with a builtin field - you can set it to Auto Complete.
 		<ul>
-			<li>When you enable Auto Complete, Gemini performs "Lazy Loading". This is a technique for handling large data volumes. With lazy loading, Gemini waits for the user to type a few letters (or to pause) before going to find matching data. Say you had 25,000 customers in a table and you pointed a Custom Field at that table... If you didn't use Auto Complete, Gemini would try to load 25,000 values for your lookup. If on the other hand you used Auto Complete, you'd have to type "Sm" before Gemini started getting you customer names like "Small" and "Smith" etc.</li>
+			<li>When you enable Auto Complete, Gemini performs "Lazy Loading". This is a technique for handling large data volumes. With lazy loading, Gemini waits for the user to type a few letters (or to pause) before going to find matching data. Say you had 25,000 customers in a table and you pointed a Custom Field at that table... If you didn't use Auto Complete, Gemini would try to load 25,000 values for your lookup. If on the other hand you used Auto Complete, you'd have to type "Sm" before Gemini started getting you customer names like "Small" and "Smith" etc, which is a good illustration of the fact that Gemini is designed to work at enterprise scale.</li>
 		</ul>
 	</li>
 </ul>
+
+<h2>Protecting Fields and Setting Defaults</h2>
+<h3>Protecting fields</h3>
+<p>Watch the video at <a href="https://docs.countersoft.com/concept-screens/">this location</a> and fast forward, between minutes 7:45 and 9:00 you will see a demonstration of how to set visibility and access permissions on any field.</p>
+
+<h3>Setting default values</h3>
+<p>It doesn't matter if a field is a Custom Field or builtin, you set defaults in exactly the same way. Once a field is placed on one or more Screens you will find it on the <a href="https://docs.countersoft.com/setting-project-defaults/">Project Defaults page</a> along with every other field used on the Project's Template.</p>

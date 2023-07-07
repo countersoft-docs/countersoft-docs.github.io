@@ -1,0 +1,61 @@
+---
+layout: default
+title: GEMINAI - Little Language Machine Learning 
+---
+<p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
+<hr>
+<h1>FAQ - REST Api</h1> 
+
+<h3>Where can I find code samples and the necessary libraries for your REST Api</h3>
+<p>Code samples are in the Gemini zip file, which you download to install the application. You should use the libraries that match your installed version of Gemini, which you can determine by looking in the footer of the Gemini web page. The path to the samples in the zip file is 'Extras\Developer Samples\Gemini_API.zip.' In Gemini_API.zip, you will find code samples and the libs folder containing the Gemini dlls you must compile against.</p>
+<img src="path-to-samples.png"/>
+<p>You can downloadthe latest Gemini zip file from <a href="https://www.countersoft.com/downloads/">here</a>. If you're not on the latest version of Gemini, and you don't have the zip file that matches your version, contact <a href="mailto:Support@Countersoft.com">Countersoft Support</a> and someone will get you the zip file from the archive.</p>
+
+
+<h3>What are the current endpoints?</h3>
+<details>
+	<summary>List of Gemini API Endpoints</summary>
+	<ol>
+		<li><a href="https://docs.countersoft.com/rest-api/">Alert Template Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Breeze App Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Configuration Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Custom Field Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Attachments Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Comment Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Custom Field Data Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Dependency Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Follower Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item History Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Link Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Repeat Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Search Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Item Time Log Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Meta-data Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Permission Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Project Changelog Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Project Component Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Project Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Project Roadmap Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Project Version Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Saucery App Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">User Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">User Group Endpoint</a></li>
+		<li><a href="https://docs.countersoft.com/rest-api/">Workspace Endpoint</a></li>
+	</ol>
+</details>
+
+<h3>What formats do you support for data?</h3>
+<p>The only supported format is JSON.</p>
+
+<h3>The documentation says to use an API Key for authentication. Where do I find it?</h3>
+<p>Your API key is in your user profile (top right of the page, click on your name), on the Password tab.</p>
+<img src="apikey.png"/>
+
+<h3>We use Windows Authentication, not Forms. How do I authenticate with the API if I can't pass a username and API Key?</h3>
+<p>When using Windows Authentication, the constructor takes username, password, and a flag to indicate if you are using Windows Authentication or not. The username (no password) for Windows Authentication must be in format "domain\user". You can find more documentation on REST Api authentication <a href="https://docs.countersoft.com/using-microsoft-net/">here</a>.</p>
+<p>Alternatively you can create a second site with a connection string pointing to the same database, that uses Forms authentication, and exists only for the API. Countersoft do not charge the usual fee for a second site provided it is only used for this purpose.</p>
+
+<h3>There is an API Key in web.config. Can I use that API Key for the REST API?</h3> 
+<p>No. The API Key in web.config's "appSettings" section is for source code integration (with GitHub etc).</p>
+
