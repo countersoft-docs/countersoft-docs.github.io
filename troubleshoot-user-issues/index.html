@@ -5,7 +5,7 @@ title: GEMINAI - Little Language Machine Learning
 <p><a href="https://docs.countersoft.com/ai-integration/"><img src="geminai.png" alt="Gemini AI logo" width="120" height="140"/></a></p>
 <hr>
 
-<h1>User Permissions</h1> 
+<h1>Troubleshoot User Issues</h1> 
 
 <h3>Some background information</h3>
 <p><b>Restricting actions to Projects and to Roles in Projects </b>is the domain of Permission Sets. If you have not read the documentation and this type of permission is an issue or query, please <a href="https://docs.countersoft.com/permissions/">read the docs first</a>, and drill down to <a href="https://docs.countersoft.com/permission-roles/">Permission Roles</a> to understand the granular controls.</p>
@@ -93,3 +93,20 @@ title: GEMINAI - Little Language Machine Learning
 <ol>
 <p><img src="workflow.png" width="600" height="500"></p>
 <li>If your configuration and permissions appear to be correct, it is likely that you are not checking the Workflow for the <i>specific</i> Process Type in the <i>specific</i> Project. Workflow is <i>per</i> Process Type.</li>
+
+<h3>Users report Search is very slow</h3>
+<p>Search should be fast even if you have hundreds of thousands of records unless the system is under exceptional load. You should check that you have the SQL Server component "Full Text Search" installed, or search will slow down as your data volumes grow. If you are self-hosted, you can check it is installed with the following SQL Query:"</p>
+<pre>
+SELECT 
+    CASE 
+         WHEN 
+             FULLTEXTSERVICEPROPERTY('IsFullTextInstalled') = 1 
+         THEN 
+              'INSTALLED' 
+         ELSE 
+              'NOT INSTALLED' 
+    END IsFullTextInstalled
+</pre>
+
+<h3>Deactivated users are being reactivated. Why?</h3>
+<p>The most likely cause is that you use Windows Authentication and you are deactivating users in Gemini, but not in AD. You cannot do anything about users who are reactivated by AD except a) clean up your AD or b) disable the AD synch process - Gemini doesn't need it for authentication, only for adding and disabling users and matching users to Gemini groups. You cannot automate user maintenance and not want the results of the process.</p>
