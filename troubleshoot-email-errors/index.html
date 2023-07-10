@@ -79,3 +79,14 @@ title: GEMINAI - Little Language Machine Learning
 <h3>Gmail Unauthorised error</h3>
 <p>Like Microsoft, Google no longer supports Basic (Username/Password) Authentication. You can <a href="https://docs.countersoft.com/OAuth-GMail/">set up OAuth for GMail</a> or take the easier option of creating an App Password for GMail, which will work just like a normal password in that you enter it into the password field in your mailbox/SMTP configuration alongside the email address of your mailbox. Please note that in order to set up an App Password in GMail, your email account MUST be configured for 2FA. You will also get unauthorised errors if your password has expired.</p>
 
+<h3>The URL of our outbound emails is wrong</h3>
+<p>In Gemini, there are 3 places where a URL can be specified.</p>
+<ol>
+	<li>Web.config has &ltadd key="gemini.url" value=""/&gt in the appSettings section. This can be empty.</li>
+	<li>In the table gemini_applicationsettings where SettingValue is 'URL'.</li>
+	<li>In the table gemini_applicationsettings where SettingValue is 'FullGeminiURL'.</li>
+</ol>
+<p>If you make sure that any value supplied is consistent (and consistent with IIS), you will not have a problem.</p>
+
+<h3>Customers are seeing comments from internal users on their emails</h3>
+<p>This can happen if your email alert template pulls all comments or the last comment. The functionality in Gemini to avoid this is to set <a href="https://docs.countersoft.com/comment-visibility/">Visibility</a> of internal comments to the appropriate user Group that excludes customers.</p>

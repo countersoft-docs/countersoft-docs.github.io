@@ -90,12 +90,12 @@ title: GEMINAI - Little Language Machine Learning
 	<li>The item has dependencies and you are trying to close it, but one or more of its children aren't closed. Gemini will not let you close the parent item in a hierarchy unless all of its children are closed.</li>
 	<li>The Workflow transition from the status the item is on, to the Status you want it to be for, has not been defined. Please remember that you must define bi-directional workflows, they don't automatically exist. If you have a transition from A to B, you must explicitly create a transition back from B to A if you are ever going to want to do that.</li>
 	<li>The Workflow transition exists, but the user is not in a User Group that is permitted to make the change. Click on the arrow in the Workflow and see which User Groups are allowed to make it.</li>
-<ol>
-<p><img src="workflow.png" width="600" height="500"></p>
-<li>If your configuration and permissions appear to be correct, it is likely that you are not checking the Workflow for the <i>specific</i> Process Type in the <i>specific</i> Project. Workflow is <i>per</i> Process Type.</li>
+	<p><img src="workflow.png" width="600" height="500"></p>
+	<li>If your configuration and permissions appear to be correct, it is likely that you are not checking the Workflow for the <i>specific</i> Process Type in the <i>specific</i> Project. Workflow is <i>per</i> Process Type.</li>
+</ol>
 
-<h3>Users report Search is very slow</h3>
-<p>Search should be fast even if you have hundreds of thousands of records unless the system is under exceptional load. You should check that you have the SQL Server component "Full Text Search" installed, or search will slow down as your data volumes grow. If you are self-hosted, you can check it is installed with the following SQL Query:"</p>
+<h3>Users report Search is slow</h3>
+<p>Unless the system or network is under exceptional (external) load, search should be fast even if you have hundreds of thousands of records. You should check that you have the SQL Server component "Full Text Search" installed, or search will slow down as your data volumes grow. If you are self-hosted, you can check it is installed with the following SQL Query:"</p>
 <pre>
 SELECT 
     CASE 
@@ -110,3 +110,24 @@ SELECT
 
 <h3>Deactivated users are being reactivated. Why?</h3>
 <p>The most likely cause is that you use Windows Authentication and you are deactivating users in Gemini, but not in AD. You cannot do anything about users who are reactivated by AD except a) clean up your AD or b) disable the AD synch process - Gemini doesn't need it for authentication, only for adding and disabling users and matching users to Gemini groups. You cannot automate user maintenance and not want the results of the process.</p>
+
+<h3>I cannot delete a user</h3>
+<p>This is by design. Gemini will not let you delete a user if:</p>
+<ol>
+	<li>The user has created an item, or had an item created on their behalf (they exist in the Reported By field).</li>
+	<li>The user is on an item as a Resource.</li>
+</ol>
+<p>In either of the circumstances above, you should deactivate the user account. Please note:</p>
+<ol>
+	<li>Deactivating a user will not remove the user as a Resource on any items. If you want them removed then you need to do that manually or through a SQL script/REST Api.</li>
+	<li>Deactivating a user will not remove them from the Created By or Reported By fields, nor will it change or remove their Comments.</li>
+	<li>Deactivating a user in Gemini has no long-term effect if you use AD synch and the user is not deactivated in AD. At the next synch point the user will simply come across from AD again and be set as 'Active' (see above).</li>
+</ol>
+<p style="color:red"><b>If you are on-premise, DO NOT deactivate the users with a negative User Id. They are System Accounts and Gemini will not function properly without them</b>.</p>
+
+<h3>Email replies are picking the wrong email address/user</h3>
+<p>Breeze looks at the email data that was used to create a ticket, and tries to pick the correct respondant, which is harder than it might appear because you can have multiple people in the 'To' field. Gemini looks to see if you have configured its <a href="https://docs.countersoft.com/setting-up-reply-from-addresses/">'Reply From'</a> setting, which is how you can always force a single email address but set the name associated with the response to the sender.</p>
+
+<h3>I cannot amend a user's comment</h3>
+<p>Gemini will not let anyone <i>change</i> something <i>another person</i> has written. If you have the right permissions, and the comment should not be in the system, you can delete it.</p>
+
