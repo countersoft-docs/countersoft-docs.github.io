@@ -45,8 +45,8 @@ title: GEMINAI - Little Language Machine Learning
 <h3>Unable to get token silently</h3>
 <p>You get this error message when Gemini gets a generic error from Azure. At the time of writing there appears to be no way around this problem except to re-input a client secret and re-authenticate with Azure.</p>
 
-<h3>URI Error using MS OAuth</h3>
-<p>There is a problem with MS OAuth and its App Registration that our customers have reported on several occassions - it will sometimes not let go of an invalid redirect URI for a long time. If you get a message like the one below, saying your URI is wrong and the URI in the error message doesn't match your configuration in Azure, you can either create a new App Registration, or you can contact Microsoft. GeminAI knows which of those two options is quicker and easier to pursue, but is too polite to say.</p>
+<h3>URI Error mismatch using MS OAuth</h3>
+<p>This can be a difficult MS OAuth error message to untangle. If it is correct and you do have the wrong URI in Azure, correct the Azure setting remembering that the URI is cAsE sensitive. However, Azure is capable of reporting that http://yoursite is an invalid redirect URI when you have connected from https AND you have no such http://yoursite setting in Azure. It appears that the error comes from Azure communicating with IIS and discovering that your Gemini site is accessible with http because you have no http to https redirect and your IIS configuration does not state "Require SSL". Your site MUST NOT be http accessible in any way.</p>
 <img src="bad-uri.png" alt="Bad URI error message from Azure"/> 
 
 <h3>Microsoft O365 SMTP config just says "OAuth connection unsuccessful"</h3>
