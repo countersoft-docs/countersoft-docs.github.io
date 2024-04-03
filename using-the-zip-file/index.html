@@ -13,7 +13,6 @@ title: Using the Zip File
 <ul>
     <li>Microsoft .NET Framework v4.7.2 or above</li>
     <li>SQL Server</li>
-    <li>SMTP Service/Server (optionally required for email notifications)</li>
 </ul>
 
 <p>If you cannot confirm, or do not understand any of the above items, then either contact us or your IT administrator.</p>
@@ -32,7 +31,7 @@ title: Using the Zip File
 <p><img src="step2.png" /></p>
 
 <h2>Step 3 - Create Application Pool</h2>
-<p>First you will need to create an application pool for your site to refer to. In IIS right-click and add an application pool.</p>
+<p>First you should create an application pool for your site. In IIS right-click, and add an application pool.</p>
 <p><img src="step3a.png" /></p>
 <p>Name the application pool. Set the .NET Framework to v4.0 and Managed pipeline mode to Integrated.</p>
 <p><img src="step3b.png" /></p>
@@ -40,16 +39,17 @@ title: Using the Zip File
 <h2>Step 4 - Create Web Application</h2>
 <p>In IIS right-click and add Gemini as an Application:</p>
 <p><img src="step4a.png" /></p>
-<p>You will need to give your Gemini application a name such as "Gemini". This will mean Gemini will be accessible via http://servername/Gemini.</p>
+<p>You will need to give your Gemini application a name such as "Gemini". This will mean Gemini will be accessible via https://servername/Gemini.</p>
 <p>Select the Gemini application pool:</p>
 <p><img src="step4b.png" /></p>
 <p>After the Gemini web application has been created you will see this:</p>
 <p><img src="step4c.png" /></p>
+<p>We recommend that you apply a SSL Certificate to your site, especially if it is open to a public network. See your network administrator if you do not know how to do this.</p>
 
 <h2>Step 5 - Create SQL Database</h2>
 <p>Create a SQL Server database that will be used by Gemini.</p>
 <p>It is advisable to use SQL Server Standard or Enterprise editions. Gemini will run with SQL Express but it is not recommended and not supported for production instances.</p>
-<p>Where possible use SQL authentication and make a note of your SQL Server user credentials (required for next step). Ensure your SQL user has DBO permissions in the new database.</p>
+<p>Where possible use SQL or Mixed (SQL and Windows) Authentication and make a note of your SQL Server user credentials (required for next step). Ensure your SQL user has DBO permissions in the new database.</p>
 
 <h2>Step 6 - Edit Web.config</h2>
 <p>Right-click on the Gemini Web Application in IIS and select the Explore option:</p>
