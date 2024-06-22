@@ -52,6 +52,7 @@ If you are using Breeze Email Ticketing, we recommend archiving all messages in 
 
 <h2>Step 6 - Using SQL Upgrade Scripts</h2>
 
+<p><span class="label label-important">Note</span>&nbsp;If you are upgrading to Gemini 7.5, and you MANUALLY execute upgrade SQL scripts you will need to edit the upgrade SQL script - Upgrade_v7-5-0.sql - and change "{{schema}}" to the name of your schema (typically dbo). You should not need to manually execute upgrade SQL scripts as the upgrade process will attempt to execute them for you.</p>
 <p><span class="label label-important">Note</span>&nbsp;If you are upgrading Gemini 6 to Gemini 7, DO NOT manually execute upgrade SQL scripts - install the new release, browse to the site, and Gemini will auto upgrade for you. If the SQL user does not have the appropriate user permissions to upgrade Gemini automatically, you will need to grant the appropriate permissions.</p>
 <br></br>
 
