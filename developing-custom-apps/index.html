@@ -93,6 +93,9 @@ title: Developing Custom Apps
 <p>Apps are deployed to the <code>App_data/Apps</code> folder which is located where you installed Gemini on your web server.</p>
 <p><img src="app_data.png" /></p>
 <p>The packaged apps represent ZIP files which are then extracted and deployed for use.</p>
+<p>To deploy the apps, recycle Gemini's App Pool in IIS. This will restart Gemini, which deploys new apps on startup.</p>
+<p>To redeploy an existing app, stop Gemini's IIS App Pool and delete the GUID-named folder of the app, then restart the App Pool. Gemini will not redeploy an app if its GUID-named folder already exists and you cannot delete the folder if the App Pool is running.</p>
+
 
 <div class="well well-small related-box">
     <span class="title">Related</span>
