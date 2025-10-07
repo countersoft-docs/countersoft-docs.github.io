@@ -69,7 +69,7 @@ title: OAuth Setup for Microsoft Services
 <p><span class="label label-important">Note</span>Copy the encoded secret immediately! It cannot be seen again anywhere in the portal.</p>
 
 <h2>Gemini Mailbox Configuration</h2>
-<p>To use OAuth with Gemini mailboxes, you can choose to configure the connection as Exchange(EWS) or IMAP<p>
+<p>To use OAuth with Gemini mailboxes, you can choose to configure the connection as IMAP, Graph, or Exchange(EWS).<p>
 <p><span class="label label-warning">Note</span> Microsoft has announced that EWS will be deprecated in October 2026. We therefore recommend you choose IMAP or, if you are on Gemini 7.6.0 or above, Graph API.</p>
 
 <h3>IMAP Configuration</h3>
@@ -79,6 +79,10 @@ title: OAuth Setup for Microsoft Services
 <p>When you do this you will be prompted for an OAuth Provider. Select Microsoft.</p>
 <p>You must use SSL and we recommend you leave the SSL protocol as Auto so Gemini can select the most modern.</p>
 <p><img src="gemini_mailbox3.png" /></p>
+
+<h3>GRAPH API Configuration</h3>
+<p><img src="gemini_mailbox7.png" /></p>
+<p>Specify Graph as the Authentication Mode</p>
 
 <h3>Exchange(EWS) Configuration</h3>
 <p><img src="gemini_mailbox5.png" /></p>
@@ -92,25 +96,25 @@ title: OAuth Setup for Microsoft Services
 	<li>Tenant ID - the Tenant ID from your Azure application</li>
 	<li>Client ID - the Client ID from your Azure application</li>
 	<li>Client Secret - the Client Secret from your Azure application</li>
-	<li>Scopes - A field that will auto-populate for you</li>
+	<li>Scopes - A field that will auto-populate for you (but you won't see it if you choose Graph)</li>
 </ul>
 
-<p>Save your configuration when you have provided the mandatory details. You will be redirected and required to authenticate with your OAuth provider</p>
-<p><span class="label label-important">Note</span>&nbsp;You must authenticate the MAILBOX email account e.g. support@company.com, not your own account or an admin account.</p>
+<p>Save your configuration when you have provided the mandatory details. If you are not using Graph, you will be redirected and required to authenticate with your OAuth provider</p>
+<p><span class="label label-important">Note</span>&nbsp;if you are not using Graph and authenticating with Azure, you must use the MAILBOX email account e.g. support@company.com, not your own account or an admin account.</p>
 
 <p><img src="oauth_provider1.png" /></p>
-<p>Confirm the access permissions and you'll be returned to Gemini, where you should see a success message</p>
+<p>If you authenticate with Azure, confirm the access permissions, and you'll be returned to Gemini, where you should see a success message</p>
 <p><img src="oauth_provider2.png" /></p>
 
 <h2>Gemini SMTP Configuration</h2>
-<p>OAuth configuration is the same for both the generic system mailbox in System Email Options, and the SMTP mailbox(es) for Breeze Ticketing</p>
+<p>OAuth configuration is the same for both the generic system mailbox in System Email Options and the SMTP mailbox(es) for Breeze Ticketing</p>
 <p>Navigate to Ticketing...SMTP Servers and edit or add a new SMTP connection</p>
 <p><img src="SMTP1.png" /></p>
 <p>Provide a name for your SMTP Server. For Microsoft OAuth, the server and port should be as shown above.</p>
-<p>Select OAuth2 from the Authentication Modes drop down. You will see the form present new fields.</p>
+<p>Select OAuth2 from the Authentication Modes drop-down. You will see the form present new fields. Graph requires less metadata as things like server and port are not relevant.</p>
 <p><img src="SMTP2.png" /></p>
-<p>The scopes will be automatically populated, but complete the rest of the fields as per the Azure AD Application details created earlier.</p>
-<p>Save the configuration. On Ticketing SMTP servers you should get a simple success message. On System Email Options, you will get a verbose trail of Gemini testing the SMTP connection.</p>
+<p>The scopes will be automatically populated (you won't see them for Graph), but complete the rest of the fields as per the Azure AD Application details created earlier.</p>
+<p>Save the configuration. On Ticketing SMTP servers, you should get a simple success message. On System Email Options, you will get a verbose trail of Gemini testing the SMTP connection.</p>
 
 <div class="well well-small related-box">
     <span class="title">Related</span>
