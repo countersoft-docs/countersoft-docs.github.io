@@ -1,20 +1,25 @@
 ---
 layout: default
-title: OAuth Setup for Micosoft Services
+title: OAuth Setup for Microsoft Services
 ---
 <h1>OAuth Setup for Microsoft Services</h1> 
 
-<p><span class="label label-important">Note</span>This feature is not available in versions of Gemini prior to 7.1.0</p>
+<p><span class="label label-important">Note</span>This feature is not available in versions of Gemini before 7.1.0</p>
 
-<p>Configuring OAuth is a two-step process. First you configure Microsoft Services to know about Gemini. Then you configure Gemini to use these services.</p>
+<p>Configuring OAuth is a two-step process. First, you configure Microsoft Services to know about Gemini. Then you configure Gemini to use these services.</p>
+<br></br>
+<p><span class="label label-important">Note</span>This feature is not available in versions of Gemini before 7.1.0</p>
+<br></br>
+<p><span class="label label-important">Note</span>The App Registration you set up in Azure can be used for Gemini's Graph API integration as well as for Breeze Mailboxes and SMTP</p>
+
 <h2>Microsoft 365 Configuration</h2>
 <h3>Create an application in Azure</h3>
 
-<p>Navigate to the Azure Portal and login (at the time of writing, this was Portal.Azure dotcom).</p>
-<p>On the menu of services, select Azure Active Directory.</p>
+<p>Navigate to the Azure Portal and login (Portal.Azure dotcom).</p>
+<p>On the menu of services, select Microsoft Entra ID.</p>
 <p><img src="AZPortal1.png" /></p>
 
-<p>Select Azure App Registrations</p>
+<p>Select App Registrations</p>
 <p><img src="AZPortal2.png" /></p>
 
 <p>If this is the first time you are setting this up, add a new application registration.</p>
@@ -42,7 +47,14 @@ title: OAuth Setup for Micosoft Services
 <p><img src="AZPortal8.png" /></p>
 <p><img src="AZPortal9.png" /></p>
 
-<p>Enter the Redirect URI. This will be in the format https://yourServer.com/Admin/OAuthCallback, where yourServer.com is the url of your Gemini instance.</p>
+<p>Enter the Redirect URI.</p>
+<p><span class="label label-important">Breeze Redirect URI</span>This will be in the format https://yourServer.com/Admin/OAuthCallback, where yourServer.com is the url of your Gemini instance.</p>
+<p><span class="label label-important">Entra ID Redirect URI</span>This will be in the format https://yourServer.com/account/postentralogin, where yourServer.com is the url of your Gemini instance.</p>
+<br></br>
+<p><i>You can use the same App Registration (TenantId, Client Id, and Client Secret) for <b>Entra ID, Breeze Mailboxes, SMTP, and Graph API</b> because you can specify multiple Redirect URIs for one App Registration.</i></p>
+<br></br>
+
+
 <p><img src="AZPortal10.png" /></p>
 <p><span class="label label-important">Note</span>Your Gemini site must be hosted on an SSL connection (https) as http redirects are not permitted.</p>
 
@@ -61,6 +73,7 @@ title: OAuth Setup for Micosoft Services
 
 <h2>Gemini Mailbox Configuration</h2>
 <p>To use OAuth with Gemini mailboxes, you can choose to configure the connection as Exchange(EWS) or IMAP<p>
+<p><span class="label label-warning">Note</span> Microsoft has announced that EWS will be deprecated in October 2026. We therefore recommend you choose IMAP or, if you are on Gemini 7.6.0 or above, Graph API.</p>
 
 <h3>IMAP Configuration</h3>
 <p><img src="gemini_mailbox1.png" /></p>
