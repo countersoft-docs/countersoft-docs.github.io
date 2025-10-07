@@ -4,8 +4,8 @@ title: Installation FAQ
 ---
 <h1>Installation FAQ</h1>
 
-<h3>Do I have to download and install?</h3>
-<p>No. You can use our cloud service where we host your instance. You pay a monthly fee and can cancel at any time.</p>
+<h3>Do I have to download and install Gemini?</h3>
+<p>No. You can use our cloud service, where we host your instance. You pay a monthly fee and can cancel at any time, or a discounted annual fee, but you cannot then cancel until the end of the term. Please get in touch with sales@countersoft.com for details on annual discounts, as volume discounts apply.</p>
 
 <h3>Can I Host Gemini on Windows Azure?</h3>
 <p>Follow <a href="https://github.com/countersoft/Azure">these instructions</a> to install Gemini on Windows Azure.</p>
@@ -13,37 +13,35 @@ title: Installation FAQ
 <h3>Which OS does Gemini support?</h3>
 <p>You can install and use Gemini on Windows operating systems:</p>
 <ul>
-    <li>Windows 7</li>
-    <li>Windows 8</li>
-    <li>Windows 10</li>
     <li>Windows 11</li>
-    <li>Windows Server 2008 to Windows Server 2022</li>
+    <li>Windows Server 2019 to Windows Server 2025</li>
 </ul>
 
 <h3>Which database systems does Gemini support?</h3>
 <p>You can use Gemini with the following database systems:</p>
 <ul>
-    <li>Microsoft SQL Server 2008 to Microsoft SQL Server 2022</li>
+    <li>Microsoft SQL Server 2016 to Microsoft SQL Server 2022</li>
 </ul>
 
 <h3>Does Gemini require Microsoft.NET?</h3>
-<p>Please follow the pre-requisites link below for the version of Microsoft .Net that is required.</p>
+<p>Please follow the prerequisites link below for the version of Microsoft .Net that is required.</p>
 
 <h3>Using IIS 6</h3>
-<p>IIS 7 or above is recommended. The following steps will need to be followed if you are installing Gemini on a server that is running IIS 6.</p>
+<p>IIS 7 or above is strongly recommended. The following steps will need to be followed if you are installing Gemini on a server that is running IIS 6.</p>
 
 <ol>
-    <li>Right click on the website or application in IIS and select Properties. </li>
+    <li> Right-click on the website or application in IIS and select Properties. </li>
     <li>Using the Virtual Directory tab (Home Directory for some versions of IIS) click on the configuration button at the bottom of the menu.</li>
     <li>From the Mappings tab, select the .aspx extension and click 'edit'.</li>
     <li>Copy the full executable path (should be the aspnet_isapi.dll).</li>
     <li>Go back to the Mappings tab and select .mvc and click edit (or add if it does not exist)</li>
     <li>Paste the path to the aspnet_isapi.dll in the window. Verbs should be at least 'get, post, head, debug', and make sure 'verify that file exists' is unchecked and click OK.</li>
-    <li>Go back to the mapping screen and 'Insert a Wildcard Application Map' (.*), Paste the aspnet_isapi.dll in the same path and uncheck 'verify that file exists'. Once done click OK.</li>
+    <li>Go back to the mapping screen and 'Insert a Wildcard Application Map' (.*), Paste the aspnet_isapi.dll in the same path and uncheck 'verify that file exists'. Once done, click OK.</li>
 </ol>
 
 <h3>Gemini & Windows Authentication</h3>
-<p>For deployment scenarios where Windows Authentication is required, ensure the IIS Application Pool assigned to the Gemini instance is using the <code>Network Service</code> account. For further information regarding the configuration of Gemini to utilize Windows Authentication, please <a href="https://github.com/countersoft/Azure">click here</a>.</p>
+<p>Gemini does not need Azure AD for Windows Authentication. It has an Azure AD integration to add and delete users, but Gemini authenticates through IIS with Windows, not AD.</p>
+<p>For deployment scenarios where Windows Authentication is required, ensure the IIS Application Pool assigned to the Gemini instance is using the <code>Network Service</code> account. For further information regarding the configuration of Gemini to use Windows Authentication, please <a href="https://github.com/countersoft/Azure">click here</a>.</p>
 
 <div class="well well-small related-box">
     <span class="title">Related</span>
