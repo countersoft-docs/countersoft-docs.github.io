@@ -1,0 +1,23 @@
+---
+layout: default
+title: EntraID Integration
+---
+<h1>User Authentication with Azure Entra ID</h1> 
+
+<p>Azure Entra ID is the latest iteration of authentication from Microsoft. Gemini uses an <a href="https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app">App Registration</a> to connect to Azure and a directory of users. To login to Gemini when Entra ID authentication is enabled, users are sent to the Microsoft online login. If the user is valid in the scope of the App Registration, Microsoft passes Gemini the user's email address and this is used to identify and log the user in. The use of email is a departure from other forms of login to Gemini and requires your Gemini Administrator to ensure there are no duplicate email addresses in your list of users.</p>
+
+<p><img src="webconfig.png" /></p>
+
+<p>To enable Entra ID Authentication, all you need to do is create an App Registration in Azure. For <a href="/OAuth-O365">O365 email integration</a>, the App Registration must have a redirect URI that is <i>https://yourServer.com/Admin/OAuthCallback</i>. For Entra ID Authentication, the Redirect URI is <b>https://yourServer.com/account/postentralogin</b>. In both cases, yourServer.com refers to the URL of your Gemini instance. After authenticating the user, this is the endpoint in Gemini that Microsoft returns to.</p>
+<br/>
+<p><span class="label label-important">Entra ID App Registration</span>You can (and probably should) use the same App Registration for Microsoft OAuth as you use for Entra ID. An App Registration can have multiple Redirect URIs</p>
+
+<div class="well well-small related-box">
+    <span class="title">Related</span>
+	<ul>
+		<li id="OAuth-for-Microsoft Services"><a href="/OAuth-O365">OAuth Setup For Microsoft</a></li>
+		<li><a href="/active-directory-groups">Active Directory Groups</a></li>
+		<li><a href="/group-membership">Group Membership</a></li>
+		<li><a href="/interaction-groups">Interaction Groups</a></li>
+	</ul>
+</div>
